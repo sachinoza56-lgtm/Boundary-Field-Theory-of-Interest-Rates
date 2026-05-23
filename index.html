@@ -75,9 +75,27 @@
         }
         .btn-youtube {
             background: #e62117;
+            border-left: 4px solid #e62117;
         }
         .btn-youtube:hover {
             background: #cc1810;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin-top: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
     </style>
 </head>
@@ -108,7 +126,7 @@
         <p>Download the full final draft manuscript and access online repository links:</p>
         <p><a href="IRFR_Humped_Vol.pdf" class="btn">Download Manuscript PDF</a></p>
         <ul>
-            <li><strong>SSRN:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6748347" target="_blank">View Abstract on SSRN</a></li>
+            <li><strong>SSRN:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6748347" target="_blank">View Abstract on SSRN</a>[cite: 1]</li>
             <li><strong>Source Code:</strong> <a href="IRFR_humped_volatility.tex">IRFR_humped_volatility.tex (LaTeX)</a></li>
         </ul>
     </div>
@@ -125,16 +143,24 @@
     <h2>3. Presentation & Tutorial Slide Deck</h2>
     <div class="resource-block">
         <p>An intuitive walkthrough of the framework, charting the journey from duration and parallel shifts to the choice of the rolling modeling primitive and the resulting shifted inverse-gamma law[cite: 1]:</p>
-        <!-- Referencing the specific file provided verbatim -->
         <p><a href="IRFR_Final Draft.pdf" class="btn">Download Presentation PDF</a>[cite: 1]</p>
         <p><small style="color: #666;">Original file: IRFR_Tutorial_Revised_Opening_Risk_Expectations_RV_v10_PROOF_BLOCKS.pptx</small></p>
     </div>
 
     <h2>4. Video Presentation & Tutorials</h2>
-    <div class="resource-block">
-        <p>Watch detailed video breakdowns of the IRFR framework, focusing on first-principles derivations and financial intuition on the official YouTube channel:</p>
-        <!-- Replace the '#' in href with your actual YouTube Channel URL when ready -->
-        <p><a href="#" target="_blank" class="btn btn-youtube">Visit YouTube Channel</a></p>
+    <div class="resource-block" style="border-left-color: #e62117;">
+        <p>Watch the detailed presentation covering first-principles derivations, financial intuition, and the mechanics of the IRFR framework:</p>
+        <p><a href="https://www.youtube.com/watch?v=Kh_Mcq4STGM" target="_blank" class="btn btn-youtube">Watch on YouTube</a></p>
+        
+        <!-- Embedded Responsive Video Player -->
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/Kh_Mcq4STGM" 
+                title="IRFR Framework Presentation" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
 </body>
