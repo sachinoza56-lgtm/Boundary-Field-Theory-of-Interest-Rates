@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>IRFR Paper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRFR Framework - Sachin Oza</title>
     <style>
         body {
             font-family: Georgia, serif;
@@ -10,12 +11,29 @@
             margin: 40px auto;
             line-height: 1.6;
             padding: 0 20px;
+            color: #222;
         }
         h1 {
             font-size: 28px;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+        .meta-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
         }
         h2 {
-            margin-top: 30px;
+            margin-top: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            font-size: 22px;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
         }
         a {
             text-decoration: none;
@@ -24,76 +42,100 @@
         a:hover {
             text-decoration: underline;
         }
-        /* Button styles extracted from inline HTML */
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .resource-block {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #1a0dab;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .resource-block p {
+            margin-top: 0;
+            text-align: left;
+        }
         .btn {
             display: inline-block;
-            padding: 10px 15px;
+            padding: 10px 20px;
             background: #1a0dab;
-            color: white;
-            border-radius: 5px;
+            color: white !important;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            text-decoration: none !important;
         }
         .btn:hover {
-            text-decoration: none;
             background: #130985;
+        }
+        .btn-youtube {
+            background: #e62117;
+        }
+        .btn-youtube:hover {
+            background: #cc1810;
         }
     </style>
 </head>
 <body>
-    <h1>An Axiomatically Consistent Single-Factor Term Structure Model with Admissible Humped Volatility</h1>
 
-    <p><strong>Author:</strong> Sachin Oza</p>
-    <p><strong>Version:</strong> April 2026</p>
+    <h1>An Axiomatically Consistent Single-Factor Term Structure Model with Admissible Humped Volatility</h1>
+    
+    <div class="meta-info">
+        <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp; <strong>Version:</strong> April 2026
+    </div>
 
     <h2>Abstract</h2>
     <p>
-       We develop an axiomatic framework for the dynamics of the instantaneous rolling forward rate (IRFR) and the associated term structure of interest rates. 
-Rather than postulating a stochastic process, admissible dynamics are derived from structural principles: rolling‑maturity invariance, equilibrium transport of the first two moments, affine closure of the Kolmogorov Forward Equation, and positivity at zero maturity. 
-These conditions uniquely constrain the IRFR to a Pearson‑type diffusion with affine drift and quadratic volatility.
-The framework admits a maturity‑indexed equilibrium regime in which the forward curve converges exponentially to a long‑maturity level and the equilibrium density is a shifted inverse‑gamma law. 
-Crucially, the exponential scale governing maturity decay need not coincide with the temporal drift–diffusion scale. 
-When these scales differ, the model generates two deterministic maturity loadings, producing not only monotone or humped yield curves in a one‑factor setting, 
-being non stationary in the latter case, but also humped volatility term structures for both forward and conventional rates in the non stationary case. 
-The interaction of the two scales localizes variance away from the short end without introducing additional stochastic factors. 
-The model further implies a constant market signal‑to‑noise ratio and a forward‑curve transition structure analogous to affine covariance kernels. 
-Together, these results provide a structural explanation for humped volatility and yield phenomena within a parsimonious rolling‑rate framework.
+        We develop an axiomatic framework for the dynamics of the instantaneous rolling forward rate (IRFR) and the associated term structure of interest rates. 
+        Rather than postulating a stochastic process, admissible dynamics are derived from structural principles: rolling‑maturity invariance, equilibrium transport of the first two moments, affine closure of the Kolmogorov Forward Equation, and positivity at zero maturity. 
+        These conditions uniquely constrain the IRFR to a Pearson‑type diffusion with affine drift and quadratic volatility.
+        The framework admits a maturity‑indexed equilibrium regime in which the forward curve converges exponentially to a long‑maturity level and the equilibrium density is a shifted inverse‑gamma law. 
+        Crucially, the exponential scale governing maturity decay need not coincide with the temporal drift–diffusion scale. 
+        When these scales differ, the model generates two deterministic maturity loadings, producing not only monotone or humped yield curves in a one‑factor setting, 
+        being non stationary in the latter case, but also humped volatility term structures for both forward and conventional rates in the non stationary case. 
+        The interaction of the two scales localizes variance away from the short end without introducing additional stochastic factors. 
+        The model further implies a constant market signal‑to‑noise ratio and a forward‑curve transition structure analogous to affine covariance kernels. 
+        Together, these results provide a structural explanation for humped volatility and yield phenomena within a parsimonious rolling‑rate framework.
     </p>
 
-    <h2>Download</h2>
-    <p>
-        <a href="IRFR_Humped_Vol.pdf" class="btn">Download PDF</a>
-    </p>
+    <h2>1. Core Research Paper</h2>
+    <div class="resource-block">
+        <p>Download the full final draft manuscript and access online repository links:</p>
+        <p><a href="IRFR_Humped_Vol.pdf" class="btn">Download Manuscript PDF</a></p>
+        <ul>
+            <li><strong>SSRN:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6748347" target="_blank">View Abstract on SSRN</a></li>
+            <li><strong>Source Code:</strong> <a href="IRFR_humped_volatility.tex">IRFR_humped_volatility.tex (LaTeX)</a></li>
+        </ul>
+    </div>
 
-    <h2>Links</h2>
-    <ul>
-        <li><strong>LaTeX File:</strong> <a href="IRFR_humped_volatility.tex">IRFR_humped_volatility.tex</a></li>
-        <li><strong>SSRN:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6748347" target="_blank">View on SSRN</a></li>
-    </ul>
+    <h2>2. Textbook-Style Explanatory Notes</h2>
+    <div class="resource-block">
+        <p>A more heuristic and less formal representation of the framework, ideal for walking through the underlying intuition:</p>
+        <p><a href="irfr_textbook_style.pdf" class="btn">Download Notes PDF</a></p>
+        <ul>
+            <li><strong>Source Code:</strong> <a href="irfr_textbook_style.tex">irfr_textbook_style.tex (LaTeX)</a></li>
+        </ul>
+    </div>
 
-     <h2>Notes Version</h2>
-    <p>
-      A more heuristic and slightly less formal represntation of the above paper can be found in the notes link below. Click on the download button to view.
-    </p>
-     <h2>Download</h2>
-    <p>
-        <a href="irfr_textbook_style.pdf" class="btn">Download PDF</a>
-    </p>
+    <h2>3. Presentation & Tutorial Slide Deck</h2>
+    <div class="resource-block">
+        <p>An intuitive walkthrough of the framework, charting the journey from duration and parallel shifts to the choice of the rolling modeling primitive and the resulting shifted inverse-gamma law[cite: 1]:</p>
+        <!-- Referencing the specific file provided verbatim -->
+        <p><a href="IRFR_Final Draft.pdf" class="btn">Download Presentation PDF</a>[cite: 1]</p>
+        <p><small style="color: #666;">Original file: IRFR_Tutorial_Revised_Opening_Risk_Expectations_RV_v10_PROOF_BLOCKS.pptx</small></p>
+    </div>
 
-    <h2>Notes Version Link</h2>
-    <ul>
-        <li><strong>LaTeX File:</strong> <a href="irfr_textbook_style.tex">IRFR_humped_volatility.tex</a></li>
-       
-    </ul>
-    
-    <h2>Presentation Version</h2>
-    <p>
-      A power point version can be found below.
-    </p>
-     <h2>Download</h2>
-    <p>
-        <a href="IRFR_Tutorial_Revised_Opening_Risk_Expectations_RV_v10_PROOF_BLOCKS.pptx" class="btn">Download PDF</a>
-    </p>
-    
+    <h2>4. Video Presentation & Tutorials</h2>
+    <div class="resource-block">
+        <p>Watch detailed video breakdowns of the IRFR framework, focusing on first-principles derivations and financial intuition on the official YouTube channel:</p>
+        <!-- Replace the '#' in href with your actual YouTube Channel URL when ready -->
+        <p><a href="#" target="_blank" class="btn btn-youtube">Visit YouTube Channel</a></p>
+    </div>
 
 </body>
 </html>
-
