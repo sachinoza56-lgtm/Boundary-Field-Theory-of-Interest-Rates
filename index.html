@@ -111,7 +111,7 @@
     <p>
         We develop an axiomatic framework for the dynamics of the instantaneous rolling forward rate (IRFR) and the associated term structure of interest rates. 
         Rather than postulating a stochastic process, admissible dynamics are derived from structural principles: rolling‑maturity invariance, equilibrium transport of the first two moments, affine closure of the Kolmogorov Forward Equation, and positivity at zero maturity. 
-        These conditions uniquely constrain the IRFR to a Pearson‑type diffusion with affine drift and quadratic volatility.
+        These conditions uniquely constrain the IRFR to a Pearson‑type diffusion with affine drift and quadratic volatility. 
         The framework admits a maturity‑indexed equilibrium regime in which the forward curve converges exponentially to a long‑maturity level and the equilibrium density is a shifted inverse‑gamma law. 
         Crucially, the exponential scale governing maturity decay need not coincide with the temporal drift–diffusion scale. 
         When these scales differ, the model generates two deterministic maturity loadings, producing not only monotone or humped yield curves in a one‑factor setting, 
@@ -162,6 +162,37 @@
             </iframe>
         </div>
     </div>
+</head>
+<body>
 
+    <h1>Monetary Policy as a Boundary Condition in the IRFR Framework</h1>
+    
+    <div class="meta-info">
+        <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp; <strong>Version:</strong> June 2026
+    </div>
+
+    <h2>Abstract</h2>
+    <p>
+Monetary policy operates at the short end of the interest-rate curve, directly influencing the overnight rate while leaving the remainder of the forward curve to market determination. This paper argues that the appropriate mathematical representation of this asymmetry is through
+boundary conditions imposed at zero maturity. The paper is a companion extension to the core IRFR working paper of Oza [1], which develops the underlying single-factor term-structure
+model. Within the instantaneous rolling forward rate (IRFR) framework, we show that these boundary conditions do not merely affect local behaviour at the short end, but instead determine the admissible functional form of forward-rate volatility across maturities. 
+In particular, when the maturity-decay and calendar-time drift-diffusion scales coincide, corresponding to the branch r = 1, the boundary-value problem becomes a coalescing-root system whose independent solution includes the mode τe−a2τ .
+This extension keeps the first three IRFR axioms unchanged: stochastic evolution, rollingmaturity invariance, and equilibrium moment transport remain the structural machinery of the model. 
+What changes is the short-end boundary closure. In the original non-intervention benchmark, Axiom 4 imposes the natural positivity boundary at zero maturity. 
+In the present paper, monetary policy is represented as a change in that boundary closure rather than as a change in the underlying rolling-maturity logic.
+The fixed-boundary, or Dirichlet, case is not proposed as a literal description of monetary policy. It is a clean limiting benchmark: the short rate is pinned at a policy value, so short-end variance must vanish and risk is displaced into the interior of the curve. 
+The more realistic policy case is Robin: the short end is only partially anchored, as policy attempts to moderate short-term rate moves in pursuit of price-stability and growth objectives.
+As a result, the commonly observed volatility hump emerges as a boundary-induced eigenmode rather than a modelling assumption. Throughout, the drift-diffusion scales aN, aD, and aR are kept distinct for their respective boundary conditions, and no cross-regime equality of a, MSNR, or total variance is assumed without separate justification.
+    </p>
+
+    <h2>1. Core Research Paper</h2>
+    <div class="resource-block">
+        <p>Download the full final draft manuscript and access online repository links:</p>
+        <p><a href="IRFR_with_Monetary_Policy.pdf" class="btn">Download Manuscript PDF</a></p>
+            <li><strong>Source Code:</strong> <a href="monetary_policy_boundary_conditions_irfr_reviewed_v8.tex">monetary_policy_boundary_conditions_irfr_reviewed_v8.tex (LaTeX)</a></li>
+        </ul>
+    </div>
+
+    
 </body>
 </html>
