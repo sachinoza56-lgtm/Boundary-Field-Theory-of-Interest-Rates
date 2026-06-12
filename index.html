@@ -1,207 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Field Theory and Boundary Laws of Interest Rates - Sachin Oza</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Theory and Boundary Laws of Interest Rates - Sachin Oza</title>
 
-<style>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            max-width: 800px;
+            margin: 40px auto;
+            line-height: 1.6;
+            padding: 0 20px;
+            color: #222;
+        }
 
-/* ---------- CONTACT FORM ---------- */
-.contact-form {
-    margin-top: 50px;
-    background: #f9f9f9;
-    padding: 25px;
-    border-left: 4px solid #1a0dab;
-    border-radius: 5px;
-}
+        h1 { font-size: 34px; }
+        h2 { font-size: 28px; }
 
-.contact-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px;
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: Georgia, serif;
-    font-size: 14px;
-}
-
-.contact-form button {
-    background: #1a0dab;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.contact-form button:hover {
-    background: #130985;
-}
-
-/* ---------- GENERAL ---------- */
-body {
-    font-family: Georgia, serif;
-    max-width: 800px;
-    margin: 40px auto;
-    line-height: 1.6;
-    padding: 0 20px;
-    color: #222;
-}
-
-h1 { font-size: 34px; }
-h2 { font-size: 28px; }
-h3 {
-    margin-top: 40px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 8px;
-    font-size: 22px;
-}
-
-.site-header {
-    margin-bottom: 55px;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 30px;
-}
-
-.site-author { color: #777; }
-
-.meta-info {
-    font-size: 14px;
-    color: #666;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-}
-
-.resource-block {
-    background: #f9f9f9;
-    padding: 20px;
-    border-left: 4px solid #1a0dab;
-    border-radius: 5px;
-}
-
-.btn {
-    display: inline-block;
-    background: #1a0dab;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-.btn:hover {
-    background: #130985;
-}
-
-.paper-divider {
-    margin: 60px 0;
-    border-top: 2px solid #ddd;
-}
-
-.paper-label {
-    font-size: 13px;
-    text-transform: uppercase;
-    color: #777;
-}
-
-</style>
-</head>
-
-<body>
-
-<header class="site-header">
-    <h1>
-        Field Theory and Boundary Laws of Interest Rates
-    </h1>
-    <p class="site-author">Sachin Oza</p>
-</header>
-
-<main>
-
-<section>
-    <div class="paper-label">Monograph</div>
-    <h2>Boundary Field Theory of Interest Rates</h2>
-
-    <div class="meta-info">
-        Author: Sachin Oza | Version: June 2026
-    </div>
-
-    <p>This monograph develops a structural field theory of interest rates using rolling-maturity coordinates...</p>
-
-    <div class="resource-block">
-        <a href="IRFR_Monograph_LaTeX_Master.pdf" class="btn">
-            Download Monograph
-        </a>
-    </div>
-</section>
-
-<hr class="paper-divider">
-
-<section>
-    <div class="paper-label">Paper</div>
-    <h2>Single-Factor Term Structure with Humped Volatility</h2>
-
-    <div class="resource-block">
-        <a href="IRFR_Humped_Vol.pdf" class="btn">
-            Download Paper
-        </a>
-    </div>
-</section>
-
-<hr class="paper-divider">
-
-<!-- ✅ CONTACT SECTION -->
-<section id="contact">
-
-    <div class="paper-label">Contact</div>
-    <h2>Contact</h2>
-
-    <p>
-        For research discussions, collaboration, or questions, please use the form below.
-    </p>
-
-    <div class="contact-form">
-
-        <form action="https://formspree.io/f/xrevyvwp" method="POST">
-
-            <label>Name</label>
-            <input type="text" name="name" required>
-
-            <label>Email</label>
-            <input type="email" name="email" required>
-
-            <label>Message</label>
-            <textarea name="message" rows="6" required></textarea>
-
-            <!-- anti-spam -->
-            <input type="text" name="_gotcha" style="display:none">
-
-            <!-- redirect -->
-            <input type="hidden" name="_redirect" value="thanks.html">
-
-            <button type="submit">Send Message</button>
-
-        </form>
-
-    </div>
-
-</section>
-
-</main>
-
-</body>
-</html>
+        h3 {
+            margin-top: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
             font-size: 22px;
         }
 
@@ -341,6 +161,48 @@ h3 {
             color: #666;
         }
 
+        .contact-form {
+            margin-top: 50px;
+            background: #f9f9f9;
+            padding: 25px;
+            border-left: 4px solid #1a0dab;
+            border-radius: 5px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 14px;
+        }
+
+        .contact-form button {
+            background: #1a0dab;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #130985;
+        }
+
         @media screen and (max-width: 600px) {
             body {
                 margin: 25px auto;
@@ -368,347 +230,279 @@ h3 {
 
 <body>
 
-    <header class="site-header">
-        <h1 class="site-title">
-            Field Theory and Boundary Laws of Interest Rates:
-            An Instantaneous Rolling Forward Rate Approach
-        </h1>
+<header class="site-header">
+    <h1 class="site-title">
+        Field Theory and Boundary Laws of Interest Rates:
+        An Instantaneous Rolling Forward Rate Approach
+    </h1>
 
-        <p class="site-subtitle">
-            Research papers, explanatory notes, presentation materials, and tutorials on the instantaneous rolling forward rate framework.
-        </p>
-
-        <p class="site-author">
-            Sachin Oza
-        </p>
-    </header>
-
-<section id="irfr-monograph">
-
-    <div class="paper-label">Monograph</div>
-
-    <h2>
-        Boundary Field Theory of Interest Rates
-    </h2>
-
-    <div class="meta-info">
-        <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
-        <strong>Version:</strong> June 2026
-    </div>
-
-    <h3>Abstract</h3>
-
-    <p>
-        Interest-rate modelling has developed through several powerful but partially distinct
-        traditions. Each of these traditions has been extraordinarily productive, yet a conceptual
-        separation remains. In many models, the dynamic consistency of the term structure is
-        handled in one part of the framework, while the shape of the curve, the maturity profile
-        of volatility, and the effect of monetary policy are introduced elsewhere through
-        additional parametrisation.
+    <p class="site-subtitle">
+        Research papers, explanatory notes, presentation materials, and tutorials on the instantaneous rolling forward rate framework.
     </p>
 
-    <p>
-        Humped volatility structures, curve-shape restrictions, maturity loadings, and policy
-        effects are often specified because they are useful or empirically plausible, rather than
-        derived from a common structural mechanism. The empirical importance of humped
-        volatility makes this separation especially visible. Ritchken-Chuang-type maturity
-        profiles are useful precisely because they capture an observed concentration of volatility
-        away from the shortest and longest maturities.
-    </p>
+    <p class="site-author">Sachin Oza</p>
+</header>
 
-    <p>
-        The question pursued here is different: can some of the same empirically recognisable
-        maturity structure be explained before adding richer polynomial state machinery, by first
-        exploiting rolling-maturity geometry and the boundary at the short end?
-    </p>
+<main>
 
-    <p>
-        The purpose of this monograph is to investigate whether more of this structure can be
-        generated from fewer principles, while preserving a clear account of the modelling cost.
-        The aim is parsimony alongside internal consistency: curve shape, volatility structure,
-        maturity loading, and policy anchoring should be linked through the same governing
-        field principles. For this reason, the monograph refers to the framework as the
-        <em>Boundary Field Theory of Interest Rates</em>.
-    </p>
+    <section id="irfr-monograph">
+        <div class="paper-label">Monograph</div>
 
-    <h3>Monograph Download</h3>
+        <h2>Boundary Field Theory of Interest Rates</h2>
 
-    <div class="resource-block">
+        <div class="meta-info">
+            <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
+            <strong>Version:</strong> June 2026
+        </div>
+
+        <h3>Abstract</h3>
+
         <p>
-            Download the full monograph together with the accompanying LaTeX source materials.
-            The PDF is provided as a standalone document, while the two associated LaTeX files
-            are bundled together for convenience.
+            Interest-rate modelling has developed through several powerful but partially distinct
+            traditions. Each of these traditions has been extraordinarily productive, yet a conceptual
+            separation remains. In many models, the dynamic consistency of the term structure is
+            handled in one part of the framework, while the shape of the curve, the maturity profile
+            of volatility, and the effect of monetary policy are introduced elsewhere through
+            additional parametrisation.
         </p>
 
         <p>
-            <a href="IRFR_Monograph_LaTeX_Master.pdf" class="btn">
-                Download Monograph PDF
-            </a>
+            Humped volatility structures, curve-shape restrictions, maturity loadings, and policy
+            effects are often specified because they are useful or empirically plausible, rather than
+            derived from a common structural mechanism.
         </p>
 
+        <p>
+            The purpose of this monograph is to investigate whether more of this structure can be
+            generated from fewer principles, while preserving a clear account of the modelling cost.
+        </p>
 
-        <ul>
+        <h3>Monograph Download</h3>
 
-            <li>
-                <strong>LaTeX Bundle:</strong>
-                <a href="IRFR_Monograph_LaTeX_Master.tex">
-                    IRFR_Monograph_LaTeX_Master.zip
+        <div class="resource-block">
+            <p>
+                Download the full monograph together with the accompanying LaTeX source materials.
+            </p>
+
+            <p>
+                <a href="IRFR_Monograph_LaTeX_Master.pdf" class="btn">
+                    Download Monograph PDF
                 </a>
-                containing the two associated LaTeX files
-            </li>
-        </ul>
-    </div>
+            </p>
 
-</section>
-
-<hr class="paper-divider">
-
+            <ul>
+                <li>
+                    <strong>LaTeX Bundle:</strong>
+                    <a href="IRFR_Monograph_LaTeX_Master.tex">
+                        IRFR_Monograph_LaTeX_Master.tex
+                    </a>
+                </li>
+            </ul>
+        </div>
     </section>
 
     <hr class="paper-divider">
 
     <section id="irfr-humped-volatility">
-        <section id="irfr-humped-volatility">
+        <div class="paper-label">Paper 1</div>
 
-            <div class="paper-label">Paper 1</div>
+        <h2>
+            An Axiomatically Consistent Single-Factor Term Structure Model with Admissible Humped Volatility
+        </h2>
 
-            <h2>
-                An Axiomatically Consistent Single-Factor Term Structure Model with Admissible Humped Volatility
-            </h2>
+        <div class="meta-info">
+            <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
+            <strong>Version:</strong> April 2026
+        </div>
 
-            <div class="meta-info">
-                <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
-                <strong>Version:</strong> April 2026
-            </div>
+        <h3>Abstract</h3>
 
-            <h3>Abstract</h3>
+        <p>
+            We develop an axiomatic framework for the dynamics of the instantaneous rolling forward rate
+            and the associated term structure of interest rates.
+        </p>
 
-            <p>
-                We develop an axiomatic framework for the dynamics of the instantaneous rolling forward rate
-                (IRFR) and the associated term structure of interest rates. Rather than postulating a stochastic
-                process, admissible dynamics are derived from structural principles: rolling-maturity invariance,
-                equilibrium transport of the first two moments, affine closure of the Kolmogorov Forward Equation,
-                and positivity at zero maturity.
-            </p>
+        <p>
+            These conditions uniquely constrain the IRFR to a Pearson-type diffusion with affine drift and
+            quadratic volatility.
+        </p>
 
-            <p>
-                These conditions uniquely constrain the IRFR to a Pearson-type diffusion with affine drift and
-                quadratic volatility. The framework admits a maturity-indexed equilibrium regime in which the
-                forward curve converges exponentially to a long-maturity level and the equilibrium density is a
-                shifted inverse-gamma law.
-            </p>
+        <h3>1. Core Research Paper</h3>
+
+        <div class="resource-block">
+            <p>Download the full final draft manuscript and access online repository links:</p>
 
             <p>
-                Crucially, the exponential scale governing maturity decay need not coincide with the temporal
-                drift-diffusion scale. When these scales differ, the model generates two deterministic maturity
-                loadings, producing not only monotone or humped yield curves in a one-factor setting, being
-                non-stationary in the latter case, but also humped volatility term structures for both forward and
-                conventional rates in the non-stationary case.
+                <a href="IRFR_Humped_Vol.pdf" class="btn">
+                    Download Manuscript PDF
+                </a>
             </p>
 
-            <p>
-                The interaction of the two scales localizes variance away from the short end without introducing
-                additional stochastic factors. The model further implies a constant market signal-to-noise ratio
-                and a forward-curve transition structure analogous to affine covariance kernels. Together, these
-                results provide a structural explanation for humped volatility and yield phenomena within a
-                parsimonious rolling-rate framework.
-            </p>
-
-            <h3>1. Core Research Paper</h3>
-
-            <div class="resource-block">
-                <p>Download the full final draft manuscript and access online repository links:</p>
-
-                <p>
-                    <a href="IRFR_Humped_Vol.pdf" class="btn">
-                        Download Manuscript PDF
+            <ul>
+                <li>
+                    <strong>SSRN:</strong>
+                    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6748347" target="_blank" rel="noopener noreferrer">
+                        View Abstract on SSRN
                     </a>
-                </p>
+                </li>
 
-                <ul>
-                    <li>
-                        <strong>SSRN:</strong>
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6748347" target="_blank" rel="noopener noreferrer">
-                            View Abstract on SSRN
-                        </a>
-                    </li>
-
-                    <li>
-                        <strong>Source Code:</strong>
-                        <a href="IRFR_humped_volatility.tex">
-                            IRFR_humped_volatility.tex
-                        </a>
-                        LaTeX
-                    </li>
-                </ul>
-            </div>
-
-            <h3>2. Textbook-Style Explanatory Notes</h3>
-
-            <div class="resource-block">
-                <p>
-                    A more heuristic and less formal representation of the framework, ideal for walking through
-                    the underlying intuition:
-                </p>
-
-                <p>
-                    <a href="irfr_textbook_style.pdf" class="btn">
-                        Download Notes PDF
+                <li>
+                    <strong>Source Code:</strong>
+                    <a href="IRFR_humped_volatility.tex">
+                        IRFR_humped_volatility.tex
                     </a>
-                </p>
+                </li>
+            </ul>
+        </div>
 
-                <ul>
-                    <li>
-                        <strong>Source Code:</strong>
-                        <a href="irfr_textbook_style.tex">
-                            irfr_textbook_style.tex
-                        </a>
-                        LaTeX
-                    </li>
-                </ul>
-            </div>
+        <h3>2. Textbook-Style Explanatory Notes</h3>
 
-            <h3>3. Presentation &amp; Tutorial Slide Deck</h3>
+        <div class="resource-block">
+            <p>
+                A more heuristic and less formal representation of the framework.
+            </p>
 
-            <div class="resource-block">
-                <p>
-                    An intuitive walkthrough of the framework, charting the journey from duration and parallel
-                    shifts to the choice of the rolling modelling primitive and the resulting shifted inverse-gamma law:
-                </p>
+            <p>
+                <a href="irfr_textbook_style.pdf" class="btn">
+                    Download Notes PDF
+                </a>
+            </p>
 
-                <p>
-                    <a href="IRFR_Final%20Draft.pdf" class="btn">
-                        Download Presentation PDF
+            <ul>
+                <li>
+                    <strong>Source Code:</strong>
+                    <a href="irfr_textbook_style.tex">
+                        irfr_textbook_style.tex
                     </a>
-                </p>
+                </li>
+            </ul>
+        </div>
 
-                <p>
-                    <small>
-                        Original file: IRFR_Tutorial_Revised_Opening_Risk_Expectations_RV_v10_PROOF_BLOCKS.pptx
-                    </small>
-                </p>
+        <h3>3. Presentation &amp; Tutorial Slide Deck</h3>
+
+        <div class="resource-block">
+            <p>
+                An intuitive walkthrough of the framework.
+            </p>
+
+            <p>
+                <a href="IRFR_Final%20Draft.pdf" class="btn">
+                    Download Presentation PDF
+                </a>
+            </p>
+
+            <p>
+                <small>
+                    Original file: IRFR_Tutorial_Revised_Opening_Risk_Expectations_RV_v10_PROOF_BLOCKS.pptx
+                </small>
+            </p>
+        </div>
+
+        <h3>4. Video Presentation &amp; Tutorials</h3>
+
+        <div class="resource-block video-block">
+            <p>
+                Watch the detailed presentation covering first-principles derivations, financial intuition,
+                and the mechanics of the IRFR framework:
+            </p>
+
+            <p>
+                <a href="https://www.youtube.com/watch?v=FeDgvEJNq2U" target="_blank" rel="noopener noreferrer" class="btn btn-youtube">
+                    Watch on YouTube
+                </a>
+            </p>
+
+            <div class="video-container">
+                <iframe
+                    src="https://www.youtube.com/embed/FeDgvEJNq2U"
+                    title="IRFR Framework Presentation"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
             </div>
+        </div>
+    </section>
 
-            <h3>4. Video Presentation &amp; Tutorials</h3>
+    <hr class="paper-divider">
 
-            <div class="resource-block video-block">
-                <p>
-                    Watch the detailed presentation covering first-principles derivations, financial intuition,
-                    and the mechanics of the IRFR framework:
-                </p>
+    <section id="irfr-monetary-policy-boundary-condition">
+        <div class="paper-label">Paper 2</div>
 
-                <p>
-                    <a href="https://www.youtube.com/watch?v=FeDgvEJNq2U" target="_blank" rel="noopener noreferrer" class="btn btn-youtube">
-                        Watch on YouTube
+        <h2>
+            Monetary Policy as a Boundary Condition in the IRFR Framework
+        </h2>
+
+        <div class="meta-info">
+            <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
+            <strong>Version:</strong> June 2026
+        </div>
+
+        <h3>Abstract</h3>
+
+        <p>
+            Monetary policy operates at the short end of the interest-rate curve, directly influencing the
+            overnight rate while leaving the remainder of the forward curve to market determination.
+        </p>
+
+        <p>
+            This paper argues that the appropriate mathematical representation of this asymmetry is through
+            boundary conditions imposed at zero maturity.
+        </p>
+
+        <h3>1. Core Research Paper</h3>
+
+        <div class="resource-block">
+            <p>Download the full final draft manuscript and access online repository links:</p>
+
+            <p>
+                <a href="IRFR_with_Monetary_Policy.pdf" class="btn">
+                    Download Manuscript PDF
+                </a>
+            </p>
+
+            <ul>
+                <li>
+                    <strong>Source Code:</strong>
+                    <a href="monetary_policy_boundary_conditions_irfr_reviewed_v8.tex">
+                        monetary_policy_boundary_conditions_irfr_reviewed_v8.tex
                     </a>
-                </p>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-                <div class="video-container">
-                    <iframe
-                        src="https://www.youtube.com/embed/FeDgvEJNq2U"
-                        title="IRFR Framework Presentation"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
+    <hr class="paper-divider">
 
-        </section>
+    <section id="contact">
+        <div class="paper-label">Contact</div>
 
-        <hr class="paper-divider">
+        <h2>Contact</h2>
 
-        <section id="irfr-monetary-policy-boundary-condition">
+        <p>
+            For research discussions, collaboration, or questions, please use the form below.
+        </p>
 
-            <div class="paper-label">Paper 2</div>
+        <div class="contact-form">
+            <form action="https://formspree.io/f/xrevyvwp" method="POST">
+                <label for="name">Name</label>
+                <input id="name" type="text" name="name" required>
 
-            <h2>
-                Monetary Policy as a Boundary Condition in the IRFR Framework
-            </h2>
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" required>
 
-            <div class="meta-info">
-                <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
-                <strong>Version:</strong> June 2026
-            </div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
 
-            <h3>Abstract</h3>
+                <input type="text" name="_gotcha" style="display:none">
 
-            <p>
-                Monetary policy operates at the short end of the interest-rate curve, directly influencing the
-                overnight rate while leaving the remainder of the forward curve to market determination. This paper
-                argues that the appropriate mathematical representation of this asymmetry is through boundary
-                conditions imposed at zero maturity.
-            </p>
+                <input type="hidden" name="_redirect" value="thanks.html">
 
-            <p>
-                The paper is a companion extension to the core IRFR working paper of Oza, which develops the
-                underlying single-factor term-structure model. Within the instantaneous rolling forward rate
-                framework, we show that these boundary conditions do not merely affect local behaviour at the
-                short end, but instead determine the admissible functional form of forward-rate volatility across
-                maturities.
-            </p>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-            <p>
-                In particular, when the maturity-decay and calendar-time drift-diffusion scales coincide,
-                corresponding to the branch <em>r = 1</em>, the boundary-value problem becomes a coalescing-root
-                system whose independent solution includes the mode
-                <em>&tau;e<sup>-a<sub>2</sub>&tau;</sup></em>.
-            </p>
+</main>
 
-            <p>
-                This extension keeps the first three IRFR axioms unchanged: stochastic evolution,
-                rolling-maturity invariance, and equilibrium moment transport remain the structural machinery
-                of the model. What changes is the short-end boundary closure.
-            </p>
-
-            <p>
-                In the original non-intervention benchmark, Axiom 4 imposes the natural positivity boundary at
-                zero maturity. In the present paper, monetary policy is represented as a change in that boundary
-                closure rather than as a change in the underlying rolling-maturity logic.
-            </p>
-
-            <p>
-                The fixed-boundary, or Dirichlet, case is not proposed as a literal description of monetary policy.
-                It is a clean limiting benchmark: the short rate is pinned at a policy value, so short-end variance
-                must vanish and risk is displaced into the interior of the curve.
-            </p>
-
-            <p>
-                The more realistic policy case is Robin: the short end is only partially anchored, as policy attempts
-                to moderate short-term rate moves in pursuit of price-stability and growth objectives. As a result,
-                the commonly observed volatility hump emerges as a boundary-induced eigenmode rather than a
-                modelling assumption.
-            </p>
-
-            <p>
-                Throughout, the drift-diffusion scales <em>a<sub>N</sub></em>, <em>a<sub>D</sub></em>, and
-                <em>a<sub>R</sub></em> are kept distinct for their respective boundary conditions, and no
-                cross-regime equality of <em>a</em>, MSNR, or total variance is assumed without separate justification.
-            </p>
-
-            <h3>1. Core Research Paper</h3>
-
-            <div class="resource-block">
-                <p>Download the full final draft manuscript and access online repository links:</p>
-
-                <p>
-                    <a href="IRFR_with_Monetary_Policy.pdf" class="btn">
-                        Download Manuscript PDF
-                    </a>
-                </p>
-
-                <ul>
-                    <li>
-                        <strong>Source Code:</strong>
-                        <a href="monetary_policy_boundary_conditions_irfr_reviewed_v8.tex">
-                            monetary_policy_boundary_conditions_irfr_reviewed_v8.tex
-                        </a>
-                        LaTeX
-                    </li>
-                </ul>
-            </div>
-
-        </section>
-
-    </main>
-
+</body>
 </html>
