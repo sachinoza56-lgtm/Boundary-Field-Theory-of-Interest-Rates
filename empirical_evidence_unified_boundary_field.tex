@@ -1,0 +1,429 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,array,tabularx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  citecolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+\newcommand{\Rzero}{R^2_{\mathrm{zero}}}
+\newcommand{\Rcent}{R^2_{\mathrm{centred}}}
+\newcommand{\Tset}{\mathcal{T}}
+\newcommand{\dd}{\,\mathrm{d}}
+
+\title{Empirical Evidence for a Unified Boundary-Field Theory of Interest Rates\\[0.4em]
+\large Yield-Curve Shape, Volatility, and Risk-Neutral Structure from a Single Dataset}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper presents empirical evidence for a Unified Boundary-Field Theory of Interest Rates, the theory for which is presented in three earlier papers using the instantaneous rolling forward rate (IRFR) as its primitive. Those papers present a theory in which a central claim is that a single maturity-space boundary geometry can organise multiple observables extracted from the same interest-rate dataset: yield-curve shape, the spatial decay parameter $a^2$, interest-rate volatility, covariance rank, and market-price-of-risk structure. This paper provides the empirical test for that claim.
+
+Using U.S. fitted instantaneous forward rates at benchmark maturities 1Y, 3Y, 5Y, 10Y, and 30Y, this paper estimates the boundary-field state implied by the IRFR framework. The short end is represented by a policy-sensitive short boundary and curvature state, while the long end is represented by a stochastic long-maturity boundary. The maturity field between them is governed by one of the theory's key spatial decay parameters, $a^2$. The empirical tests ask whether the same estimated geometry that fits curve shape also generates the observed maturity-volatility structure and supports a risk-neutral drift restriction.
+
+The results are supportive. The benchmark specification identifies a stable long-sample spatial decay close to $a^2=0.09$. The covariance evidence favours a two-boundary-risk structure, separating short/curvature risk from long-boundary risk. A one-Brownian specification can reproduce some volatility ordering, but it fails to match volatility scale and performs materially worse in market-price-of-risk diagnostics. A fixed $a^2$ generates strong maturity-volatility geometry over structural windows, especially over rolling twenty-year samples. The market-price-of-risk restriction performs strongly against a zero-drift benchmark, while centred realised-drift tests are unstable because cross-sectional realised drift is itself a fragile empirical object.
+
+The 30-year fitted forward is used as the benchmark observable proxy for the stochastic long boundary. The 20-year point is examined as an alternative effective long-boundary proxy. Although the 20-year specification gives a similar full-sample estimate of $a^2$, it produces unstable period and rolling-window volatility correlations. The 30-year point is therefore retained as the benchmark long-boundary proxy, while the 20-year evidence is interpreted as confirming the difficulty of measuring an asymptotic boundary from finite maturities.
+
+Taken together, the evidence suggests that the same boundary-field geometry which organises yield-curve shape also organises volatility and risk-neutral drift restrictions. The results do not imply that interest-rate risk premia are globally stationary or that realised mean drift is easy to estimate. They support a more specific claim: interest-rate observables contain a common boundary-field structure linking shape, volatility, covariance, and risk-neutral character.
+\end{abstract}
+
+\section{Introduction}
+
+Interest-rate data are usually analysed through separate empirical lenses. Yield-curve shape is studied through curve-fitting models or factor decompositions. Volatility is studied through covariance matrices, principal components, or term-structure volatility models. Risk-neutral structure is studied through pricing kernels, affine restrictions, or market prices of risk. These objects are closely related in theory, but they are often estimated and evaluated separately.
+
+More specifically, one objective of this paper is to determine whether there is empirical support for the IRFR theory, which posits that a unified yield-curve shape and volatility structure exist within a single maturity-space framework. The test is not whether the boundary-field theory can be proved from historical data alone. Rather, the question is whether the main observables extracted from one interest-rate dataset are jointly consistent with the theory's central implication: that the same boundary geometry should organise curve shape, maturity volatility, covariance structure, and the admissible market-price-of-risk restriction.
+
+The hypothesis is that interest rates form a maturity-space boundary field. The short end of the curve is a policy-sensitive boundary. The long end is a stochastic boundary reflecting the market's long-run nominal-rate anchor. Between them lies a maturity field governed by a spatial decay parameter $a^2$. If this representation is more than a curve-fitting device, the same boundary geometry should appear in several observables extracted from the same dataset.
+
+The empirical question is therefore not simply whether the model can fit the yield curve. It is whether one estimated boundary-field structure can organise curve shape, $a^2$, volatility, covariance rank, and market-price-of-risk restrictions.
+
+The theoretical structure comes from the IRFR boundary-field framework. At date $t$, the forward-rate field at maturity $\tau$ is represented by
+\begin{equation}
+  x_t(\tau)
+  = X_t + \left[(r_t-X_t)+B_t\tau\right]e^{-a^2\tau}.
+  \label{eq:boundary-field}
+\end{equation}
+Here $r_t$ is the short boundary, $B_t$ is the curvature or policy-deformation state, $X_t$ is the stochastic long boundary, and $a^2$ controls the spatial decay of short-boundary effects into maturity space. The associated maturity loading vector is
+\begin{equation}
+  J(\tau)=
+  \left(
+    e^{-a^2\tau},\;
+    \tau e^{-a^2\tau},\;
+    1-e^{-a^2\tau}
+  \right).
+  \label{eq:J-loading}
+\end{equation}
+This vector maps state increments into forward-rate increments:
+\begin{equation}
+  \dd x_t(\tau)
+  = e^{-a^2\tau}\dd r_t
+  + \tau e^{-a^2\tau}\dd B_t
+  + (1-e^{-a^2\tau})\dd X_t.
+  \label{eq:increment-map}
+\end{equation}
+
+The covariance specification separates short/curvature risk from long-boundary risk. The short boundary and curvature state are driven by one Brownian direction, while the stochastic long boundary is driven by a second Brownian direction. The maturity loadings are
+\begin{align}
+  g_S(\tau)
+  &= e^{-a^2\tau}\nu_r + \tau e^{-a^2\tau}\nu_B, \label{eq:gS}\\
+  g_X(\tau)
+  &= (1-e^{-a^2\tau})\nu_X, \label{eq:gX}
+\end{align}
+where $\nu_r$, $\nu_B$, and $\nu_X$ are signed state-level volatility loadings. If the two Brownian shocks have correlation $\rho$, the maturity variance is
+\begin{equation}
+  g_{\mathrm{eff}}^2(\tau)
+  = g_S^2(\tau)+g_X^2(\tau)+2\rho g_S(\tau)g_X(\tau).
+  \label{eq:geff}
+\end{equation}
+The same two maturity-risk directions also imply a market-price-of-risk restriction,
+\begin{equation}
+  f(\tau)=g_S(\tau)\lambda_S+g_X(\tau)\lambda_X,
+  \label{eq:risk-price}
+\end{equation}
+where $f(\tau)$ is the estimated physical drift of the forward-rate increment and $\lambda_S,\lambda_X$ are the market prices of short/curvature risk and long-boundary risk.
+
+This gives the empirical paper its organising principle. The model is not assessed through one statistic. It is assessed by asking whether the same estimated boundary geometry supports a sequence of linked diagnostics: branch selection, spatial decay stability, two-Brownian covariance, maturity-volatility geometry, and market-price-of-risk projection, tested using MSNR (market signal-to-noise ratio) diagnostics.
+
+\begin{table}[htbp]
+\centering
+\caption{Summary of empirical diagnostics}
+\label{tab:diagnostics}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.23\textwidth}p{0.34\textwidth}X@{}}
+\toprule
+Diagnostic & Empirical object & Main interpretation \\
+\midrule
+Branch selection & $r=1$ favoured by transition-region scale & The curvature state is empirically material. \\
+One vs two Brownian directions & Two-boundary-risk model improves volatility RMSE and MSNR-zero & The long boundary has its own risk direction. \\
+Spatial decay stability & $a^2\approx 0.09$ over structural horizons & The maturity-space decay scale is persistent. \\
+Fixed-$a^2$ volatility & Strong full-sample and rolling twenty-year volatility geometry & The shape geometry also explains volatility structure. \\
+Market-price-of-risk restriction tested by MSNR & Zero-drift benchmark is strongly supportive; centred drift is unstable & Risk-neutral directions are visible, while realised drift is fragile. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The benchmark dataset uses U.S. fitted instantaneous forward rates at maturities 1Y, 3Y, 5Y, 10Y, and 30Y. The 30-year point is used as the observable proxy for the stochastic long boundary. This choice is imperfect, because the true long boundary is not directly observable. Long-end fitted forwards may contain extrapolation effects, liquidity effects, institutional demand, issuance patterns, or other market-structure influences. Nevertheless, the 30-year point is the most natural benchmark proxy for an asymptotic boundary in the available fitted-forward data.
+
+The 20-year point is deliberately not used in the benchmark specification. It was tested as an alternative effective long-boundary proxy, using the maturity set 1Y, 3Y, 5Y, 10Y, and 20Y. That specification produces a similar full-sample estimate of $a^2$, but it fails to deliver stable maturity-volatility geometry across periods and rolling windows. This suggests that 20-year data may sometimes behave like a transition-region maturity rather than a clean long-boundary proxy.
+
+The conclusion is deliberately modest but substantive. The evidence does not prove that risk premia are constant, that historical drift is easy to estimate, or that every maturity is measured without error. It shows that one boundary-field geometry can organise several objects that are usually analysed separately. In that empirical sense, the same structure appears to unify yield-curve shape, volatility, covariance, and risk-neutral character.
+
+\section{Boundary-Field States and Empirical Construction}
+
+This section describes how the empirical boundary-field state is constructed from fitted forward-rate data. The purpose is to extract, from a single dataset, the quantities required to test whether yield-curve shape, volatility, covariance, and risk-neutral drift restrictions are organised by the same maturity-space geometry.
+
+\subsection{Dataset and benchmark maturities}
+
+The empirical analysis uses U.S. fitted instantaneous forward rates. The benchmark maturity set is
+\begin{equation}
+  \Tset=\{1,3,5,10,30\}.
+\end{equation}
+These maturities span the short boundary, the policy-sensitive belly of the curve, and the long-maturity boundary. The 30Y fitted forward is used as the observable proxy for the stochastic long boundary. The 20Y point is not used in the benchmark specification. It is retained only as a robustness exercise, where it confirms that the central $a^2$ estimate is robust but volatility geometry becomes less stable.
+
+\subsection{Boundary-field representation}
+
+At each date $t$, the forward-rate field is represented as in \cref{eq:boundary-field}. This representation gives the maturity-loading vector in \cref{eq:J-loading}, and for small state increments the mapping in \cref{eq:increment-map}. The same loading vector $J(\tau)$ is used throughout the empirical exercise. It is not re-estimated separately for shape, volatility, and risk-price tests.
+
+\subsection{Estimation of the boundary states}
+
+For a given value of $a^2$, the observed benchmark forward curve is fitted to the boundary-field representation. This produces a time series of estimated states $(r_t,B_t,X_t)$. The state $r_t$ anchors the short boundary. The state $B_t$ captures the finite-maturity deformation of the curve as it leaves the short boundary. The state $X_t$ represents the realised stochastic long boundary.
+
+The spatial decay parameter $a^2$ is estimated by cross-sectional shape fit. In the benchmark specification, the full-sample estimate is close to $a^2=0.09$. This value is then tested for stability across periods and rolling windows and held fixed in the volatility tests.
+
+\subsection{Boundary-risk decomposition}
+
+The empirical covariance structure is constructed from increments of the estimated boundary states. The theory separates the short and curvature states from the long-boundary state. The empirical specification is
+\begin{align}
+  \dd r_t &= \nu_r\dd W_t^S, &
+  \dd B_t &= \nu_B\dd W_t^S, &
+  \dd X_t &= \nu_X\dd W_t^X,
+  \label{eq:state-risk}
+\end{align}
+with
+\begin{equation}
+  \dd W_t^S\dd W_t^X=\rho\,\dd t.
+\end{equation}
+The coefficients $\nu_r$, $\nu_B$, and $\nu_X$ are signed volatility loadings. The sign is important. In particular, $\nu_B$ is not a positive variance parameter. It is a signed loading of the curvature state on the short/curvature Brownian direction. Reversing the sign convention for $W_t^S$ reverses the signs of $\nu_r$, $\nu_B$, and $\lambda_S$, but leaves the implied covariance and fitted volatility unchanged.
+
+Empirically, the short/curvature Brownian direction $W_t^S$ is identified from the first principal component of the two-dimensional increment vector $(\dd r_t,\dd B_t)$. This gives the signed loadings $\nu_r$ and $\nu_B$. The long-boundary loading $\nu_X$ is estimated from $\dd X_t$, and the correlation between the short/curvature innovation and the long-boundary innovation gives $\rho$. The resulting maturity loadings are given by \cref{eq:gS,eq:gX}, and the effective variance by \cref{eq:geff}.
+
+\subsection{Covariance kernel}
+
+Let
+\begin{equation}
+  L=\begin{pmatrix}
+    \nu_r & 0\\
+    \nu_B & 0\\
+    0 & \nu_X
+  \end{pmatrix},
+  \qquad
+  C=\begin{pmatrix}
+    1 & \rho\\
+    \rho & 1
+  \end{pmatrix}.
+\end{equation}
+Then the state covariance matrix is $\Gamma=LCL^\top$. For benchmark maturities $\tau_i\in\Tset$, let $J$ be the matrix whose $i$-th row is $J(\tau_i)$. The model-implied maturity covariance matrix is
+\begin{equation}
+  K=J\Gamma J^\top = JLC L^\top J^\top.
+\end{equation}
+Equivalently,
+\begin{equation}
+  K(\tau,\sigma)
+  = g_S(\tau)g_S(\sigma)+g_X(\tau)g_X(\sigma)
+  +\rho\left[g_S(\tau)g_X(\sigma)+g_X(\tau)g_S(\sigma)\right].
+  \label{eq:kernel}
+\end{equation}
+This covariance matrix has rank at most two. It becomes rank one only if the two Brownian directions collapse into a single effective Brownian motion.
+
+\subsection{Market-price-of-risk construction}
+
+Throughout this paper, MSNR is not used as a synonym for the market price of risk. The market prices of risk are the coefficients $\lambda_S$ and $\lambda_X$ in the drift restriction
+\begin{equation}
+  f(\tau)=g_S(\tau)\lambda_S+g_X(\tau)\lambda_X.
+\end{equation}
+MSNR is the empirical diagnostic used to test this restriction. It measures how well the realised drift vector across maturities is explained by the boundary-risk projection, relative either to a zero-drift benchmark or to a centred realised-drift benchmark. Thus, MSNR is a test of the market-price-of-risk structure, not the market price of risk itself.
+
+The same maturity-risk loadings are used to test the market-price-of-risk restriction. Let $f(\tau)$ denote the estimated physical drift of the forward-rate increment at maturity $\tau$. The boundary-field risk-price restriction is \cref{eq:risk-price}. This restriction is tested using two MSNR benchmarks:
+\begin{align}
+  \Rzero
+  &= 1-\frac{\sum_{\tau\in\Tset}(f_\tau-\hat f_\tau)^2}{\sum_{\tau\in\Tset} f_\tau^2}, \label{eq:Rzero}\\
+  \Rcent
+  &= 1-\frac{\sum_{\tau\in\Tset}(f_\tau-\hat f_\tau)^2}{\sum_{\tau\in\Tset}(f_\tau-\bar f)^2}. \label{eq:Rcent}
+\end{align}
+The zero benchmark asks whether the boundary-risk projection improves on zero expected drift. The centred benchmark asks whether the model explains the cross-sectional demeaned shape of realised drift. The distinction is important because realised mean drift is a fragile empirical object.
+
+\subsection{Structure of the empirical tests}
+
+The empirical analysis is organised as five linked diagnostics. First, the boundary branch is tested by varying $\gamma=ra^2$. Second, the one-Brownian and two-Brownian covariance specifications are compared. Third, the stability of $a^2$ is examined across periods and rolling windows. Fourth, fixed $a^2$ is used to generate maturity volatility. Fifth, the market-price-of-risk restriction is tested using MSNR-zero and MSNR-centred diagnostics. Together, these tests ask whether yield-curve shape, volatility, covariance, and risk-neutral character can be extracted from one dataset using one boundary-field geometry.
+
+\section{Branch Selection and the Curvature Boundary State}
+
+The first empirical diagnostic concerns the maturity branch of the boundary-field representation. The fitted curve can be represented with a range of effective decay branches, but the theory requires more than a good cross-sectional fit. The correct branch should also organise the transition of volatility from the policy-sensitive short and curvature region into the long boundary.
+
+The branch parameter is
+\begin{equation}
+  \gamma=ra^2,\qquad r\in\{0.50,0.55,\ldots,1.00\}.
+\end{equation}
+For each value of $r$, the boundary-field states are re-estimated and the implied volatility geometry is recomputed. Shape fit remains high across a range of branch values, so branch selection is not based on shape fit alone. The decisive evidence comes from volatility scale and from the transition region between the short/curvature sector and the long boundary.
+
+The $r=1$ branch is selected by these volatility diagnostics. In the benchmark specification, the estimated full-sample spatial decay is $a^2_{\mathrm{shape}}=0.091893$. The transition-region volatility RMSE over 5Y, 10Y, and 30Y falls from approximately 252.5 basis points at $r=0.50$ to approximately 68.4 basis points at $r=1.00$. The median model-to-actual volatility ratio also improves, falling from approximately 1.55 at $r=0.50$ to approximately 1.10 at $r=1.00$.
+
+Lower branch values can produce slightly higher raw volatility correlations, but they do so while materially overstating volatility scale. The $r=1$ branch gives the best transition-region scale and the most credible model-to-actual volatility ratio.
+
+This result gives empirical content to the curvature state $B_t$. At $r=1$, the maturity-field representation contains the loading $\tau e^{-a^2\tau}$, which captures the finite-maturity deformation of the curve as it leaves the short boundary. Economically, it is the channel through which policy-sensitive curvature enters the maturity field.
+
+The short end of the curve is therefore not represented solely by the short boundary $r_t$. It is represented by the pair $(r_t,B_t)$, where $r_t$ anchors the short boundary and $B_t$ governs the initial deformation away from that boundary. This is important for the later volatility and risk-price tests, because the empirical covariance structure treats $(r_t,B_t)$ as the short/curvature boundary sector.
+
+An alternative maturity set using 1Y, 3Y, 5Y, 10Y, and 20Y was also tested. That specification gives a similar full-sample estimate of $a^2$, and transition-region scale again improves as $r$ approaches one. However, the evidence is less clean than in the 30Y benchmark, and the 20Y specification produces less stable volatility geometry in later tests. We therefore retain 30Y as the benchmark long-boundary proxy.
+
+The branch-selection diagnostic therefore establishes the first empirical link in the unified boundary-field argument. The maturity geometry that best organises volatility scale is the same geometry that contains the policy-sensitive curvature loading.
+
+\section{Why Two Brownian Directions Are Required}
+
+The second empirical diagnostic asks whether the boundary field can be driven by a single Brownian direction, or whether the data require separate short/curvature and long-boundary risk directions. A one-Brownian model is attractive because it is parsimonious. If all maturity variation could be represented by one common risk source, then the stochastic long boundary would not require its own Brownian direction.
+
+The boundary-field theory suggests otherwise. The short and curvature states describe the way policy-sensitive shocks enter the curve and decay into maturity space. The long boundary describes the stochastic movement of the market's long-run nominal-rate anchor. These are conceptually distinct objects. The empirical question is whether the data also require them to be statistically distinct.
+
+\subsection{One-Brownian benchmark}
+
+The one-Brownian benchmark is constructed from the full state increment vector $(\dd r_t,\dd B_t,\dd X_t)$. The first principal component of this vector is used as the single common Brownian direction. This is the most favourable single-risk benchmark because it allows the common Brownian direction to be chosen directly from the empirical state increments.
+
+The one-Brownian model can reproduce some of the ordering of maturity volatility. In the full benchmark sample, the one-Brownian volatility correlation is high. However, this is misleading. The model captures direction but not scale. It produces a full-sample volatility RMSE of approximately 91.7 basis points and a much weaker zero-drift MSNR statistic.
+
+This failure is structural. A single Brownian direction must use one maturity profile to explain both short/curvature volatility and long-boundary volatility. It therefore has no independent channel through which the long boundary can move relative to the policy-sensitive part of the curve.
+
+\subsection{Two-boundary-risk specification}
+
+The two-Brownian model separates the two boundary-risk directions. The short boundary and curvature state are driven by one Brownian source, while the stochastic long boundary is driven by a second Brownian source, as in \cref{eq:state-risk}. This specification remains highly restricted. It does not assign an independent Brownian shock to every maturity or every state variable. It imposes a rank-two boundary-risk structure: one direction for the short/curvature sector and one direction for the long boundary.
+
+\subsection{Empirical comparison}
+
+In the benchmark maturity set, the two-Brownian model materially improves the full-sample empirical diagnostics. The one-Brownian model has a full-sample volatility RMSE of approximately 91.7 basis points, while the two-Brownian model reduces this to approximately 53.5 basis points. The zero-benchmark MSNR statistic rises from approximately 0.261 under the one-Brownian specification to approximately 0.842 under the two-Brownian specification.
+
+The volatility correlation alone understates this improvement. The one-Brownian model can obtain a high raw volatility correlation because it follows the broad ordering of volatility across maturities, but it does so with the wrong scale. The two-Brownian model gives a more credible volatility level and a much stronger risk-price projection.
+
+The conclusion is therefore not that the two-Brownian model is a superior model candidate because it has one more statistical degree of freedom. It is superior because the additional Brownian direction corresponds to an economically and geometrically identified object: the stochastic long boundary.
+
+\begin{equation}
+  \boxed{\text{The second Brownian motion is the empirical risk direction of the long boundary.}}
+\end{equation}
+
+\subsection{Economic interpretation and robustness}
+
+The short/curvature Brownian direction captures shocks that enter through the policy-sensitive part of the curve. The long-boundary Brownian direction captures shocks to the long-run nominal-rate anchor. Policy shocks and long-boundary shocks need not be independent, which is why the model allows correlation $\rho$. But they are not the same shock.
+
+The alternative 20Y maturity set was tested as a robustness exercise. The two-Brownian model again improved volatility scale and zero-benchmark MSNR relative to the one-Brownian specification. However, the volatility-geometry diagnostics were less stable across periods and rolling windows. This supports the use of 30Y as the benchmark observable proxy for the stochastic long boundary.
+
+\begin{equation}
+  \boxed{\text{Two Brownian motions are required because the curve has two stochastic boundary sectors: short/curvature risk and long-boundary risk.}}
+\end{equation}
+
+\section{Stability of the Spatial Decay Parameter}
+
+The third empirical diagnostic concerns the stability of the spatial decay parameter $a^2$. In the boundary-field representation, $a^2$ controls the rate at which short-boundary and curvature effects decay into maturity space. It is therefore the central geometric parameter of the model.
+
+If $a^2$ were merely a local curve-fitting device, it would vary erratically across samples and regimes. If, instead, it captures a genuine maturity-space structure, it should exhibit stability over sufficiently long horizons, even if shorter windows reflect monetary-policy regimes, inflation regimes, and changes in market structure.
+
+The benchmark full-sample estimate using maturities 1Y, 3Y, 5Y, 10Y, and 30Y is $a^2_{\mathrm{shape}}=0.091893$. This corresponds to a characteristic maturity scale $1/(2a^2)=5.44$ years. This number should not be interpreted as the maturity at which the curve becomes fully long-run. Rather, it is the spatial decay scale governing how the short-boundary and curvature states propagate into the maturity field.
+
+\subsection{Period estimates}
+
+\begin{table}[htbp]
+\centering
+\caption{Period estimates of the spatial decay parameter}
+\label{tab:a2-periods}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Window & $a^2_{\mathrm{shape}}$ & $1/(2a^2)$ & Shape $R^2$ \\
+\midrule
+1980--1990 & 0.0493 & 10.13 & 0.9851 \\
+1990--2000 & 0.0967 & 5.17 & 0.9800 \\
+2000--2010 & 0.0825 & 6.06 & 0.9802 \\
+2010--2020 & 0.1300 & 3.85 & 0.9840 \\
+2020--2025 & 0.2352 & 2.13 & 0.9953 \\
+Full sample & 0.0919 & 5.44 & 0.9947 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The early 1980s and 1990s imply a slower spatial decay, while the post-2010 and post-2020 samples imply faster decay. This is consistent with, though not directly tested against, more interventionist policy regimes compressing the active deformation of the curve into shorter maturities.
+
+\subsection{Rolling-window evidence}
+
+The rolling ten-year estimates are more dispersed. Their median is approximately 0.0962, but the range is wide: $0.0639\leq a^2\leq 0.2299$. The upper part of this range is concentrated in later windows, especially those containing the post-2008 and post-2020 regimes.
+
+The rolling twenty-year estimates are much more stable. Their median is approximately 0.0874, their mean is approximately 0.0871, and their standard deviation is approximately 0.00685. The full rolling twenty-year range is approximately $0.0731\leq a^2\leq 0.1041$. Over structural horizons, the estimated spatial decay parameter remains close to the full-sample estimate.
+
+\subsection{Interpretation and 20Y robustness}
+
+The evidence suggests a two-level interpretation of $a^2$. At short horizons, $a^2$ is regime-sensitive. At structural horizons, however, $a^2$ is stable and close to 0.09. This is the value carried forward into the covariance and MSNR diagnostics.
+
+The alternative 20Y maturity set gives a full-sample estimate $a^2_{\mathrm{shape}}=0.093528$, which is close to the 30Y-benchmark estimate. This confirms that the central spatial decay scale is not mechanically dependent on including the 30Y fitted forward. However, the 20Y specification is less stable in the later volatility diagnostics. The 30-year fitted forward therefore remains the better benchmark proxy for the stochastic long boundary.
+
+\section{Volatility Geometry from Fixed $a^2$}
+
+The preceding section showed that the spatial decay parameter $a^2$ is stable over structural horizons. The next question is whether this parameter explains more than curve shape. In particular, does the same maturity-space geometry also organise interest-rate volatility?
+
+This is a demanding test. The parameter $a^2$ is estimated from cross-sectional shape. It is then held fixed and used to generate maturity volatility through the two-boundary-risk covariance structure. The model is not allowed to choose one geometry for shape and another for volatility.
+
+The benchmark test fixes $a^2=0.091893$. For each sample window, the boundary states are estimated using this fixed spatial decay. The short/curvature and long-boundary risk coefficients are estimated from the state increments, and the model-implied volatility is compared with realised volatility at the benchmark maturities.
+
+\subsection{Full-sample volatility fit}
+
+In the full benchmark sample, fixed $a^2$ generates a strong volatility geometry. The model-to-actual volatility correlation is approximately 0.910. The full-sample volatility RMSE is approximately 53.5 basis points, and the median model-to-actual volatility ratio is approximately 1.096.
+
+The full-sample model-to-actual volatility ratios are approximately 0.993, 0.866, 1.096, 1.780, and 1.293 for 1Y, 3Y, 5Y, 10Y, and 30Y. The main systematic error is an overstatement of the intermediate-to-long transition scale, especially at 10Y.
+
+\subsection{Period and rolling-window evidence}
+
+The period results show that volatility geometry is regime-sensitive. The fixed-$a^2$ volatility correlations are approximately 0.950 in 1980--1990, 0.930 in 1990--2000, and 0.833 in 2000--2010. The main deterioration occurs in 2010--2020, where the correlation falls to approximately 0.033 because the model remains close to actual volatility at both the 1Y short boundary and the 30Y long boundary, while understating the 3Y, 5Y, and 10Y transition-region sectors. This concentration of the failure in the interior of the curve is theory-relevant: the boundary states remain comparatively well behaved, while the transition-region geometry is distorted by the regime. The 2020--2025 period shows recovery, with a volatility correlation of approximately 0.860.
+
+The rolling-window evidence is more favourable than the decade-period evidence, especially over twenty-year structural windows. Rolling ten-year windows have a median volatility correlation of approximately 0.860 but include negative windows. Rolling twenty-year windows are much stronger: median correlation approximately 0.891, mean approximately 0.892, and minimum approximately 0.868. This is the key volatility result.
+
+\subsection{What the model explains and what it does not}
+
+The fixed-$a^2$ test shows that volatility is not arbitrary across maturities. The maturity profile is generated by the boundary loadings $g_S(\tau)$ and $g_X(\tau)$, rather than by a separate volatility parameter at each maturity. It also explains why the short and long ends need not move in the same way: short/curvature risk and long-boundary risk enter with different maturity signatures.
+
+The volatility evidence is supportive, but it is not perfect. The model does not eliminate regime dependence, does not perfectly match every maturity in every window, and does not fully explain the 2010--2020 belly distortion. These limitations are informative. The boundary field has one smooth transition from short/curvature risk into long-boundary risk; it should not be expected to reproduce every maturity-volatility anomaly.
+
+The answer to the volatility question is yes, with qualification: the same $a^2$ geometry that organises curve shape also organises interest-rate volatility over structural horizons. The qualification is that volatility scale remains regime-dependent.
+
+\section{Risk-Neutral Restriction}
+
+The preceding sections show that the boundary-field geometry organises both curve shape and maturity volatility. The final empirical diagnostic asks whether the same two boundary-risk directions also organise the market price of risk.
+
+This is the most delicate test. Volatility is estimated from second moments and is relatively stable compared with realised drift. Drift is a first-moment object. It is noisy, regime-dependent, and difficult to estimate from historical data. The test in this section asks whether the maturity profile of realised drift is better understood as a projection onto the same short/curvature and long-boundary risk directions that organise volatility:
+\begin{equation}
+  f(\tau)=g_S(\tau)\lambda_S+g_X(\tau)\lambda_X.
+\end{equation}
+
+\subsection{Two MSNR benchmarks}
+
+We evaluate the drift projection using two MSNR statistics. The zero-drift benchmark asks whether the boundary-risk projection explains realised drift better than the hypothesis of zero drift:
+\begin{equation}
+  \Rzero
+  =1-\frac{\sum_{\tau\in\Tset}(f_\tau-\hat f_\tau)^2}{\sum_{\tau\in\Tset}f_\tau^2}.
+\end{equation}
+The centred benchmark asks whether the model explains the cross-sectional shape of realised drift after removing the average drift across maturities:
+\begin{equation}
+  \Rcent
+  =1-\frac{\sum_{\tau\in\Tset}(f_\tau-\hat f_\tau)^2}{\sum_{\tau\in\Tset}(f_\tau-\bar f)^2}.
+\end{equation}
+The centred denominator can be very small when realised drift is nearly flat across maturities. In such cases, even modest residual errors can produce very negative centred $R^2$ values.
+
+\subsection{Full-sample and period evidence}
+
+In the benchmark maturity set, the zero-benchmark MSNR result is strongly supportive. In the full sample, the zero-benchmark $R^2$ is approximately 0.842. This means that the two boundary-risk loadings explain a large fraction of realised drift relative to the zero-drift benchmark.
+
+The centred full-sample statistic is much weaker and strongly negative. This does not mean that the volatility geometry has failed. It means that the demeaned drift vector is a fragile object. In the full sample, the centred denominator is extremely small relative to the zero denominator: approximately 0.0095. The centred test is therefore asking the model to explain a very small cross-sectional drift residual after subtracting the average drift.
+
+The period evidence reinforces this interpretation. Approximate zero-benchmark $R^2$ values are 0.948, 0.848, 0.947, 0.656, and 0.951 for the main historical windows, with the full-sample value around 0.842. The centred statistic is more variable, positive in some windows and negative in others. This variation shows that the realised cross-sectional drift shape is not stable across monetary regimes.
+
+\subsection{MSNR diagnostics and risk-neutral interpretation}
+
+The MSNR diagnostics support the risk-neutral interpretation of the model without requiring realised drift to be constant across all historical regimes. The risk-neutral restriction requires the admissible drift vector to be generated by the same maturity-risk loadings that generate covariance. The model imposes that $f(\tau)$ lies in the span of $g_S(\tau)$ and $g_X(\tau)$.
+
+At the state level,
+\begin{equation}
+  f_r=\nu_r\lambda_S,
+  \qquad
+  f_B=\nu_B\lambda_S,
+  \qquad
+  f_X=\nu_X\lambda_X.
+\end{equation}
+The short boundary and curvature state share the same market price of short/curvature risk, $\lambda_S$. The long boundary carries its own market price of long-boundary risk, $\lambda_X$. This is the risk-neutral implication of the two-boundary-risk structure.
+
+The empirical evidence supports this structure in the zero-benchmark sense. The same two loadings that explain volatility also provide a strong projection of realised drift. The centred failures should be understood as evidence about realised historical drift, not as evidence against the boundary-field covariance geometry.
+
+\subsection{Why this matters for the unified theory}
+
+Shape alone would show that the boundary representation is a useful cross-sectional curve model. Volatility would show that the same geometry has second-moment content. MSNR adds the final layer: the same boundary-risk directions also organise the drift restriction associated with risk-neutral pricing.
+
+\begin{equation}
+  a^2 \longrightarrow J(\tau) \longrightarrow (g_S,g_X) \longrightarrow K(\tau,\sigma)
+  \longrightarrow f(\tau)=g_S(\tau)\lambda_S+g_X(\tau)\lambda_X.
+  \label{eq:empirical-chain}
+\end{equation}
+
+The MSNR diagnostic is the invariance test of the boundary-field framework: it asks whether the drift relation remains tied to the same maturity-space geometry that generates shape and volatility.
+
+This is the empirical unification. The same maturity-space geometry links shape, volatility, covariance, and risk-neutral drift. The zero-drift benchmark shows strong evidence that realised drift is organised by the two boundary-risk directions. The centred benchmark shows that demeaned realised drift is unstable and should not be treated as a clean structural object.
+
+\section{Summary and Conclusion}
+
+This paper has tested whether a single boundary-field geometry can organise several interest-rate observables extracted from the same dataset. The empirical object is not one curve fit, one volatility fit, or one market-price-of-risk regression considered in isolation. The question is whether yield-curve shape, maturity volatility, covariance rank, and risk-neutral drift restrictions all point toward the same underlying maturity-space structure.
+
+The benchmark specification uses fitted instantaneous forward rates at maturities 1Y, 3Y, 5Y, 10Y, and 30Y. The 30Y point is treated as the observable proxy for the stochastic long boundary. The 20Y point was also tested as an alternative effective long-boundary proxy. Although the 20Y specification produces a similar full-sample estimate of $a^2$, it generates unstable volatility-geometry diagnostics. We therefore retain 30Y as the benchmark long-boundary proxy and interpret the 20Y results as evidence that finite-maturity measurement of the long boundary is delicate.
+
+The empirical evidence does not reject the boundary-field theory. More positively, several diagnostics support it. The same spatial decay parameter $a^2$ that fits the cross-sectional forward curve is stable over structural horizons and also generates a strong maturity-volatility geometry. The covariance evidence favours two boundary-risk directions, separating short/curvature risk from stochastic long-boundary risk. The market-price-of-risk projection, as evaluated by MSNR, performs strongly against a zero-drift benchmark, although centred realised-drift tests remain unstable because realised drift is itself difficult to estimate.
+
+Together, the empirical results form a single chain:
+\begin{equation}
+  a^2 \longrightarrow J(\tau) \longrightarrow (g_S,g_X) \longrightarrow K(\tau,\sigma)
+  \longrightarrow f(\tau)=g_S(\tau)\lambda_S+g_X(\tau)\lambda_X.
+\end{equation}
+This is the empirical content of the Unified Boundary-Field Theory of Interest Rates. The same maturity-space geometry links yield-curve shape, policy-sensitive curvature, volatility, covariance, and risk-neutral drift restrictions.
+
+The claim is deliberately limited. The evidence does not show that all interest-rate risk premia are constant, that realised drift is easy to estimate, or that the long boundary is observed without error. It does not imply that every maturity-specific volatility anomaly is explained by the boundary field. Instead, it supports a more precise conclusion: the main observables of the yield curve contain a common boundary-field structure.
+
+Policy enters through the short boundary and curvature state. The long end enters as a stochastic boundary condition. Volatility is generated by the transition between short/curvature risk and long-boundary risk. Risk-neutral structure appears through the projection of drift onto the same two maturity-risk loadings. In this sense, the yield curve is not merely a collection of fitted maturities. It is an observed boundary field.
+
+The empirical evidence is therefore strongest when read cumulatively. No single diagnostic proves the theory. But the same geometry appears repeatedly: in shape, in volatility, in covariance rank, and in the market-price-of-risk restriction. That repeated appearance is the central result.
+
+The paper therefore concludes that the boundary-field representation provides a unified empirical framework for interest rates. It identifies a stable maturity-space decay scale, distinguishes policy-sensitive short/curvature risk from stochastic long-boundary risk, and links physical and risk-neutral structure through the same covariance geometry. The observed yield curve is best understood as the finite-maturity expression of that boundary field.
+
+\end{document}
