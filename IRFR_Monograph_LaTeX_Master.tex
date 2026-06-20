@@ -5035,7 +5035,436 @@ structural origin is clear.
 \emph{observable volatility shape is the footprint of boundary
 selection.}
 
-\chapter{Bond Pricing and the Risk-Neutral IRFR Measure}
+\chapter{Stochastic Long-Maturity Boundary States}
+\label{ch:stochastic-long-boundary}
+
+The preceding chapters classify admissible IRFR fields through their short-end boundary behaviour. Neumann/free, Dirichlet, and Robin/mixed boundary regimes determine how the maturity field behaves at the instantaneous short end. This chapter completes the boundary-field picture by relaxing the opposite end of the maturity manifold. Instead of forcing the long-maturity boundary to coincide pathwise with the fixed equilibrium anchor \(x_\infty\), we distinguish the equilibrium anchor from the realised asymptotic boundary state.
+
+The central distinction is
+\[
+x_\infty
+\quad\text{as the equilibrium long-run anchor,}
+\]
+and
+\[
+X_t
+\quad\text{as the realised long-maturity boundary state.}
+\]
+The boundary displacement is
+\[
+Y_t := X_t-x_\infty.
+\]
+The construction does not introduce a second Brownian risk factor. The displacement \(Y_t\) is carried by the same admissible IRFR risk direction as the finite-maturity field. In this sense, stochastic long-boundary motion is a boundary excitation of the existing one-factor field, not an additional independent source of randomness.
+
+\section{Motivation}
+
+In the fixed long-boundary formulation, the maturity field is anchored asymptotically at \(x_\infty\). Finite-maturity deviations may be transported along the curve, but the limiting long end remains fixed:
+\[
+\lim_{\tau\to\infty} x_{t,T}=x_\infty,
+\qquad \tau=T-t.
+\]
+This is appropriate when the long-run equilibrium anchor is treated as both the economic regime reference and the realised long-end state. It is too restrictive, however, if persistent long-run level shifts or long-end volatility are to be represented within the same boundary-field architecture.
+
+The stochastic long-boundary extension separates these roles. The parameter \(x_\infty\) remains the equilibrium anchor. The process \(X_t\) is the realised long-end boundary state. When \(X_t\neq x_\infty\), the asymptotic boundary of the field is displaced from equilibrium. This displacement is not modelled by adding a second factor. Instead, it is loaded onto the same admissible risk direction that already governs the IRFR field.
+
+The purpose of this chapter is therefore to show that stochastic long-end boundary motion can be incorporated without abandoning the single-risk-direction structure. The short-end boundary classification remains intact. The long-boundary layer is orthogonal to it.
+
+\section{Boundary decomposition}
+
+Let
+\[
+\tau=T-t.
+\]
+For a given short-end boundary branch \(j\), define the branch transport reference
+\[
+b_j(\tau)
+=
+x_\infty\left(1-e^{-r_j a^2\tau}\right).
+\]
+Here \(r_j\) is the branch parameter associated with the short-end boundary regime. The stochastic long-boundary loading is defined by
+\[
+L(\tau)
+=
+1-e^{-a^2\tau}.
+\]
+This loading satisfies
+\[
+L(0)=0,
+\qquad
+\lim_{\tau\to\infty}L(\tau)=1.
+\]
+
+The stochastic long-boundary decomposition is
+\[
+x^j_{t,T}
+=
+b_j(\tau)
++
+L(\tau)(X_t-x_\infty)
++
+Z^j_{t,T}.
+\]
+Equivalently,
+\[
+Z^j_{t,T}
+:=
+x^j_{t,T}
+-
+b_j(\tau)
+-
+L(\tau)(X_t-x_\infty).
+\]
+The residual \(Z^j_{t,T}\) is the finite-maturity curve-shape component after removing both the branch transport reference and the transported long-boundary displacement.
+
+At the short end,
+\[
+b_j(0)=0,
+\qquad
+L(0)=0,
+\]
+so
+\[
+x^j_{t,t}=Z^j_{t,t}.
+\]
+At the long end, provided \(Z^j_{t,T}\to0\) as \(\tau\to\infty\),
+\[
+\lim_{\tau\to\infty}x^j_{t,T}
+=
+x_\infty+(X_t-x_\infty)
+=
+X_t.
+\]
+Thus the decomposition preserves the short-end state while replacing the fixed long-end limit \(x_\infty\) with the realised stochastic boundary state \(X_t\).
+
+\section{Single-risk-direction admissibility}
+
+The stochastic boundary branch is defined by requiring the full displacement from the branch transport reference to be carried by the unique admissible IRFR risk direction:
+\[
+x^j_{t,T}-b_j(\tau)
+=
+L(\tau)(X_t-x_\infty)+Z^j_{t,T}.
+\]
+The boundary displacement and the finite-maturity residual therefore do not generate separate Brownian directions. They enter the same drift--diffusion loading.
+
+Define
+\[
+f_j(t,T)
+=
+a^2\left[x^j_{t,T}-b_j(\tau)\right],
+\]
+and
+\[
+g_j(t,T)
+=
+a\left[x^j_{t,T}-b_j(\tau)\right].
+\]
+Then, whenever the effective loading is non-zero,
+\[
+\frac{f_j(t,T)}{g_j(t,T)}
+=
+a.
+\]
+The physical market signal-to-noise ratio is therefore preserved:
+\[
+\mathrm{MSNR}^{\mathbb P}_j
+=
+\frac{f_j(t,T)}{\sqrt{2}\,g_j(t,T)}
+=
+\frac{a}{\sqrt{2}}.
+\]
+
+Under the IRFR field convention,
+\[
+dx^j_{t,T}
+=
+-f_j(t,T)\,dt
++
+\sqrt{2}\,g_j(t,T)\,dW_t,
+\]
+the stochastic long-boundary branch becomes
+\[
+dx^j_{t,T}
+=
+-a^2\left[x^j_{t,T}-b_j(\tau)\right]dt
++
+\sqrt{2}a\left[x^j_{t,T}-b_j(\tau)\right]dW_t.
+\]
+The stochastic boundary changes the level of the effective loading, but it does not change the admissible risk direction.
+
+\section{Asymptotic boundary dynamics}
+
+Taking the long-maturity limit of the field equation gives the boundary-mode dynamics. Since
+\[
+x^j_{t,T}\to X_t,
+\qquad
+b_j(\tau)\to x_\infty
+\quad
+\text{as }\tau\to\infty,
+\]
+the limiting equation is
+\[
+dX_t
+=
+-a^2(X_t-x_\infty)\,dt
++
+\sqrt{2}a(X_t-x_\infty)\,dW_t.
+\]
+Equivalently, for
+\[
+Y_t:=X_t-x_\infty,
+\]
+we have
+\[
+dY_t
+=
+-a^2Y_t\,dt
++
+\sqrt{2}aY_t\,dW_t.
+\]
+
+A boundary mode, in the sense used here, is the limiting maturity-field excitation carried by the asymptotic boundary state rather than by an interior curve-shape residual. The long-boundary displacement \(Y_t\) is therefore a multiplicative boundary mode. For \(Y_{t_0}\neq0\),
+\[
+Y_t
+=
+Y_{t_0}
+\exp\left(
+-2a^2(t-t_0)
++
+\sqrt{2}a(W_t-W_{t_0})
+\right).
+\]
+The sign of the displacement is preserved. If \(Y_{t_0}=0\), then \(Y_t=0\) thereafter and \(X_t=x_\infty\). Thus, in this multiplicative long-boundary subclass, departures from the equilibrium long-end anchor must either be present as an initial boundary displacement or introduced through a richer additive or regime-switching boundary mechanism.
+
+This is a modelling implication of the multiplicative construction. The stochastic long boundary represents persistence and propagation of an existing long-run displacement. It does not by itself generate a new displacement from the exactly anchored state \(X_t=x_\infty\).
+
+\section{Generator corroboration}
+
+The same boundary law is recovered from the limiting infinitesimal generator. In the long-maturity limit, write
+\[
+y=X-x_\infty.
+\]
+For smooth test functions \(\varphi\), the physical generator associated with the boundary process is
+\[
+(\mathcal A\varphi)(X)
+=
+-a^2(X-x_\infty)\varphi_X(X)
++
+a^2(X-x_\infty)^2\varphi_{XX}(X).
+\]
+Applying \(\mathcal A\) to \(\varphi(X)=X\) gives the drift
+\[
+-a^2(X-x_\infty).
+\]
+The second-order term identifies the diffusion variance. For \(X_0=X\),
+\[
+\mathcal A\left[(X-X_0)^2\right]\bigg|_{X=X_0}
+=
+2a^2(X_0-x_\infty)^2.
+\]
+Thus
+\[
+\sigma^2(X)
+=
+2a^2(X-x_\infty)^2,
+\]
+with signed one-risk-direction choice
+\[
+\sigma(X)
+=
+\sqrt{2}a(X-x_\infty).
+\]
+The generator calculation therefore corroborates the asymptotic boundary SDE without introducing a second Brownian source or changing the stochastic basis.
+
+\section{Expected boundary reversion}
+
+For fixed maturity \(T\), let
+\[
+m_j(t,T):=\mathbb E[x^j_{t,T}].
+\]
+The conditional mean satisfies
+\[
+\frac{d m_j(t,T)}{dt}
+=
+-a^2\left[m_j(t,T)-b_j(T-t)\right].
+\]
+The equilibrium mean curve in maturity coordinates is
+\[
+x^j_e(\tau)
+=
+x_\infty
+-
+\frac{x_\infty}{1+r_j}e^{-r_j a^2\tau}.
+\]
+Thus,
+\[
+\mathbb E[x^j_{t,T}]
+=
+x^j_e(T-t)
++
+e^{-a^2(t-t_0)}
+\left[
+x^j_{t_0,T}
+-
+x^j_e(T-t_0)
+\right].
+\]
+Taking the long-maturity limit gives
+\[
+\lim_{T-t\to\infty}\mathbb E[x^j_{t,T}]
+=
+x_\infty
++
+(X_{t_0}-x_\infty)e^{-a^2(t-t_0)}.
+\]
+The expected realised long boundary therefore mean-reverts toward the equilibrium anchor \(x_\infty\) at the physical adjustment speed \(a^2\).
+
+The branch transport reference \(b_j(\tau)\) and the equilibrium mean curve \(x^j_e(\tau)\) should not be confused. The former is the instantaneous reference appearing inside the local drift loading. The latter is the stationary first-moment profile after accounting for maturity ageing, \(\tau=T-t\). Except in the degenerate case \(r_j=0\), these two objects differ.
+
+\section{Long-end variance floor}
+
+The instantaneous variance rate of the stochastic long-boundary field is
+\[
+v_j(t,T)
+:=
+\frac{d}{dt}\operatorname{Var}_t(x^j_{t,T})
+=
+2a^2\left[x^j_{t,T}-b_j(\tau)\right]^2.
+\]
+Taking the long-maturity limit yields
+\[
+\lim_{\tau\to\infty}v_j(t,T)
+=
+2a^2(X_t-x_\infty)^2.
+\]
+This is the main observable implication of the stochastic long-boundary extension. In the fixed-boundary model, the long-end loading vanishes and the local variance collapses to zero. In the stochastic-boundary model, long-end variance remains positive whenever the realised long boundary differs from the equilibrium anchor.
+
+The long-end variance floor is therefore tied to three interpretable quantities:
+\[
+a^2,
+\qquad
+x_\infty,
+\qquad
+X_t.
+\]
+The adjustment speed \(a^2\) controls propagation and reversion. The anchor \(x_\infty\) represents the equilibrium long-run regime. The realised boundary \(X_t\) represents the market-implied long-run state. Persistent long-end volatility is therefore represented by the distance between the realised long-run boundary and the equilibrium regime anchor, rather than by an additional curve-fitting factor.
+
+\section{Curve representation}
+
+Impose the multiplicative residual maturity-loading Ansatz
+\[
+Z^j_{t,T}
+=
+x^j_{t,t}e^{-a^2\tau}.
+\]
+Substituting into the stochastic boundary decomposition gives
+\[
+x^j_{t,T}
+=
+x_\infty\left(1-e^{-r_j a^2\tau}\right)
++
+\left(1-e^{-a^2\tau}\right)(X_t-x_\infty)
++
+x^j_{t,t}e^{-a^2\tau}.
+\]
+Equivalently,
+\[
+x^j_{t,T}
+=
+x^j_{t,t}e^{-a^2\tau}
++
+X_t\left(1-e^{-a^2\tau}\right)
++
+x_\infty\left(e^{-a^2\tau}-e^{-r_j a^2\tau}\right).
+\]
+
+The case \(r_j=1\) is the unique bridge case in which the explicit \(x_\infty\) loading cancels from the static cross-sectional representation. The curve becomes
+\[
+x^j_{t,T}
+=
+X_t
++
+\left(x^j_{t,t}-X_t\right)e^{-a^2\tau}.
+\]
+In this case, the observed curve is an exponential bridge between the realised short-end state and the realised long-end boundary state. The equilibrium anchor \(x_\infty\) still enters through the boundary dynamics, expected reversion, and long-end variance floor, but it no longer appears as a separate visible loading in the cross-sectional curve.
+
+\section{Branch specialisations}
+
+The stochastic long-boundary machinery is common to all short-end boundary branches. The branch label \(j\) changes the short-end admissibility condition and the parameter \(r_j\) appearing in the transport reference \(b_j(\tau)\). It does not change the one-risk-direction boundary law, the MSNR preservation result, or the long-end variance floor.
+
+For the Neumann/free branch,
+\[
+r_j=r.
+\]
+For the Dirichlet branch,
+\[
+r_D=\frac{\lambda_D^2}{a^2}.
+\]
+For the Robin/mixed branch,
+\[
+r_R=\frac{\lambda_R^2}{a^2}.
+\]
+Across all three branches,
+\[
+b_j(\tau)
+=
+x_\infty\left(1-e^{-r_j a^2\tau}\right),
+\]
+and the stochastic long-boundary curve representation remains
+\[
+x^j_{t,T}
+=
+x_\infty\left(1-e^{-r_j a^2\tau}\right)
++
+\left(1-e^{-a^2\tau}\right)(X_t-x_\infty)
++
+x^j_{t,t}e^{-a^2\tau}.
+\]
+
+The Dirichlet and Robin amplitudes are not inherited from the Neumann/free branch. They are fixed by the branch-specific equilibrium or moment-transport calculation developed in the short-end boundary chapters. In the present chapter, the long-boundary mechanism is layered on top of those branch-specific short-end closures.
+
+\section{Relation to risk-neutral pricing}
+
+The stochastic long-boundary extension is a physical-field construction. It identifies how a realised long-maturity boundary state can move within the same admissible IRFR risk direction. The following chapter introduces the risk-neutral pricing layer.
+
+This ordering is important. The money-market account is generated by the realised short-end roll \(x_{t,t}\). The stochastic long boundary \(X_t\) does not directly fund the bank account. Instead, it enters bond prices through the IRFR strip
+\[
+\{x_{t,u}:u\in[t,T]\}.
+\]
+When the long boundary is stochastic, the bond-price functional inherits dependence on the realised asymptotic state. A full no-arbitrage treatment must therefore trace \(X_t\) through the risk-neutral drift restriction and the rolling-maturity transport equation.
+
+The present chapter does not impose that pricing restriction. It completes the physical boundary-field architecture. The next chapter adds the money-market numeraire, the martingale condition for discounted bond prices, and the change from the physical measure to the pricing measure.
+
+\section{Summary}
+
+The fixed-boundary IRFR model identifies the long end with the equilibrium anchor \(x_\infty\). The stochastic long-boundary extension separates this anchor from the realised long-end state \(X_t\). The resulting displacement
+\[
+Y_t=X_t-x_\infty
+\]
+is carried by the same admissible IRFR risk direction as the finite-maturity field.
+
+The construction preserves the physical loading relation
+\[
+\frac{f_j}{g_j}=a,
+\]
+and hence preserves the one-risk-direction MSNR structure. The asymptotic boundary dynamics are
+\[
+dX_t
+=
+-a^2(X_t-x_\infty)\,dt
++
+\sqrt{2}a(X_t-x_\infty)\,dW_t.
+\]
+The long-end variance floor is
+\[
+\lim_{\tau\to\infty}v_j(t,T)
+=
+2a^2(X_t-x_\infty)^2.
+\]
+
+Thus the monograph's boundary-field architecture has two complementary layers. Short-end boundary regimes determine admissibility at \(\tau=0\). The stochastic long-boundary state determines persistent asymptotic displacement as \(\tau\to\infty\). Together they allow the IRFR field to represent both local short-rate boundary behaviour and long-run regime displacement without adding an independent Brownian factor.
+
+
+\chapter[Bond Pricing and the Risk-Neutral IRFR Measure]{Bond Pricing, Rolling Replication, and the Risk-Neutral IRFR Measure}
 \label{ch:risk-neutral-irfr}
 
 \section{Introduction}
@@ -5045,649 +5474,514 @@ The preceding chapters develop IRFR as a theory of admissible maturity
 fields, boundary-selected modes, and observable volatility profiles. By
 the end of Chapter~10, the framework has a field equation, a boundary
 classification, and a set of maturity loadings selected by Neumann,
-Dirichlet, or Robin closure. What remains is the formal bridge from
-admissible maturity fields to tradable bond prices.
+Dirichlet, or Robin closure. What remains is the pricing bridge from
+admissible local rate-field coordinates to traded bond prices.
 
-This chapter supplies that bridge. We identify the IRFR field with the
-instantaneous forward-rate curve in rolling-maturity coordinates, define
-zero-coupon bond prices by exponential discounting, introduce the
-money-market numeraire, and impose the no-arbitrage martingale condition.
+This chapter supplies that bridge. The key point is that the money-market
+account is generated only by the realised short-end roll. The rest of the
+IRFR strip is not itself a bank account. Non-short IRFRs are locally
+zero-value forward-rate contracts: they do not require initial funding and
+do not directly accrue the cash account at inception. Their role is to
+represent, hedge, or replicate future rolling short-rate exposures.
+
+Risk-neutral pricing is therefore imposed in the standard way, but on the
+right object. The money-market account is the numeraire generated by the
+realised short rate. Zero-coupon bond prices are generated by integrating
+the current IRFR strip. The no-arbitrage condition is that these bond
+prices, when discounted by the short-rate money-market account, are
+martingales under the pricing measure.
+
 The resulting construction is an IRFR-constrained HJM framework: IRFR
-restricts the admissible maturity geometry of the volatility modes, while
-the risk-neutral measure determines the drift required for arbitrage-free
-bond pricing \cite{HeathJarrowMorton1992,MusielaRutkowski2005}.
+restricts the admissible maturity geometry of the field and its volatility
+modes, while the risk-neutral measure supplies the drift required for
+arbitrage-free bond pricing \cite{HeathJarrowMorton1992,MusielaRutkowski2005}.
+The chapter does not claim to complete derivative pricing for bond
+options, caps, floors, or swaptions. It establishes the bond-pricing layer
+and identifies the remaining derivative-pricing problem as the law under
+\(\mathbb Q\) of integrated IRFR field functionals.
 
-The chapter does not claim to give a complete derivative-pricing theory.
-It establishes the bond-pricing layer and formulates the natural extension
-to bond options and other interest-rate derivatives. Derivative pricing,
-market completeness, and empirical calibration of risk premia remain
-separate tasks.
+\section{The money-market account at an initial date}
+\label{money-market-account-at-an-initial-date}
 
-\section{The IRFR Field as a Rolling Forward-Rate Curve}
-\label{irfr-field-as-rolling-forward-rate-curve}
+Begin at a fixed date \(t_0\), and consider a small time step \(\Delta t\).
+The realised short-end field value is
+\[
+r_{t_0}=x_{t_0,t_0}.
+\]
+This is the rate that accrues the cash account over the first interval
+\([t_0,t_0+\Delta t]\). In simple-discrete notation,
+\[
+B_{t_0+\Delta t}
+=
+B_{t_0}\left(1+x_{t_0,t_0}\Delta t\right),
+\]
+and in continuous time the corresponding differential form is
+\[
+dB_t=x_{t,t}B_t\,dt.
+\]
+
+The non-short IRFR
+\[
+x_{t_0,t_0+\Delta t}
+\]
+has a different status. It is not a cash-account accrual rate at time
+\(t_0\). It is a locally zero-value forward-rate exposure to the next
+short-rate roll. It can be used to represent the second-period rolling
+short-rate exposure, but it does not itself fund or accrue the bank
+account at inception.
+
+Over two short periods, the realised rolling cash-account return is built
+from the sequence
+\[
+x_{t_0,t_0}
+\quad\text{and}\quad
+x_{t_0+\Delta t,t_0+\Delta t}.
+\]
+At time \(t_0\), the second object has not yet been realised. The current
+IRFR
+\[
+x_{t_0,t_0+\Delta t}
+\]
+is the locally zero-value contract representing that next roll. Thus, to
+first order in \(\Delta t\), the two-period rolling exposure can be written
+at \(t_0\) as
+\[
+x_{t_0,t_0}\Delta t+x_{t_0,t_0+\Delta t}\Delta t.
+\]
+This expression should not be read as saying that both terms accrue the
+cash account at \(t_0\). Only \(x_{t_0,t_0}\) does. The second term is the
+current IRFR representation of the next short-rate roll.
+
+This elementary two-period construction is the pricing intuition of the
+chapter. The cash account is generated by the realised short end. The
+remaining IRFR strip is a strip of locally zero-value contracts used to
+represent future short-rate rolls.
+
+\section{Generalisation to an arbitrary time}
+\label{generalisation-to-an-arbitrary-time}
+
+At a general time \(t\), define the realised short rate by
+\[
+r_t:=x_{t,t}.
+\]
+The money-market account is therefore
+\[
+dB_t=r_tB_t\,dt=x_{t,t}B_t\,dt,
+\qquad B_0=1,
+\]
+so that
+\[
+B_t=\exp\left(\int_0^t x_{s,s}\,ds\right).
+\]
+
+This definition deliberately assigns funding status only to the realised
+short-end roll. The forward IRFRs
+\[
+x_{t,T},\qquad T>t,
+\]
+or, in rolling-maturity notation,
+\[
+x(t,\tau),\qquad \tau>0,
+\]
+are not components of the money-market account at time \(t\). They are
+locally zero-value contracts representing the current strip of future
+rolling short-rate exposures.
+
+The distinction is essential. The money-market account is a self-financing
+numeraire. A non-short IRFR is a rate-field coordinate or forward-rate
+contract. It may determine the price of a traded bond once integrated
+across maturity, but it is not itself a strictly positive tradable price
+process and cannot itself serve as a numeraire.
+
+\section{The IRFR strip and zero-coupon bond prices}
+\label{irfr-strip-and-zero-coupon-bond-prices}
 
 Let \(f(t,T)\) denote the instantaneous forward rate observed at calendar
-time \(t\) for calendar maturity \(T\geq t\). The IRFR field is written in
-rolling-maturity coordinates, where
+time \(t\) for calendar maturity \(T\geq t\). The IRFR field is the same
+forward-rate surface written in rolling-maturity coordinates:
 \[
-\tau = T-t.
-\]
-We identify the IRFR field with the rolling representation of the
-instantaneous forward-rate surface:
-\[
+\tau=T-t,
+\qquad
 x(t,\tau)=f(t,t+\tau).
 \]
-Conversely, for \(T\geq t\),
+Equivalently,
 \[
 f(t,T)=x(t,T-t).
 \]
 
-This identification requires sufficient regularity of the forward-rate
-surface for the calendar-maturity and rolling-maturity descriptions to
-agree pointwise. In particular, the forward surface is assumed to be
-sufficiently smooth in the maturity variable for the change of variables
-\(T=t+\tau\) to be valid. Under this convention, \(x(t,\tau)\) is not merely
-a generic maturity field. It is the instantaneous forward-rate curve
-expressed in the natural IRFR coordinate \(\tau\).
-
-The distinction between calendar maturity and rolling maturity matters
-for dynamics. Since \(\tau=T-t\), differentiation at fixed \(T\) and
-differentiation at fixed \(\tau\) differ by the transport term:
+A zero-coupon bond price is obtained from the current forward-rate strip:
 \[
-\left.\partial_t f(t,T)\right|_{T}
+P(t,T)
 =
-\left.\partial_t x(t,\tau)\right|_{\tau}
+\exp\left(-\int_t^T f(t,u)\,du\right).
+\]
+In IRFR coordinates this becomes
+\[
+P(t,T)
+=
+\exp\left(-\int_0^{T-t}x(t,s)\,ds\right).
+\]
+
+This formula uses the current IRFR strip to represent the price of future
+rolling short-rate exposure. It does not say that the whole strip accrues
+the cash account. Rather, the strip prices the traded bond whose payoff is
+one unit at \(T\), while the money-market account is generated only by the
+realised short-end path \(x_{s,s}\).
+
+The relationship between the two objects is the standard no-arbitrage
+bridge:
+\[
+P(t,T)
+=
+\mathbb E_t^{\mathbb Q}
+\left[
+\exp\left(-\int_t^T x_{s,s}\,ds\right)
+\right],
+\]
+where \(\mathbb Q\) is the risk-neutral measure associated with the
+money-market account. The left-hand side is the current strip valuation.
+The right-hand side is the discounted expectation of future realised
+short-rate rolls.
+
+\section{Stochastic consistency of rolling replication}
+\label{stochastic-consistency-of-rolling-replication}
+
+The generalisation from \(t_0\) to arbitrary \(t\) introduces the central
+stochastic consistency issue. The future realised short rate
+\[
+x_{t+\Delta t,t+\Delta t}
+\]
+is not pathwise known at time \(t\), and it is not equal in advance to the
+current forward object
+\[
+x_{t,t+\Delta t}.
+\]
+The latter is the time-\(t\) locally zero-value representation of the next
+short-rate roll. The former is the subsequently realised short-end state
+of the field.
+
+They are linked by the stochastic IRFR dynamics. The current IRFR strip is
+therefore a present representation of future rolling cash-account
+exposures, but the future rolls themselves are stochastic. This is why
+risk-neutral pricing cannot be imposed by treating every IRFR as a
+cash-account rate. It must instead be imposed as a martingale condition on
+bond prices generated by the IRFR strip.
+
+Thus the correct no-arbitrage condition is
+\[
+\frac{P(t,T)}{B_t}
+\quad\text{is a }\mathbb Q\text{-martingale}.
+\]
+Equivalently, for \(s\geq t\),
+\[
+\mathbb E_t^{\mathbb Q}
+\left[
+\frac{P(s,T)}{B_s}
+\right]
+=
+\frac{P(t,T)}{B_t}.
+\]
+This condition equates the current strip-generated bond price with the
+pricing-measure value of the future realised rolling short-rate cash
+flows.
+
+
+\section{Physical and pricing dynamics}
+\label{physical-and-pricing-dynamics}
+
+Under the physical measure \(\mathbb P\), write the local IRFR field
+dynamics as
+\[
+dx_{t,T}
+=
+\mu^{\mathbb P}(t,T)\,dt+
+\sigma(t,T)\,dW_t^{\mathbb P}.
+\]
+The monograph uses the IRFR sign convention introduced in the field-dynamics
+chapters: the deterministic pull of the field is written as \(-f\,dt\), and
+the diffusion coefficient is written as \(\sqrt{2}\,g\). Thus
+\[
+\mu^{\mathbb P}(t,T)=-f(t,T),
+\qquad
+\sigma(t,T)=\sqrt{2}\,g(t,T).
+\]
+This is a convention for the IRFR field variable, not a change in the
+standard HJM money-market numeraire construction.
+
+Let the change of measure be given by
+\[
+dW_t^{\mathbb Q}=dW_t^{\mathbb P}+\lambda_t\,dt,
+\]
+where \(\lambda_t\) is the market price of IRFR field risk. Then
+\[
+dW_t^{\mathbb P}=dW_t^{\mathbb Q}-\lambda_t\,dt,
+\]
+and hence
+\[
+dx_{t,T}
+=
+\left[\mu^{\mathbb P}(t,T)-\lambda_t\sigma(t,T)\right]dt
++
+\sigma(t,T)dW_t^{\mathbb Q}.
+\]
+Substituting the IRFR notation gives
+\[
+dx_{t,T}
+=
+-\left[f(t,T)+\sqrt{2}\lambda_t g(t,T)\right]dt
++
+\sqrt{2}g(t,T)dW_t^{\mathbb Q}.
+\]
+Therefore the risk-neutral drift loading is
+\[
+f^{\mathbb Q}(t,T)
+=
+f(t,T)+\sqrt{2}\lambda_t g(t,T).
+\]
+
+The physical Market Signal-to-Noise Ratio is the signed drift loading divided
+by the diffusion loading in the established IRFR convention:
+\[
+\operatorname{MSNR}^{\mathbb P}(t,T)
+:=
+\frac{f(t,T)}{\sqrt{2}\,g(t,T)}.
+\]
+Under the physical IRFR admissibility relation
+\[
+\frac{f(t,T)}{g(t,T)}=a,
+\]
+this becomes
+\[
+\operatorname{MSNR}^{\mathbb P}=\frac{a}{\sqrt{2}}.
+\]
+For the Chapter~5 branch parameterisation \(r=\lambda^2/a^2\), with \(\lambda\) denoting the branch spectral parameter, this may also be written as
+\[
+\operatorname{MSNR}^{\mathbb P}=\frac{\lambda}{\sqrt{2r}}.
+\]
+Under the pricing measure,
+\[
+\frac{f^{\mathbb Q}(t,T)}{g(t,T)}
+=
+a+
+\sqrt{2}\lambda_t.
+\]
+Thus the one-dimensional Brownian risk direction is preserved by the
+change of measure. The physical MSNR is transformed by the market price
+of risk through the drift loading assigned to the same volatility direction.
+
+For the simplest first-pass pricing layer one may take \(\lambda_t=\lambda\)
+constant. Then
+\[
+a_{\mathbb Q}=a+\sqrt{2}\lambda,
+\]
+and the risk-neutral dynamics remain in the same one-risk-direction
+family with a shifted drift-to-volatility ratio. State-dependent or
+time-dependent market prices of risk can be introduced later, but they
+belong to calibration and empirical implementation rather than to the
+basic money-market-account construction.
+
+
+\section{Relation to the HJM drift condition}
+\label{relation-to-the-hjm-drift-condition}
+
+The preceding measure-change calculation describes how the physical IRFR
+drift is adjusted by the market price of risk. The martingale condition on
+\(P(t,T)/B_t\) supplies the additional no-arbitrage restriction on the
+pricing-measure drift of the forward-rate curve.
+
+In conventional instantaneous-forward-rate notation, with calendar
+maturity \(T\), write
+\[
+df(t,T)=\alpha^{\mathbb Q}(t,T)\,dt+
+\sigma_f(t,T)dW_t^{\mathbb Q}.
+\]
+The one-factor HJM drift restriction is
+\[
+\alpha^{\mathbb Q}(t,T)
+=
+\sigma_f(t,T)
+\int_t^T \sigma_f(t,u)\,du,
+\]
+under the bond-price convention
+\[
+P(t,T)=\exp\left(-\int_t^T f(t,u)\,du\right).
+\]
+
+The IRFR field is normally written in rolling-maturity coordinates,
+\[
+\tau=T-t,
+\qquad
+x(t,\tau)=f(t,t+\tau).
+\]
+Differentiation at fixed calendar maturity and differentiation at fixed
+rolling maturity differ by the transport term:
+\[
+\left.\partial_t f(t,T)\right|_T
+=
+\left.\partial_t x(t,\tau)\right|_\tau
 -
 \partial_\tau x(t,\tau),
 \qquad \tau=T-t.
 \]
-Equivalently, the rolling-maturity drift contains the calendar-maturity
-forward drift plus the transport contribution \(\partial_\tau x\). This
-point is essential when the HJM no-arbitrage condition is translated into
-IRFR coordinates.
-
-\section{Zero-Coupon Bond Prices from the IRFR Field}
-\label{zero-coupon-bond-prices-from-irfr}
-
-The standard zero-coupon bond price at time \(t\) for maturity \(T\) is
+Therefore, if the rolling-coordinate \(\mathbb Q\)-dynamics are written as
 \[
-P(t,T)
+dx(t,\tau)
 =
-\exp\left(
--\int_t^T f(t,u)\,du
-\right).
+\widetilde\mu^{\mathbb Q}(t,\tau)\,dt
++
+\sigma(t,\tau)dW_t^{\mathbb Q},
 \]
-Using the rolling-maturity coordinate \(s=u-t\), this becomes
+then the calendar-maturity drift is
 \[
-P(t,t+\tau)
+\alpha^{\mathbb Q}(t,t+\tau)
 =
-\exp\left(
--\int_0^\tau x(t,s)\,ds
-\right).
+\widetilde\mu^{\mathbb Q}(t,\tau)-\partial_\tau x(t,\tau).
 \]
-This equation is the basic pricing interpretation of the IRFR field. Once
-\(x(t,\tau)\) is identified with the instantaneous forward-rate curve,
-admissible IRFR maturity profiles determine admissible discount curves.
+The HJM restriction in rolling-maturity coordinates is consequently
+\[
+\widetilde\mu^{\mathbb Q}(t,\tau)-\partial_\tau x(t,\tau)
+=
+\sigma(t,\tau)\int_0^\tau \sigma(t,s)\,ds,
+\]
+or equivalently
+\[
+\boxed{
+\widetilde\mu^{\mathbb Q}(t,\tau)
+=
+\partial_\tau x(t,\tau)
++
+\sigma(t,\tau)\int_0^\tau \sigma(t,s)\,ds.
+}
+\]
 
-The formula becomes more informative when the IRFR modal structure is
-substituted. Suppose, for example, that under a given boundary regime the
-forward-rate field has the one-factor representation
+Substituting the IRFR volatility convention \(\sigma(t,\tau)=\sqrt{2}\,g(t,\tau)\)
+gives
 \[
-x(t,\tau)=x_D+Z_tH(\tau),
-\]
-where \(x_D\) is the pinned short-end boundary value, \(Z_t\) is the
-stochastic factor amplitude, and \(H(\tau)\) is an IRFR-admissible maturity
-loading. Then
-\[
-P(t,t+\tau)
+\widetilde\mu^{\mathbb Q}(t,\tau)
 =
-\exp\left(
--x_D\tau
+\partial_\tau x(t,\tau)
++
+2g(t,\tau)\int_0^\tau g(t,s)\,ds.
+\]
+In the remaining displays of this subsection, \(f(t,\tau)\) denotes the IRFR drift-loading coefficient from the field-dynamics chapters, not the forward-rate field \(f(t,T)\) used above in calendar-maturity notation. The IRFR \(\mathbb Q\)-dynamics write the same rolling-coordinate drift as
+\[
+dx(t,\tau)
+=
+-f^{\mathbb Q}(t,\tau)\,dt
++
+\sqrt{2}g(t,\tau)dW_t^{\mathbb Q}.
+\]
+Hence no-arbitrage imposes
+\[
+\boxed{
+f^{\mathbb Q}(t,\tau)
+=
+-\partial_\tau x(t,\tau)
 -
-Z_t\int_0^\tau H(s)\,ds
-\right).
+2g(t,\tau)\int_0^\tau g(t,s)\,ds.
+}
 \]
-
-For the repeated-root humped branch, take
+Combining this with the measure-change identity from the previous section
+therefore yields the pricing consistency condition
 \[
-H(\tau)=C\tau e^{-\alpha\tau},
-\qquad \alpha>0.
-\]
-Then
-\[
-\int_0^\tau H(s)\,ds
+\boxed{
+f(t,\tau)+\sqrt{2}\lambda_t g(t,\tau)
 =
-C\int_0^\tau s e^{-\alpha s}\,ds
-=
-\frac{C}{\alpha^2}
-\left[
-1-e^{-\alpha\tau}(1+\alpha\tau)
-\right].
-\]
-Hence the zero-coupon bond price becomes
-\[
-P(t,t+\tau)
-=
-\exp\left(
--x_D\tau
+-\partial_\tau x(t,\tau)
 -
-Z_t
-\frac{C}{\alpha^2}
-\left[
-1-e^{-\alpha\tau}(1+\alpha\tau)
-\right]
-\right).
+2g(t,\tau)\int_0^\tau g(t,s)\,ds.
+}
 \]
-This expression shows explicitly how the IRFR humped admissible mode
-enters bond prices through the integrated forward-rate loading.
+This is the transport-corrected HJM restriction in IRFR coordinates. IRFR
+admissibility supplies the maturity geometry and volatility loading; the
+martingale pricing condition supplies the \(\mathbb Q\)-drift compatible
+with bond-market no-arbitrage.
 
-\section{The Money-Market Numeraire and Boundary Regimes}
-\label{money-market-numeraire-and-boundary-regimes}
+This separation is important. IRFR admissibility alone does not prove
+self-financing no-arbitrage. It constrains the field's admissible
+maturity geometry. The martingale pricing condition is the additional
+pricing restriction that turns the field into a bond-pricing model.
 
-The short rate is the zero-maturity limit of the forward-rate field:
-\[
-r_t=x(t,0^+).
-\]
-The money-market account is therefore
-\[
-B_t
-=
-\exp\left(
-\int_0^t r_s\,ds
-\right)
-=
-\exp\left(
-\int_0^t x(s,0^+)\,ds
-\right).
-\]
 
-Under Dirichlet closure, the short end is pinned:
+\section{Boundary interpretation of the short rate}
+\label{boundary-interpretation-of-the-short-rate}
+
+The short rate entering the money-market account is the realised short-end
+boundary value
 \[
-x(t,0^+)=x_D.
+r_t=x_{t,t}.
 \]
-In that case,
+This is consistent with the boundary-field interpretation of the earlier
+chapters. The short end is not an afterthought appended for pricing. It is
+already the boundary of the rolling-maturity field.
+
+The pricing layer therefore does not erase the boundary interpretation.
+It uses it. The money-market account is generated by the realised boundary
+roll; non-short IRFRs represent future boundary rolls through the current
+forward strip; and bond prices are the traded instruments produced by
+integrating that strip across maturity.
+
+This also clarifies the status of boundary laws. Neumann/free,
+Dirichlet, and Robin regimes restrict the admissible maturity loading of
+the field. The risk-neutral measure does not replace those boundary
+conditions. It changes the drift needed for traded bond prices to be
+martingales after discounting by the short-rate numeraire.
+
+A pricing-relevant consequence arises under Dirichlet closure. If the
+short-end boundary is fixed at \(x_D\), then the money-market account is
+conditionally deterministic:
 \[
+\boxed{
+\text{Dirichlet closure:}\qquad
 r_t=x_D,
 \qquad
-B_t=\exp(x_Dt),
+B_t=e^{x_Dt}
+\quad\text{conditionally deterministic.}
+}
 \]
-conditional on the boundary regime. This is a pricing-relevant
-consequence of the boundary condition: the short-rate numeraire is locally
-deterministic while the stochastic variation enters through the interior
-maturity loading.
+The remaining curve may still contain non-short IRFR exposure, but the
+funding numeraire itself is pinned by the fixed short-end boundary.
 
-The other boundary regimes have different pricing implications. Under
-Neumann closure, the slope at the boundary is pinned, but the boundary
-value itself may move. Under Robin closure, the boundary value and
-boundary slope are linked through a mixed condition. Thus the boundary
-regime determines not only the admissible maturity modes but also the way
-the short-rate numeraire is generated from the field.
+In the stochastic long-boundary extension, the realised long-end state
+also affects the field and hence the bond-price functional. But it does
+not directly fund the money-market account. The cash account remains a
+short-end object generated by \(x_{t,t}\). A full no-arbitrage treatment of
+the stochastic long-boundary case must trace the moving asymptotic state
+through the pricing PDE and through the integrated forward-rate strip; that
+extension is deferred to the long-boundary pricing analysis.
 
-\section{Measure Change and the Market Price of Risk}
-\label{measure-change-and-market-price-of-risk}
+\section{Derivative-pricing extension}
+\label{derivative-pricing-extension}
 
-Let the rolling IRFR forward-rate field evolve under the physical measure
-\(\mathbb P\) according to
+Once the zero-coupon bond price is written as
 \[
-dx(t,\tau)
+P(t,t+\tau)
 =
-b^{\mathbb P}(t,\tau)\,dt
-+
-\sum_{i=1}^n \sigma_i(t,\tau)\,dW_i^{\mathbb P}(t),
+\exp\left(-\int_0^\tau x(t,s)\,ds\right),
 \]
-where the maturity profiles \(\sigma_i(t,\tau)\) are required to be
-IRFR-admissible. We use \(b\) for the rolling-maturity drift in this
-chapter to distinguish it from the calendar-maturity HJM drift.
-
-Introduce a market price of risk vector
+any bond derivative becomes a contingent claim on an integrated IRFR
+field. For example, if a reduced one-factor representation has the form
 \[
-\lambda_t=(\lambda_1(t),\ldots,\lambda_n(t)).
-\]
-The risk-neutral Brownian motions are defined by
-\[
-dW_i^{\mathbb Q}(t)
-=
-dW_i^{\mathbb P}(t)
-+
-\lambda_i(t)\,dt.
-\]
-Equivalently,
-\[
-dW_i^{\mathbb P}(t)
-=
-dW_i^{\mathbb Q}(t)
--
-\lambda_i(t)\,dt.
-\]
-Substitution gives the \(\mathbb Q\)-dynamics
-\[
-dx(t,\tau)
-=
-b^{\mathbb Q}(t,\tau)\,dt
-+
-\sum_{i=1}^n \sigma_i(t,\tau)\,dW_i^{\mathbb Q}(t),
-\]
-where
-\[
-b^{\mathbb Q}(t,\tau)
-=
-b^{\mathbb P}(t,\tau)
--
-\sum_{i=1}^n \sigma_i(t,\tau)\lambda_i(t).
-\]
-
-This measure change is assumed to satisfy the usual integrability
-conditions, such as a Novikov-type condition, ensuring that the density
-process defining \(\mathbb Q\) is a true martingale. In a reduced affine
-IRFR implementation, one may further assume an affine market price of risk
-so that the affine closure of the physical dynamics is preserved under the
-change of measure. This affine preservation is an assumption on the
-pricing specification, not a consequence of admissibility alone.
-
-\section{The Market Signal-to-Noise Ratio}
-\label{market-signal-to-noise-ratio}
-
-The market price of risk has a natural interpretation in IRFR language
-through the Market Signal-to-Noise Ratio, or MSNR. In one-factor rolling
-notation, suppose
-\[
-dx(t,\tau)
-=
-b(t,\tau)\,dt
-+
-\sigma(t,\tau)\,dW_t.
-\]
-Define the Market Signal-to-Noise Ratio by
-\[
-\mathrm{MSNR}(t,\tau)
-=
-\frac{b(t,\tau)}{\sigma(t,\tau)}.
-\]
-It measures the local rolling drift signal per unit of diffusion noise in
-the maturity field.
-
-Under the physical measure,
-\[
-\mathrm{MSNR}^{\mathbb P}(t,\tau)
-=
-\frac{b^{\mathbb P}(t,\tau)}{\sigma(t,\tau)}.
-\]
-Under the risk-neutral measure,
-\[
-\mathrm{MSNR}^{\mathbb Q}(t,\tau)
-=
-\frac{b^{\mathbb Q}(t,\tau)}{\sigma(t,\tau)}.
-\]
-Since
-\[
-b^{\mathbb Q}(t,\tau)
-=
-b^{\mathbb P}(t,\tau)
--
-\sigma(t,\tau)\lambda_t,
-\]
-we obtain
-\[
-\lambda_t
-=
-\mathrm{MSNR}^{\mathbb P}(t,\tau)
--
-\mathrm{MSNR}^{\mathbb Q}(t,\tau).
-\]
-Thus the market price of risk is the measure-change correction to the
-Market Signal-to-Noise Ratio. It is the excess physical rolling drift
-signal, per unit diffusion noise, that must be removed to pass from the
-observed physical dynamics to the no-arbitrage risk-neutral dynamics.
-
-In the IRFR sign convention used earlier, the local field dynamics are
-often written as
-\[
-dx=-f\,dt+\sqrt{v}\,dW.
-\]
-In that convention, the rolling drift signal is \(-f\) and the noise scale
-is \(\sqrt v\). The Market Signal-to-Noise Ratio is therefore
-\[
-\mathrm{MSNR}
-=
-\frac{-f}{\sqrt v}.
-\]
-The measure-change relation becomes
-\[
-\lambda
-=
-\frac{-f^{\mathbb P}}{\sqrt v}
--
-\frac{-f^{\mathbb Q}}{\sqrt v}
-=
-\frac{f^{\mathbb Q}-f^{\mathbb P}}{\sqrt v}.
-\]
-Equivalently,
-\[
-f^{\mathbb Q}
-=
-f^{\mathbb P}
-+
-\lambda\sqrt v.
-\]
-This gives \(\lambda\) a direct IRFR interpretation: it is not an external
-black-box risk premium, but the adjustment to the Market Signal-to-Noise
-Ratio required by the change from the physical measure to the
-risk-neutral measure.
-
-In the multi-factor case, the same interpretation holds in vector form,
-but uniqueness may fail. If
-\[
-dx(t,\tau)
-=
-b(t,\tau)\,dt
-+
-\Sigma(t,\tau)\,dW_t,
-\]
-then
-\[
-b^{\mathbb Q}(t,\tau)
-=
-b^{\mathbb P}(t,\tau)
--
-\Sigma(t,\tau)\lambda_t.
-\]
-Formally,
-\[
-\lambda_t
-=
-\Sigma(t,\tau)^+
-\left(
- b^{\mathbb P}(t,\tau)-b^{\mathbb Q}(t,\tau)
-\right),
-\]
-where \(\Sigma^+\) denotes a suitable pseudo-inverse. If the volatility
-loading is not full rank, the market is incomplete and the market price
-of risk need not be unique.
-
-\section{The HJM Drift Restriction in IRFR Coordinates}
-\label{hjm-drift-restriction-in-irfr-coordinates}
-
-Under the money-market numeraire, no-arbitrage requires discounted
-zero-coupon bond prices
-\[
-\frac{P(t,T)}{B_t}
-\]
-to be \(\mathbb Q\)-martingales for every maturity \(T\).
-
-In the standard HJM formulation, if
-\[
-df(t,T)
-=
-\alpha^{\mathbb Q}(t,T)\,dt
-+
-\sum_{i=1}^n \sigma_i(t,T)\,dW_i^{\mathbb Q}(t),
-\]
-where the derivative is taken at fixed calendar maturity \(T\), then the
-no-arbitrage drift restriction is
-\[
-\alpha^{\mathbb Q}(t,T)
-=
-\sum_{i=1}^n
-\sigma_i(t,T)
-\int_t^T \sigma_i(t,u)\,du.
-\]
-
-In rolling IRFR coordinates, \(T=t+\tau\), the calendar-maturity drift
-restriction becomes
-\[
-\alpha^{\mathbb Q}(t,\tau)
-=
-\sum_{i=1}^n
-\sigma_i(t,\tau)
-\int_0^\tau \sigma_i(t,s)\,ds.
-\]
-The rolling drift is not just \(\alpha^{\mathbb Q}\). By the transport
-identity, the \(\mathbb Q\)-drift of \(x(t,\tau)\) at fixed rolling maturity
-is
-\[
-b^{\mathbb Q}(t,\tau)
-=
-\partial_\tau x(t,\tau)
-+
-\sum_{i=1}^n
-\sigma_i(t,\tau)
-\int_0^\tau \sigma_i(t,s)\,ds.
-\]
-Therefore the risk-neutral IRFR dynamics in rolling coordinates are
-\[
-dx(t,\tau)
-=
-\left[
-\partial_\tau x(t,\tau)
-+
-\sum_{i=1}^n
-\sigma_i(t,\tau)
-\int_0^\tau \sigma_i(t,s)\,ds
-\right]dt
-+
-\sum_{i=1}^n
-\sigma_i(t,\tau)\,dW_i^{\mathbb Q}(t).
-\]
-This is the Musiela-form HJM equation written in IRFR notation.
-
-If the volatility modes separate into stochastic amplitudes and IRFR
-maturity loadings,
-\[
-\sigma_i(t,\tau)=\eta_i(t)H_i(\tau),
-\]
-then the HJM compensator is
-\[
-\alpha^{\mathbb Q}(t,\tau)
-=
-\sum_{i=1}^n
-\eta_i(t)^2
-H_i(\tau)
-\int_0^\tau H_i(s)\,ds,
-\]
-and the rolling risk-neutral drift is
-\[
-b^{\mathbb Q}(t,\tau)
-=
-\partial_\tau x(t,\tau)
-+
-\sum_{i=1}^n
-\eta_i(t)^2
-H_i(\tau)
-\int_0^\tau H_i(s)\,ds.
-\]
-
-For the one-factor repeated-root humped branch,
-\[
-H(\tau)=C\tau e^{-\alpha\tau},
-\]
-we obtain
-\[
-\alpha^{\mathbb Q}(t,\tau)
-=
-\eta(t)^2
-C\tau e^{-\alpha\tau}
-\cdot
-\frac{C}{\alpha^2}
-\left[
-1-e^{-\alpha\tau}(1+\alpha\tau)
-\right].
-\]
-Equivalently,
-\[
-\alpha^{\mathbb Q}(t,\tau)
-=
-\frac{\eta(t)^2 C^2}{\alpha^2}
-\tau e^{-\alpha\tau}
-\left[
-1-e^{-\alpha\tau}(1+\alpha\tau)
-\right].
-\]
-This is the HJM no-arbitrage compensator generated by the IRFR humped
-volatility loading.
-
-The corresponding risk-neutral Market Signal-to-Noise Ratio for the
-rolling field is
-\[
-\mathrm{MSNR}^{\mathbb Q}(t,\tau)
-=
-\frac{b^{\mathbb Q}(t,\tau)}{\sigma(t,\tau)}
-=
-\frac{\partial_\tau x(t,\tau)}{\sigma(t,\tau)}
-+
-\int_0^\tau \sigma(t,s)\,ds
-\]
-in the one-factor case. Thus
-\[
-\lambda_t
-=
-\mathrm{MSNR}^{\mathbb P}(t,\tau)
--
-\left[
-\frac{\partial_\tau x(t,\tau)}{\sigma(t,\tau)}
-+
-\int_0^\tau \sigma(t,s)\,ds
-\right].
-\]
-This formula connects the empirical signal-to-noise structure of the
-physical IRFR field with the transport-corrected no-arbitrage compensator
-required under the pricing measure.
-
-\section{Reconciling IRFR Admissibility with the HJM Drift Restriction}
-\label{reconciling-irfr-admissibility-with-hjm}
-
-IRFR admissibility and the HJM no-arbitrage condition are not the same
-restriction. They act on different components of the model.
-
-IRFR admissibility restricts the allowable maturity loadings:
-\[
-H_i(\cdot)\in\mathcal A_{\mathrm{IRFR}},
-\]
-where \(\mathcal A_{\mathrm{IRFR}}\) denotes the space of maturity profiles
-compatible with the field equation and the imposed boundary regime. The
-HJM condition does not choose these loadings. Instead, once the loadings
-have been chosen, it determines the drift required to make discounted
-bond prices martingales.
-
-Thus the appropriate structure is
-\[
-\sigma_i(t,\tau)=\eta_i(t)H_i(\tau),
-\qquad
-H_i\in\mathcal A_{\mathrm{IRFR}},
-\]
-together with
-\[
-b^{\mathbb Q}(t,\tau)
-=
-\partial_\tau x(t,\tau)
-+
-\sum_i
-\sigma_i(t,\tau)
-\int_0^\tau \sigma_i(t,s)\,ds.
-\]
-The HJM drift need not itself be a homogeneous IRFR admissible mode. It is
-the no-arbitrage compensator associated with the admissible volatility
-geometry, plus the transport contribution required by rolling-maturity
-coordinates.
-
-Consequently, IRFR admissibility does not automatically imply
-arbitrage-free pricing. Rather, IRFR admissibility and no-arbitrage are
-compatible when admissibility is imposed on the volatility maturity modes
-and the risk-neutral drift is supplied by the HJM restriction. The
-resulting model is an IRFR-constrained HJM model: its volatility geometry
-is field-admissible, and its pricing dynamics are martingale-consistent.
-
-The Market Signal-to-Noise Ratio clarifies this division of labour. Under
-\(\mathbb P\), MSNR measures the empirical rolling drift signal per unit
-diffusion noise. Under \(\mathbb Q\), the drift signal is replaced by the
-transport-corrected HJM drift. The market price of risk \(\lambda\) is the
-difference between these two signal-to-noise ratios. Thus \(\lambda\) is
-the object that reconciles physical IRFR dynamics with risk-neutral bond
-pricing.
-
-\section{Toward Derivative Pricing}
-\label{toward-derivative-pricing}
-
-The construction above establishes the risk-neutral bond-pricing layer of
-IRFR. Once zero-coupon bond prices are defined by
-\[
-P(t,T)
-=
-\exp\left(
--\int_0^{T-t}x(t,s)\,ds
-\right),
-\]
-and once the forward-rate field is placed under the risk-neutral measure
-\(\mathbb Q\), contingent claims written on bonds can in principle be
-priced by the usual martingale valuation formula.
-
-For a payoff \(\Phi\) at maturity \(S\), the time-\(t\) value under the
-money-market numeraire is
-\[
-V(t)
-=
-B_t\,\mathbb E_t^{\mathbb Q}
-\left[
-B_S^{-1}\Phi
-\right].
-\]
-For example, a European option on a zero-coupon bond maturing at
-\(T>S\) has payoff
-\[
-\Phi=(P(S,T)-K)^+.
-\]
-Its value is therefore
-\[
-C(t)
-=
-B_t\,\mathbb E_t^{\mathbb Q}
-\left[
-B_S^{-1}(P(S,T)-K)^+
-\right].
-\]
-Equivalently, using the \(S\)-maturity bond as numeraire, the same option
-can be written as
-\[
-C(t)
-=
-P(t,S)\,\mathbb E_t^{\mathbb Q^S}
-\left[
-(P(S,T)-K)^+
-\right],
-\]
-where \(\mathbb Q^S\) is the \(S\)-forward measure.
-
-In IRFR terms, the underlying bond price is a functional of the field:
-\[
-P(S,T)
-=
-\exp\left(
--\int_0^{T-S}x(S,u)\,du
-\right).
-\]
-Thus a bond option is a contingent claim on an integrated IRFR field. The
-admissible maturity loading \(H(\tau)\) determines how shocks to the field
-propagate into the bond price. If, for example,
-\[
-x(t,\tau)=x_D+Z_tH(\tau),
+x(t,\tau)=x_0(\tau)+Z_tH(\tau),
 \]
 then
 \[
 P(t,t+\tau)
 =
 \exp\left(
--x_D\tau
+-
+\int_0^\tau x_0(s)\,ds
 -
 Z_t\int_0^\tau H(s)\,ds
 \right).
 \]
-In this reduced one-factor representation, bond-option pricing reduces to
-the pricing of a contingent claim on the scalar factor \(Z_t\), with bond
-sensitivity determined by the integrated IRFR loading
+The admissible maturity loading \(H\) determines bond-price sensitivity
+through the integrated loading
 \[
 \int_0^\tau H(s)\,ds.
 \]
 
-For the repeated-root humped branch,
+As derived in Chapter~5 for the repeated-root humped branch,
 \[
 H(\tau)=C\tau e^{-\alpha\tau},
 \]
@@ -5696,81 +5990,58 @@ the integrated loading is
 \int_0^\tau H(s)\,ds
 =
 \frac{C}{\alpha^2}
-\left[
-1-e^{-\alpha\tau}(1+\alpha\tau)
-\right].
+\left[1-e^{-\alpha\tau}(1+\alpha\tau)\right].
 \]
-Hence the field-to-bond mapping is explicit. This is the natural point at
-which an IRFR derivative-pricing theory would begin: the admissible
-maturity mode determines the bond-price exposure, while the risk-neutral
-dynamics determine the distribution of that exposure under \(\mathbb Q\).
+Hence the field-to-bond mapping is explicit. The remaining
+derivative-pricing problem is to specify the risk-neutral law of the
+relevant factor or integrated field functional under \(\mathbb Q\), then
+price the payoff under the chosen numeraire.
 
-However, this chapter does not complete that derivative-pricing
-programme. A full theory would require specifying the risk-neutral
-dynamics of the reduced factor process, proving the relevant
-distributional results, and deriving or numerically approximating option
-prices for bond options, caps, floors, and swaptions. In particular, the
-extension from bond pricing to option pricing requires more than the
-existence of a risk-neutral measure. It requires a tractable
-representation of the law of the integrated IRFR field under \(\mathbb Q\).
+This chapter therefore establishes bond-pricing consistency but does not
+claim to complete the pricing of options on bonds, caps, floors, or
+swaptions. Those require additional assumptions about factor reduction,
+market completeness, payoff-specific numeraires, numerical methods, and
+empirical calibration of \(\lambda_t\).
 
-The relation to humped-volatility derivative models should therefore be
-stated carefully. IRFR supplies a structural mechanism by which humped
-maturity loadings arise from admissibility and boundary selection. It
-does not, at this stage, reproduce a full option-pricing framework such
-as Ritchken--Chuang \cite{RitchkenChuang1999}. The appropriate claim is
-narrower: IRFR identifies an endogenous field-theoretic route to
-maturity-dependent volatility loadings that can, in principle, be inserted
-into a derivative-pricing framework once the risk-neutral factor dynamics
-are fully specified.
-
-\section{What This Construction Does and Does Not Prove}
+\section{What this construction does and does not prove}
 \label{what-this-construction-does-and-does-not-prove}
 
 This chapter establishes a bond-pricing interpretation for IRFR. It shows
 that:
 
 \begin{enumerate}
-\item the IRFR field can be identified with the instantaneous forward-rate
-curve in rolling-maturity coordinates;
-\item zero-coupon bond prices can be defined by integrating the IRFR field;
-\item the short rate and money-market numeraire are determined by the
-short-end boundary value;
-\item a risk-neutral measure can be introduced through a standard
-market-price-of-risk adjustment;
-\item the market price of risk can be interpreted as the correction
-between physical and risk-neutral Market Signal-to-Noise Ratios;
-\item the HJM drift restriction can be written in transport-corrected IRFR
-coordinates;
-\item IRFR-admissible volatility modes can be made consistent with
-no-arbitrage bond pricing;
-\item the derivative-pricing extension can be formulated as pricing
-functionals of the integrated IRFR field under \(\mathbb Q\).
+\item the money-market account is generated only by the realised short-end
+roll \(x_{t,t}\);
+\item non-short IRFRs are locally zero-value forward-rate contracts rather
+than bank-account accrual rates;
+\item the current IRFR strip represents future rolling short-rate
+exposures;
+\item zero-coupon bond prices are generated by integrating the IRFR strip;
+\item risk-neutral pricing is imposed by requiring \(P(t,T)/B_t\) to be a
+\(\mathbb Q\)-martingale;
+\item the change from \(\mathbb P\) to \(\mathbb Q\) preserves the single
+Brownian risk direction but changes the drift loading through the market
+price of risk;
+\item the physical MSNR is transformed by the market price of risk rather
+than destroyed by the change of measure;
+\item IRFR admissibility and no-arbitrage martingale pricing are
+complementary restrictions, not identical ones.
 \end{enumerate}
 
-The chapter does not establish a complete derivative-pricing theory. In
-particular, it does not prove uniqueness of the risk-neutral measure,
-market completeness, or closed-form pricing for options on bonds, caps,
-floors, or swaptions. Nor does it prove empirical superiority over affine
-or HJM term-structure models. Those questions require additional
-assumptions about the market price of risk, the rank of the volatility
-loading structure, and the calibration of the resulting model to market
-data.
+The construction does not prove uniqueness of the risk-neutral measure,
+market completeness, or closed-form derivative prices. Nor does it imply
+that IRFR admissibility alone enforces no-arbitrage. The field equation
+and boundary regime restrict admissible maturity geometry. The
+martingale condition supplies the pricing drift.
 
-The construction also does not imply that IRFR admissibility alone
-enforces no-arbitrage. The field equation and boundary regime restrict
-the admissible maturity geometry. The martingale pricing condition
-supplies the risk-neutral drift. These are complementary restrictions,
-not identical ones.
+The main conclusion is therefore precise. The money-market account is not
+the integral of the whole IRFR curve. It is the accumulated realised
+short-end roll. The rest of the IRFR curve is a strip of locally
+zero-value forward-rate contracts representing future short-rate rolls.
+Risk-neutral pricing is the consistency condition equating the current
+strip-generated bond price with the \(\mathbb Q\)-discounted expectation
+of future realised short-rate accruals.
 
-The main conclusion is therefore precise: IRFR can be given a
-no-arbitrage bond-pricing interpretation by identifying the field with the
-instantaneous forward-rate curve and imposing an HJM-style drift
-restriction on IRFR-admissible volatility modes. The open problem is no
-longer the conceptual existence of a risk-neutral bond-pricing measure.
-What remains open is the empirical calibration, numerical implementation,
-and derivative-pricing extension of the resulting IRFR-constrained HJM
-framework.
 
 
 \chapter{Calibration, Identification, and Empirical Discipline}\label{chapter-12}
@@ -6479,6 +6750,328 @@ each require additional work.
 
 The next chapter therefore states carefully what has been established,
 what has been supported conditionally, and what remains open.
+
+```latex
+\chapter{Empirical Evidence for the Completed Boundary Geometry}
+
+\section{Introduction}
+
+The previous chapter completed the boundary-field representation by distinguishing the equilibrium long-run anchor from the realised stochastic long-maturity boundary. In that construction, the IRFR field is no longer described only by a short-boundary loading and an interior repeated-root deformation. It is described by a completed boundary geometry with three maturity loadings:
+\[
+J(\tau)
+=
+\left(
+e^{-a^2\tau},
+\;
+\tau e^{-a^2\tau},
+\;
+1-e^{-a^2\tau}
+\right).
+\]
+The first loading transports the short boundary into maturity space. The second loading is the repeated-root belly mode inherited from the short-boundary construction. The third loading transports the stochastic long boundary.
+
+The purpose of the present chapter is to ask whether this completed geometry is visible in data.
+
+This is not a test of whether historical observations can prove the boundary-field theory uniquely. They cannot. Nor is it a test of whether the theory can be made to fit a yield curve by adding enough parameters. The empirical question is narrower and more structural. If the completed boundary geometry is economically meaningful, then the same maturity-space object should organise several observables extracted from the same dataset: curve shape, the spatial decay parameter \(a^2\), maturity volatility, covariance rank, and the admissible market-price-of-risk restriction.
+
+The chapter therefore tests whether one estimated boundary geometry can support a linked sequence of diagnostics. Shape fit alone would show only that the representation is a useful curve model. Volatility fit would show that the same geometry has second-moment content. Covariance-rank evidence asks whether short/curvature risk and long-boundary risk are empirically separable. The market-price-of-risk test then asks whether the same boundary-risk directions also organise the risk-neutral drift restriction.
+
+The empirical claim of this chapter is therefore cumulative. The evidence is supportive if the same estimated geometry:
+\begin{enumerate}
+    \item fits the observed forward-rate curve;
+    \item identifies a stable long-sample spatial decay scale;
+    \item generates the observed maturity-volatility profile;
+    \item favours a two-boundary-risk covariance structure over a collapsed one-Brownian specification; and
+    \item provides a strong market-signal-to-noise-ratio diagnostic of the drift restriction.
+\end{enumerate}
+
+The evidence reported below supports this interpretation. The benchmark specification uses U.S. fitted instantaneous forward rates at 1Y, 3Y, 5Y, 10Y, and 30Y. The 30-year fitted forward is used as the observable proxy for the stochastic long boundary. The full-sample spatial decay estimate is close to
+\[
+a^2 \simeq 0.09.
+\]
+The covariance evidence favours a two-boundary-risk structure separating short/curvature risk from long-boundary risk. A one-Brownian specification can reproduce some volatility ordering, but it performs materially worse on volatility scale and market-price-of-risk diagnostics. Fixed \(a^2\) generates strong maturity-volatility geometry over structural windows, especially over rolling twenty-year samples. The market-price-of-risk restriction performs strongly against a zero-drift benchmark, while centred realised-drift tests remain unstable because realised drift is itself a fragile empirical object.
+
+The chapter should be read as empirical support for the boundary-field structure, not as a proof of uniqueness. The tests support a specific claim: interest-rate observables contain a common boundary-field structure linking shape, volatility, covariance, and risk-neutral character.
+
+\section{From the Completed Jacobian to an Empirical State}
+
+The completed boundary-field representation writes the forward-rate field as
+\begin{equation}
+x_t(\tau)
+=
+X_t
++
+\left[(r_t-X_t)+B_t\tau\right]e^{-a^2\tau}.
+\label{eq:empirical-state}
+\end{equation}
+Equivalently,
+\[
+x_t(\tau)
+=
+e^{-a^2\tau}r_t
++
+\tau e^{-a^2\tau}B_t
++
+\left(1-e^{-a^2\tau}\right)X_t.
+\]
+Thus the empirical state is
+\[
+(r_t,B_t,X_t),
+\]
+where \(r_t\) is the short-boundary state, \(B_t\) is the curvature or policy-deformation state, and \(X_t\) is the realised stochastic long-boundary state.
+
+The associated maturity-loading vector is
+\begin{equation}
+J(\tau)
+=
+\left(
+e^{-a^2\tau},
+\;
+\tau e^{-a^2\tau},
+\;
+1-e^{-a^2\tau}
+\right).
+\label{eq:empirical-jacobian}
+\end{equation}
+For small state increments,
+\begin{equation}
+dx_t(\tau)
+=
+e^{-a^2\tau}dr_t
++
+\tau e^{-a^2\tau}dB_t
++
+\left(1-e^{-a^2\tau}\right)dX_t.
+\label{eq:empirical-increments}
+\end{equation}
+
+The important empirical restriction is that the same \(J(\tau)\) is used throughout the chapter. It is not re-estimated separately for shape, volatility, covariance, and market-price-of-risk tests. This is the point at which the empirical exercise becomes a test of the theory rather than a curve-fitting exercise.
+
+\section{Dataset and Empirical Construction}
+
+The empirical analysis uses U.S. fitted instantaneous forward rates. The benchmark maturity set is
+\begin{equation}
+\mathcal{T}
+=
+\{1,3,5,10,30\}.
+\label{eq:empirical-tenors}
+\end{equation}
+For each date \(t\), the observed benchmark forward-rate vector is
+\begin{equation}
+F_t
+=
+\big(f_t(1),f_t(3),f_t(5),f_t(10),f_t(30)\big).
+\label{eq:empirical-forward-vector}
+\end{equation}
+
+The 30-year fitted forward is used as the benchmark observable proxy for the realised stochastic long boundary:
+\begin{equation}
+B_t^L := f_t(30).
+\label{eq:long-boundary-proxy}
+\end{equation}
+This choice is imperfect because the true asymptotic long boundary is not directly observed. However, among the fitted forward maturities available in the benchmark dataset, the 30-year point is the closest observable representation of the long-maturity boundary.
+
+The 20-year point is retained as a robustness check rather than included in the benchmark maturity set. It produces a similar full-sample estimate of \(a^2\), but less stable period and rolling-window volatility correlations. The benchmark therefore uses 30Y as the long-boundary proxy, while the 20Y evidence is interpreted as part of the measurement problem associated with observing an asymptotic boundary at finite maturity.
+
+For a given value of \(a^2\), the observed forward curve is fitted to \eqref{eq:empirical-state}. The spatial decay parameter is estimated by the cross-sectional shape objective
+\begin{equation}
+\widehat{a^2}
+=
+\arg\min_{a^2}
+\sum_t
+\sum_{\tau\in\mathcal{T}}
+\left[
+f_t(\tau)-x_t(\tau;a^2)
+\right]^2.
+\label{eq:a2-estimation}
+\end{equation}
+The benchmark full-sample estimate is close to
+\[
+\widehat{a^2}=0.091893.
+\]
+
+\section{Boundary-Risk Decomposition}
+
+The completed Jacobian separates maturity geometry from stochastic rank. The empirical covariance layer asks how many risk directions are required to describe observed state variation. The benchmark specification separates short/curvature risk from long-boundary risk:
+\begin{equation}
+dr_t=\nu_r\,dW_t^S,\qquad
+dB_t=\nu_B\,dW_t^S,\qquad
+dX_t=\nu_X\,dW_t^X.
+\label{eq:state-risk-decomposition}
+\end{equation}
+The Brownian directions are allowed to be correlated:
+\begin{equation}
+dW_t^S dW_t^X=\rho\,dt.
+\label{eq:boundary-risk-correlation}
+\end{equation}
+
+This gives two maturity-risk loadings:
+\begin{align}
+g_S(\tau)
+&=
+e^{-a^2\tau}\nu_r
++
+\tau e^{-a^2\tau}\nu_B,
+\label{eq:short-risk-loading}
+\\
+g_X(\tau)
+&=
+\left(1-e^{-a^2\tau}\right)\nu_X.
+\label{eq:long-risk-loading}
+\end{align}
+The effective maturity variance is
+\begin{equation}
+g_{\mathrm{eff}}^2(\tau)
+=
+g_S^2(\tau)
++
+g_X^2(\tau)
++
+2\rho g_S(\tau)g_X(\tau).
+\label{eq:effective-volatility}
+\end{equation}
+
+Equivalently, if
+\[
+L
+=
+\begin{pmatrix}
+\nu_r & 0\\
+\nu_B & 0\\
+0 & \nu_X
+\end{pmatrix},
+\qquad
+C
+=
+\begin{pmatrix}
+1 & \rho\\
+\rho & 1
+\end{pmatrix},
+\]
+then the model-implied maturity covariance matrix is
+\begin{equation}
+K
+=
+JLC L^\top J^\top.
+\label{eq:model-covariance}
+\end{equation}
+This covariance matrix has rank at most two. It collapses to rank one only if the two boundary-risk directions are effectively the same Brownian motion. The empirical question is therefore whether the data favour a one-direction collapse or a two-boundary-risk structure.
+
+\section{Market Price of Risk and MSNR}
+
+The same two maturity-risk directions imply a market-price-of-risk restriction:
+\begin{equation}
+f(\tau)
+=
+g_S(\tau)\lambda_S
++
+g_X(\tau)\lambda_X,
+\label{eq:mpr-restriction}
+\end{equation}
+where \(f(\tau)\) is the estimated physical drift of the forward-rate increment and \(\lambda_S,\lambda_X\) are the market prices of short/curvature risk and long-boundary risk.
+
+The market prices of risk are \(\lambda_S\) and \(\lambda_X\). The market signal-to-noise ratio, or MSNR, is not itself the market price of risk. It is the diagnostic used to evaluate how well the realised drift vector is explained by the boundary-risk projection.
+
+Two diagnostics are reported. The zero-benchmark statistic is
+\begin{equation}
+R^2_{\mathrm{zero}}
+=
+1-
+\frac{
+\sum_\tau
+\left(f_\tau-\widehat f_\tau\right)^2
+}{
+\sum_\tau f_\tau^2
+}.
+\label{eq:msnr-zero}
+\end{equation}
+The centred statistic is
+\begin{equation}
+R^2_{\mathrm{centred}}
+=
+1-
+\frac{
+\sum_\tau
+\left(f_\tau-\widehat f_\tau\right)^2
+}{
+\sum_\tau
+\left(f_\tau-\bar f\right)^2
+}.
+\label{eq:msnr-centred}
+\end{equation}
+
+The zero benchmark asks whether the model explains realised drift relative to no drift. The centred benchmark asks whether the model explains the demeaned cross-maturity shape of realised drift. The centred test is stricter and less stable because realised drift is a low-signal empirical object, and because the centred denominator can be small.
+
+\section{Empirical Results}
+
+\subsection{Branch selection}
+
+The branch-selection exercise shows that shape fit alone does not identify the repeated-root branch. Several branches fit the cross-section well. The decisive evidence comes from volatility transition and scale diagnostics. As the branch parameter moves toward the repeated-root case, the transition-region volatility error declines and the model/actual volatility scale ratio moves closer to one. This supports the repeated-root geometry as an empirical object, not merely as a theoretical special case.
+
+\subsection{One Brownian versus two boundary-risk directions}
+
+The one-Brownian model reproduces some of the ordering of maturities by volatility, but it performs materially worse on volatility scale and market-price-of-risk diagnostics. The two-boundary-risk model separates the short/curvature component from the long-boundary component and provides a stronger joint account of volatility and drift projection.
+
+This result is important for the monograph. The completed Jacobian itself is a maturity-geometry object. It does not, by itself, force a particular empirical stochastic rank. The empirical evidence indicates that the natural two-direction implementation is more successful than a collapsed one-direction implementation.
+
+\subsection{Spatial decay stability}
+
+The full-sample estimate of the spatial decay parameter is close to \(a^2=0.09\). Shorter windows show regime sensitivity, especially in the post-2020 period, but the long-sample and structural-window evidence supports a stable decay scale near this value.
+
+This is one of the central empirical results. The same decay parameter controls the short-boundary loading, the repeated-root belly loading, and the long-boundary transmission loading. Stability of \(a^2\) is therefore evidence for the maturity geometry itself.
+
+\subsection{Fixed-\(a^2\) volatility geometry}
+
+With \(a^2\) fixed at its full-sample estimate, the model continues to generate strong maturity-volatility geometry over structural windows. The fit is especially strong over rolling twenty-year windows. The main weak decade is 2010--2020, where zero-rate policy, quantitative easing, and policy-regime compression plausibly distort realised volatility shape.
+
+The fixed-\(a^2\) exercise is important because it prevents the volatility result from being a re-estimation artefact. The same decay scale estimated from shape is used to test volatility.
+
+\subsection{MSNR and the risk-neutral bridge}
+
+The market-price-of-risk restriction performs strongly against the zero-drift benchmark. This is the main risk-neutral diagnostic. It shows that the same two maturity-risk directions that organise covariance also provide a strong projection of realised drift.
+
+The centred MSNR statistic is less stable. This should not be interpreted as a direct failure of the boundary-field covariance geometry. Rather, it reflects the empirical fragility of realised cross-sectional drift. The model identifies stable admissible risk-price directions; the historical realised prices attached to those directions can shift across regimes.
+
+\section{Interpretation}
+
+The empirical evidence supports the completed boundary-field geometry in a specific sense. It does not prove that the IRFR framework is the unique possible explanation of interest-rate data. It does not prove that risk premia are stationary. It does not prove that the 30-year fitted forward is a perfect observation of the asymptotic long boundary.
+
+What it does show is that one boundary-field geometry can organise several objects that are usually treated separately. The same \(a^2\) and the same completed Jacobian appear in shape, volatility, covariance, and market-price-of-risk diagnostics.
+
+The empirical chain is:
+\[
+a^2
+\quad\Rightarrow\quad
+J(\tau)
+\quad\Rightarrow\quad
+(g_S,g_X)
+\quad\Rightarrow\quad
+K(\tau,\sigma)
+\quad\Rightarrow\quad
+f(\tau)=g_S(\tau)\lambda_S+g_X(\tau)\lambda_X.
+\]
+This is the empirical unification. Shape evidence identifies the maturity geometry. Volatility evidence shows that the geometry has second-moment content. Covariance evidence supports the separation of short/curvature risk from long-boundary risk. MSNR evidence links the same risk directions to the market-price-of-risk restriction.
+
+\section{Limitations}
+
+Several limitations should be kept explicit.
+
+First, the long boundary is not directly observed. The 30-year fitted forward is a proxy for the realised stochastic long boundary. This proxy is economically reasonable, but imperfect.
+
+Second, the 20-year robustness exercise shows that finite-maturity long-boundary measurement is delicate. The 20-year point gives a similar full-sample decay estimate, but less stable volatility diagnostics. This supports the use of 30Y as the benchmark, but also confirms the difficulty of measuring an asymptotic boundary from finite data.
+
+Third, realised drift is fragile. The zero-benchmark MSNR result is robust, but centred realised-drift tests are regime-sensitive. This is consistent with the view that historical drift is affected by monetary regimes, inflation regimes, and term-premium variation.
+
+Fourth, the evidence supports the completed boundary geometry but does not establish uniqueness. Other models may reproduce some of the same facts. The contribution of the IRFR framework is that shape, volatility, covariance, and market-price-of-risk structure are linked by one maturity-space mechanism.
+
+\section{Conclusion}
+
+This chapter has tested the completed boundary-field geometry developed in the preceding chapter. The empirical evidence is supportive. Using U.S. fitted instantaneous forward rates, the benchmark specification identifies a stable long-sample decay scale near \(a^2=0.09\), supports the 30-year point as the practical observable proxy for the stochastic long boundary, favours a two-boundary-risk covariance structure, and finds strong zero-benchmark MSNR evidence for the market-price-of-risk restriction.
+
+The conclusion is not that the theory is proved. The conclusion is that the central empirical footprint of the theory is present: the same boundary geometry that organises the forward-rate curve also organises maturity volatility, covariance rank, and the admissible risk-neutral drift structure.
+
+This is the empirical bridge from the long-boundary construction to the final scope and limitations of the monograph. The theory has produced a completed Jacobian. The data suggest that this Jacobian is not merely formal. It is visible in the observable term structure.
+```
 
 \chapter{Scope, Limitations, and Further Directions}\label{chapter-13}
 
