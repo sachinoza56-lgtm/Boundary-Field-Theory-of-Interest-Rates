@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Theory and Boundary Laws of Interest Rates - Sachin Oza</title>
+
+    <style>
+        body {
+            font-family: Georgia, serif;
+            max-width: 800px;
+            margin: 40px auto;
+            line-height: 1.6;
+            padding: 0 20px;
+            color: #222;
+        }
+
+        h1 { font-size: 34px; }
+        h2 { font-size: 28px; }
+
+        h3 {
+            margin-top: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            font-size: 22px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1a0dab;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .site-header {
+            margin-bottom: 55px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .site-title {
+            margin-bottom: 12px;
+        }
+
+        .site-subtitle {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            color: #666;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .site-author {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #777;
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        .meta-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .resource-block {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #1a0dab;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .resource-block p {
+            margin-top: 0;
+            text-align: left;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1a0dab;
+            color: white !important;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            text-decoration: none !important;
+        }
+
+        .btn:hover {
+            background: #130985;
+        }
+
+        .btn-youtube {
+            background: #e62117;
+        }
+
+        .btn-youtube:hover {
+            background: #cc1810;
+        }
+
+        .video-block {
+            border-left-color: #e62117;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .paper-divider {
+            margin: 70px 0 45px;
+            border: 0;
+            border-top: 2px solid #ddd;
+        }
+
+        .paper-label {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        small {
+            color: #666;
+        }
+
+        .contact-form {
+            margin-top: 50px;
+            background: #f9f9f9;
+            padding: 25px;
+            border-left: 4px solid #1a0dab;
+            border-radius: 5px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Georgia, serif;
+            font-size: 14px;
+        }
+
+        .contact-form button {
+            background: #1a0dab;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #130985;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                margin: 25px auto;
+                padding: 0 16px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .site-subtitle {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <h1 class="site-title">
+        Unified Field Theory and Boundary Laws of Interest Rates:
+        An Instantaneous Rolling Forward Rate Approach
+    </h1>
+
+    <p class="site-subtitle">
+        Research papers, explanatory notes, presentation materials, and tutorials on the instantaneous rolling forward rate framework.
+    </p>
+
+    <p class="site-author">Sachin Oza</p>
+</header>
+
+<nav style="text-align: center; margin-bottom: 40px; border-bottom: 1px solid #ddd; padding-bottom: 20px;">
+    <a href="#irfr-monograph" style="margin: 0 10px; font-weight: bold;">Monograph</a> | 
+    <a href="#irfr-humped-volatility" style="margin: 0 10px; font-weight: bold;">Paper 1</a> | 
+    <a href="#irfr-monetary-policy-boundary-condition" style="margin: 0 10px; font-weight: bold;">Paper 2</a> | 
+    <a href="#irfr-stochastic-long-boundary" style="margin: 0 10px; font-weight: bold;">Paper 3</a> | 
+    <a href="#irfr-empirical-evidence" style="margin: 0 10px; font-weight: bold;">Paper 4</a>
+</nav>
+
+<main>
+
+    <!-- MONOGRAPH SECTION -->
+    <section id="irfr-monograph">
+        <div class="paper-label">Monograph</div>
+        <h2>Unified Boundary Field Theory of Interest Rates</h2>
+        <div class="meta-info">
+            <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
+            <strong>Version:</strong> June 2026
+        </div>
+
+        <h3>Abstract</h3>
+        <p>
+            Interest-rate modelling has developed through several powerful but partially distinct
+            traditions. Each of these traditions has been extraordinarily productive, yet a conceptual
+            separation remains. In many models, the dynamic consistency of the term structure is
+            handled in one part of the framework, while the shape of the curve, the maturity profile
+            of volatility, and the effect of monetary policy are introduced elsewhere through
+            additional parametrisation.
+        </p>
+        <p>
+            Humped volatility structures, curve-shape restrictions, maturity loadings, and policy
+            effects are often specified because they are useful or empirically plausible, rather than
+            derived from a common structural mechanism.
+        </p>
+        <p>
+            The purpose of this monograph is to investigate whether more of this structure can be
+            generated from fewer principles, while preserving a clear account of the modelling cost.
+        </p>
+
+        <h3>Monograph Download</h3>
+        <div class="resource-block">
+            <p>Download the full monograph together with the accompanying LaTeX source materials.</p>
+            <p>
+                <a href="Monograph_of_Interest_Rate_Field_Theory.pdf" class="btn">
+                    Download Monograph PDF
+                </a>
+            </p>
+            <ul>
+                <li><strong>LaTeX Bundle:</strong> <a href="IRFR_Monograph_LaTeX_Master.tex">IRFR_Monograph_LaTeX_Master.tex</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <hr class="paper-divider">
+
+    <!-- PAPER 1 SECTION -->
+    <section id="irfr-humped-volatility">
+        <div class="paper-label">Paper 1</div>
+        <h2>An Axiomatically Consistent Single-Factor Term Structure Model with Admissible Humped Volatility</h2>
+        <div class="meta-info">
+            <strong>Author:</strong> Sachin Oza &nbsp;|&nbsp;
+            <strong>Version:</strong> April 2026
+        </div>
+
+        <h3>Abstract</h3>
+        <p>
+            We develop an axiomatic framework for the dynamics of the instantaneous rolling forward rate and the associated term structure of interest rates. These conditions uniquely constrain the IRFR to a Pearson-type diffusion with affine drift and quadratic volatility.
+        </p>
+
+        <h3>1. Core Research Paper</h3>
+        <div class="resource-block">
+            <p>Download the full final draft manuscript and access online repository links:</p>
+            <p>
+                <a href="IRFR_Humped_Volatility_Manuscript.pdf" class="btn">
+                    Download Manuscript PDF
+                </a>
+            </p>
+            <ul>
+                <li><strong>SSRN:</strong> <a href="#">View Abstract on SSRN</a></li>
+                <li><strong>Source Code:</strong> <a href="IRFR_humped_volatility.tex">IRFR_humped_volatility.tex</a></li>
+            </ul>
+        </div>
+
+        <h3>2. Presentation &amp; Tutorial Slide Deck</h3>
+        <div class="resource-block">
+            <p>An intuitive walkthrough of the framework.</p>
+            <p>
+                <a href="IRFR_Tutorial_Presentation.pdf" class="btn">
+                    Download Presentation PDF
+                </a>
+            </p>
