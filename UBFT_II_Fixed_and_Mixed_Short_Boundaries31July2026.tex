@@ -1,0 +1,1390 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\numberwithin{equation}{subsection}
+\renewcommand{\theequation}{\thesection.\arabic{subsection}.\arabic{equation}}
+\usepackage{booktabs,array,longtable}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{setspace}
+\setstretch{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.62em}
+\setlist[itemize]{topsep=0.3em,itemsep=0.25em}
+\setlist[enumerate]{topsep=0.3em,itemsep=0.25em}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\MSNR}{\operatorname{MSNR}}
+\newcommand{\dd}{\,\mathrm{d}}
+
+\title{\textbf{Unified Boundary Field Theory of Interest Rates II: Fixed and Mixed Short-Boundary Conditions}\\[0.55em]
+\large Dirichlet and Robin Geometry, Repeated-Root Modes, and Market Signal-to-Noise Ratio Invariance}
+\author{Sachin Oza}
+\date{July 30, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper extends the instantaneous rolling forward-rate (IRFR) framework developed in Paper~I \cite{Oza2026} from a free or Neumann short-boundary to fixed and mixed short-boundary conditions. The purpose is to examine how alternative short-end boundary conditions may represent monetary-policy intervention and determine the way in which stochastic movements are transmitted across the interest-rate curve.
+
+The two limiting cases are the Neumann, or free, short-boundary and the Dirichlet, or pinned, short-boundary. Under a free or Neumann short-boundary, stochastic variation may enter directly through the short-boundary level. Under a pinned or Dirichlet short-boundary, the short-boundary value cannot itself remain stochastic. On the special repeated-root branch, where the cross-sectional and stochastic clocks coincide, stochasticity instead enters through the coefficient of the maturity loading
+\[
+\tau e^{-a_D^2\tau}.
+\]
+This loading is zero at the pinned boundary but positive at interior maturities. The resulting construction therefore produces zero short-boundary volatility, positive stochastic exposure within the curve, a rank-one covariance structure and an endogenous volatility hump. The linear-exponential maturity form also provides a structural explanation for volatility specifications that have previously been introduced for empirical reasons in the term-structure literature, including the class associated with Ritchken and Chuang \cite{RitchkenChuang1999}.
+
+The paper then introduces the Robin, or mixed, short-boundary as the practically relevant case between the free or Neumann and pinned or Dirichlet extremes. The Robin construction combines the Neumann or free boundary-level mode
+\[
+e^{-a_R^2\tau}
+\]
+with the Dirichlet or pinned boundary-slope mode
+\[
+\tau e^{-a_R^2\tau}.
+\]
+Although two maturity basis functions are present, the mixed or Robin boundary condition places their coefficients on a one-dimensional affine manifold. The model therefore remains one-factor: the boundary level and boundary slope are not separate stochastic factors.
+
+The derivation is organised in two stages. First, the boundary representation establishes the admissible cross-sectional geometry without fixing the equilibrium coefficient. Second, the affine Kolmogorov forward closure, equilibrium moment transport, positivity and boundary degeneracy identify the state dynamics, stationary variance, factor relations and globally constant within-regime Market Signal-to-Noise Ratio (MSNR).
+
+The resulting Neumann--Dirichlet--Robin classification provides a foundation for investigating how the boundary-state framework, its equilibrium conditions and its maturity geometry may change when additional boundary quantities are allowed to vary stochastically.
+
+\end{abstract}
+
+\noindent\textbf{Keywords:} instantaneous rolling forward rates; Kolmogorov forward equation; Dirichlet boundary; Robin boundary; repeated roots; humped volatility; Market Signal-to-Noise Ratio invariance; term structure.\\
+\textbf{JEL classification:} E43, E52, G12.
+
+\section*{AI Disclosure}
+The author used generative AI tools for editorial assistance, mathematical exposition, and drafting support. The author reviewed all generated material and is responsible for the paper's content, derivations, interpretations, and conclusions.
+
+\section{Introduction}
+
+The short end of an interest-rate term structure is economically and mathematically different from the interior of the maturity domain. Under a free, or Neumann, short-boundary condition, stochastic variation may enter directly through the instantaneous boundary level. Under a fixed, or Dirichlet, short-boundary condition, it cannot: once the final rolling rate is pinned, the boundary level has zero stochastic variation, so uncertainty must migrate into an interior shape coordinate.
+
+This paper develops that migration as a boundary-classification result within the Unified Boundary Field Theory of instantaneous rolling forward rates (IRFRs). Paper~I \cite{Oza2026} derived the affine Kolmogorov forward structure, rolling-maturity transport and one-factor exponential maturity clock under a free, or Neumann-type, short boundary. The present paper first asks what changes when the short boundary is fixed and then extends the analysis to a boundary that is only partially anchored. The resulting classification also provides a foundation for investigating extensions in which the fixed-long-boundary assumption is relaxed and the consistency of a stochastic realised long endpoint with the equilibrium and maturity-loading restrictions is examined.
+
+
+The central conclusion goes beyond the observation that the Dirichlet curve contains a linear-exponential term. The boundary condition determines which observable is able to carry stochasticity. Under a free, or Neumann, short boundary, the stochastic state is the boundary level. Under a fixed, or Dirichlet, short boundary, the stochastic state is the boundary slope, equivalently represented by the repeated-root coefficient. Under a mixed, or Robin, short boundary, the level and slope coordinates satisfy one affine relation and therefore span a one-dimensional stochastic manifold.
+
+The economically meaningful boundary is first imposed at the final tradable rolling interval $\tau=\Delta t$. The formal condition at $\tau=0$ is obtained only in the continuous-time limit $\Delta t\downarrow0$. This distinction matters for both the Dirichlet and Robin constructions. It also prevents the rolling boundary condition from being confused with a fixed-maturity stationarity condition.
+
+The paper makes five contributions. First, it derives a representation theorem for a fixed short boundary on the repeated-root branch and explains why $\tau e^{-a_D^2\tau}$ is the natural stochastic maturity mode when the short-boundary value is pinned. Second, it separates the general boundary geometry from the subsequent identification of a particular equilibrium coefficient and state stochastic differential equation. Third, it derives zero short-boundary variance, rank-one interior covariance and the maturity location of the volatility hump. Fourth, it constructs the Robin condition as an affine synthesis of the Neumann boundary-level mode and the Dirichlet boundary-slope mode, while retaining only one stochastic factor. Fifth, under the identified affine closure, it derives stationary variances, factor relations, positivity calibrations and a globally constant within-regime Market Signal-to-Noise Ratio (MSNR) for both the Dirichlet and Robin cases, in direct analogy with the Neumann result in Paper~I \cite{Oza2026}.
+
+The paper is organised as follows: \begin{itemize} 
+\item Section~2 states the axioms and the final-rolling-boundary convention. \item Section~3 introduces the admissible repeated-root branch. 
+\item Section~4 develops the Dirichlet representation and its identified affine dynamics. 
+\item Section~5 develops the Robin construction as the affine synthesis of Neumann and Dirichlet modes. 
+\item Sections~6 and~7 compare the boundary regimes and summarise the principal results. 
+\item Sections~8 and~9 explain the bridge to a stochastic long boundary and distinguish the representation results from the subsequent identification layer.
+\end{itemize}
+
+\section{Axioms and the final rolling boundary}
+Paper~I \cite{Oza2026} presents a fuller discussion of the axiomatic approach to the IRFR curve, specifically for the Neumann, or free, short-boundary case. This subsection recaps the axioms in a form that is more readily applicable to Dirichlet, or pinned, and Robin, or mixed, short-boundary constructions.
+
+\subsection{Axiom 1: adherence to the Kolmogorov forward equation}
+
+The drift and diffusion coefficients must define a process for an IRFR whose transition density adheres to the Kolmogorov forward equation (KFE). The affine coefficient family used below is an admissible KFE closure. No claim of uniqueness is required for the boundary representation results.
+
+\subsection{Axiom 2: rolling coordinate consistency}
+
+The rolling primitive (IRFR) must be invariant under a change of maturity coordinate. In the affine construction, drift and diffusion share the same maturity and state kernel, so that their ratio is independent of maturity. This permits a one-dimensional stochastic state to generate an entire cross-section.
+
+\subsection{Axiom 3: equilibrium rolling stationarity}
+
+Equilibrium stationarity is a rolling condition. For the relevant moments,
+\begin{equation}
+\boxed{\frac{\partial}{\partial t}\E\!\left[x_{t,T}^n\right]
+=
+-\frac{\partial}{\partial T}\E\!\left[x_{t,T}^n\right].}
+\end{equation}
+To avoid confusion, we note that it is not the fixed-maturity condition
+\begin{equation}
+\frac{\partial}{\partial t}\E\!\left[x_{t,T}^n\right]=0.
+\end{equation}
+Because
+\begin{equation}
+\tau=T-t,
+\end{equation}
+we have, at fixed calendar time,
+\begin{equation}
+\frac{\partial}{\partial T}=\frac{\partial}{\partial\tau},
+\end{equation}
+whereas at fixed maturity date,
+\begin{equation}
+\frac{\partial}{\partial t}=-\frac{\partial}{\partial\tau}.
+\end{equation}
+The deterministic maturity-roll contribution must therefore be retained when the fixed-$T$ stochastic differential is calculated.
+
+Within the affine closure, Axiom 3 gives the coefficient relation for the drift term, $f$,
+\begin{equation}
+f(x,t,T)
+=
+a\bigl(x-x_e(T-t)\bigr)
++
+\frac{1}{a}\frac{\partial x_e(T-t)}{\partial T},
+\end{equation}
+up to the overall sign convention used for the KFE coefficients.
+
+\subsection{Axiom 4: positivity and boundary degeneracy}
+
+The admissible state space must keep the cross-sectional curve non-negative. At a state at which the curve reaches its positive boundary, the diffusion coefficient must vanish so that the process does not diffuse out of the admissible domain.
+
+\subsection{The boundary is first imposed at $\tau=\Delta t$}
+
+The economically meaningful lower maturity is the final tradable rolling interval $\Delta t>0$. A short-boundary condition is therefore first imposed at
+\begin{equation}
+\tau=\Delta t,
+\end{equation}
+not directly at the formal point $\tau=0$. The continuous-time boundary is obtained only after taking
+\begin{equation}
+\Delta t\downarrow0.
+\end{equation}
+For Dirichlet,
+\begin{equation}
+x^D_t(\Delta t)=x_D,
+\end{equation}
+and consequently
+\begin{equation}
+\lim_{\Delta t\downarrow0}x^D_t(\Delta t)=x^D_t(0)=x_D.
+\end{equation}
+For Robin, the mixed level-slope condition is likewise imposed at $\tau=\Delta t$ before the continuous-time limit is taken.
+
+\section{Admissible repeated-root cross-sectional branch}
+
+\subsection{Repeated-root solution space}
+
+Consider the repeated-root maturity equation
+\begin{equation}
+\left(\frac{\partial}{\partial\tau}+a^2\right)^2
+\bigl[x_t(\tau)-x_\infty\bigr]=0.
+\end{equation}
+Its general solution is
+\begin{equation}
+\boxed{x_t(\tau)
+=
+x_\infty+
+\left[A_t+B_t\tau\right]e^{-a^2\tau}.}
+\end{equation}
+The two maturity functions are
+\begin{equation}
+e^{-a^2\tau}
+\qquad\text{and}\qquad
+\tau e^{-a^2\tau}.
+\end{equation}
+This is the admissible $r=1$ repeated-root branch, using the notation of Paper~I \cite{Oza2026}, arising when the cross-sectional and calendar-time clocks coincide. It is not asserted to be the unique affine cross-sectional solution. Its importance is that it contains both the boundary-level mode and a mode that vanishes at the short-boundary.
+
+The short-boundary value and ordinary short-boundary slope are
+\begin{equation}
+x_t(0)=x_\infty+A_t,
+\end{equation}
+and
+\begin{equation}
+\left.\frac{\partial x_t(\tau)}{\partial\tau}\right|_{\tau=0}
+=
+B_t-a^2A_t.
+\end{equation}
+respectively. Thus $A_t$ is the boundary-level coordinate, while $B_t$ is the transport-adjusted boundary-slope coefficient. The ordinary slope is $B_t-a^2A_t$.
+
+\section{Dirichlet boundary construction}
+
+\subsection{Exact finite-$\Delta t$ representation}
+
+Begin with
+\begin{equation}
+x^D_t(\tau)
+=
+x_\infty+
+\left[A_{D,t}+B_{D,t}\tau\right]e^{-a_D^2\tau}.
+\end{equation}
+Impose the final-period Dirichlet condition
+\begin{equation}
+x^D_t(\Delta t)=x_D.
+\end{equation}
+Then
+\begin{equation}
+x_\infty+
+\left[A_{D,t}+B_{D,t}\Delta t\right]e^{-a_D^2\Delta t}
+=x_D,
+\end{equation}
+so
+\begin{equation}
+A_{D,t}+B_{D,t}\Delta t
+=
+(x_D-x_\infty)e^{a_D^2\Delta t},
+\end{equation}
+and therefore
+\begin{equation}
+A_{D,t}
+=
+(x_D-x_\infty)e^{a_D^2\Delta t}-B_{D,t}\Delta t.
+\end{equation}
+The exact finite-$\Delta t$ cross-section is
+\begin{equation}
+\begin{aligned}
+x^D_t(\tau)
+=
+x_\infty+
+\Big[&(x_D-x_\infty)e^{a_D^2\Delta t}
+\\
+&+B_{D,t}(\tau-\Delta t)
+\Big]e^{-a_D^2\tau}.
+\end{aligned}
+\end{equation}
+At $\tau=\Delta t$ the $B_{D,t}$ term vanishes and the boundary value is exactly $x_D$.
+
+Taking $\Delta t\downarrow0$ gives
+\begin{equation}
+\boxed{x^D_t(\tau)
+=
+x_\infty+
+\left[x_D-x_\infty+B_{D,t}\tau\right]e^{-a_D^2\tau}.}
+\end{equation}
+The coefficient of the pure exponential is fixed by the boundary. The remaining stochastic degree of freedom is $B_{D,t}$.
+
+\subsection{The boundary slope and the remaining stochastic coefficient}
+
+At finite $\Delta t$,
+\begin{equation}
+\left.\frac{\partial x^D_t(\tau)}{\partial\tau}\right|_{\tau=\Delta t}
+=
+B_{D,t}e^{-a_D^2\Delta t}
+-a_D^2(x_D-x_\infty).
+\end{equation}
+In the continuous-time limit,
+\begin{equation}
+\left.\frac{\partial x^D_t(\tau)}{\partial\tau}\right|_{\tau=0}
+=
+B_{D,t}-a_D^2(x_D-x_\infty).
+\end{equation}
+The boundary condition has already fixed the coefficient of the pure exponential at
+\begin{equation}
+x_D-x_\infty.
+\end{equation}
+The only remaining stochastic coefficient is therefore $B_{D,t}$. The ordinary boundary slope is not introduced as a new symbol; throughout the paper it is retained explicitly as
+\begin{equation}
+B_{D,t}-a_D^2(x_D-x_\infty).
+\end{equation}
+The continuous-time Dirichlet curve remains
+\begin{equation}
+x^D_t(\tau)
+=
+x_\infty+
+\left[x_D-x_\infty+B_{D,t}\tau\right]e^{-a_D^2\tau}.
+\end{equation}
+This gives the fundamental state-coordinate result:
+\begin{equation}
+x^D_t(0)=x_D
+\quad\Longrightarrow\quad
+\dd x^D_t(0)=0,
+\qquad
+\text{while }B_{D,t}\text{ remains stochastic.}
+\end{equation}
+
+\subsection{General equilibrium coefficient}
+
+The equilibrium coefficient must initially be kept general. Define
+\begin{equation}
+\E[B_{D,t}]=B_D^e.
+\end{equation}
+The corresponding equilibrium boundary slope is written in full as
+\begin{equation}
+B_D^e-a_D^2(x_D-x_\infty).
+\end{equation}
+The general equilibrium curve is
+\begin{equation}
+x_D^e(\tau)
+=
+x_\infty+
+\left[x_D-x_\infty+B_D^e\tau\right]e^{-a_D^2\tau}.
+\end{equation}
+The realised curve relative to equilibrium is
+\begin{equation}
+x^D_t(\tau)
+=
+x_D^e(\tau)
++(B_{D,t}-B_D^e)\tau e^{-a_D^2\tau}.
+\end{equation}
+No equilibrium convention has yet been imposed. In particular,
+\begin{equation}
+B_D^e=0
+\end{equation}
+removes the repeated-root term from the equilibrium curve, whereas
+\begin{equation}
+B_D^e-a_D^2(x_D-x_\infty)=0
+\end{equation}
+makes the ordinary equilibrium boundary slope zero. These are different restrictions.
+
+\subsection{Axiom 2: rolling affine consistency}
+
+The stochastic displacement between the realised and equilibrium curves is
+\begin{equation}
+(B_{D,t}-B_D^e)\tau e^{-a_D^2\tau}.
+\end{equation}
+An affine KFE drift and diffusion may share the same state and maturity kernel. Their ratio is then maturity invariant. This establishes admissibility under Axiom 2 without identifying the numerical value of $B_D^e$.
+
+The final-period rolling difference is, to first order,
+\begin{equation}
+x^D_t(\Delta t)-x_D
+=
+\left[B_{D,t}-a_D^2(x_D-x_\infty)\right]\Delta t
++O((\Delta t)^2),
+\end{equation}
+when the continuous boundary representation is evaluated one rolling interval away from the boundary. Thus the ordinary short-boundary slope is the instantaneous final-period rolling coordinate.
+
+\subsection{Axiom 3: first moment}
+
+Differentiate the general equilibrium curve:
+\begin{equation}
+\frac{\partial x_D^e(\tau)}{\partial T}
+=
+\left[
+B_D^e-a_D^2(x_D-x_\infty)-a_D^2B_D^e\tau
+\right]e^{-a_D^2\tau}.
+\end{equation}
+The affine equilibrium coefficient relation for the drift term, $f$, is
+\begin{equation}
+f_D(x,t,T)
+=
+a_D\bigl(x-x_D^e(T-t)\bigr)
++
+\frac{1}{a_D}\frac{\partial x_D^e(T-t)}{\partial T}.
+\end{equation}
+This relation retains the general equilibrium coefficient $B_D^e$. Axiom 3 requires the mean state coordinate to be calendar-time invariant at equilibrium:
+\begin{equation}
+\frac{\dd}{\dd t}\E[B_{D,t}]=0,
+\qquad
+\frac{\dd}{\dd t}\E[B_{D,t}-a_D^2(x_D-x_\infty)]=0.
+\end{equation}
+It does not, from the representation alone, select either $B_D^e=0$ or $B_D^e-a_D^2(x_D-x_\infty)=0$.
+
+\subsection{Axiom 3: variance and rank-one covariance}
+
+The deviation from equilibrium is
+\begin{equation}
+x^D_t(\tau)-x_D^e(\tau)
+=
+(B_{D,t}-B_D^e)\tau e^{-a_D^2\tau}.
+\end{equation}
+Consequently,
+\begin{equation}
+\Var\!\left(x^D_t(\tau)\right)
+=
+\Var(B_{D,t})\tau^2e^{-2a_D^2\tau}.
+\end{equation}
+At the continuous short-boundary,
+\begin{equation}
+\Var\!\left(x^D_t(0)\right)=0.
+\end{equation}
+For positive maturity, the variance is positive whenever $\Var(B_{D,t})>0$.
+
+For two maturities,
+\begin{equation}
+\Cov\!\left(x^D_t(\tau_1),x^D_t(\tau_2)\right)
+=
+\Var(B_{D,t})\tau_1\tau_2e^{-a_D^2(\tau_1+\tau_2)}.
+\end{equation}
+The covariance kernel is rank one.
+
+The standard-deviation loading is
+\begin{equation}
+\tau e^{-a_D^2\tau}.
+\end{equation}
+Its derivative is
+\begin{equation}
+(1-a_D^2\tau)e^{-a_D^2\tau},
+\end{equation}
+so its maximum occurs at
+\begin{equation}
+\tau=\frac{1}{a_D^2}.
+\end{equation}
+The interior volatility hump therefore follows from the boundary geometry and does not require a second stochastic factor.
+
+Axiom 3 for the second moment requires
+\begin{equation}
+\frac{\dd}{\dd t}\Var(B_{D,t})=0
+\end{equation}
+at equilibrium, after the deterministic maturity-roll term is retained in the fixed-$T$ differential.
+
+\subsection{Axiom 4: general positivity condition}
+
+For a realised coefficient $B_{D,t}$,
+\begin{equation}
+x^D_t(\tau)
+=
+x_\infty+
+\left[x_D-x_\infty+B_{D,t}\tau\right]e^{-a_D^2\tau}.
+\end{equation}
+The maturity derivative is
+\begin{equation}
+\frac{\partial x^D_t(\tau)}{\partial\tau}
+=
+\left[
+B_{D,t}-a_D^2(x_D-x_\infty)-a_D^2B_{D,t}\tau
+\right]e^{-a_D^2\tau}.
+\end{equation}
+An interior stationary point satisfies
+\begin{equation}
+\tau_{D,*}
+=
+\frac{1}{a_D^2}-\frac{x_D-x_\infty}{B_{D,t}}.
+\end{equation}
+At that point,
+\begin{equation}
+\left.\frac{\partial^2x^D_t(\tau)}{\partial\tau^2}\right|_{\tau=\tau_{D,*}}
+=
+-a_D^2B_{D,t}e^{-a_D^2\tau_{D,*}}.
+\end{equation}
+It is a minimum when $B_{D,t}<0$. The value at the stationary point is
+\begin{equation}
+x^D_t(\tau_{D,*})
+=
+x_\infty+
+\frac{B_{D,t}}{a_D^2}
+\exp\!\left[-1+\frac{a_D^2(x_D-x_\infty)}{B_{D,t}}\right].
+\end{equation}
+The lower admissible state is defined by
+\begin{equation}
+x^D_t(\tau_{D,*})=0.
+\end{equation}
+Solving gives
+\begin{equation}
+B_{D,\min}
+=
+-\frac{a_D^2(x_D-x_\infty)}
+{W_0\!\left(\dfrac{x_D-x_\infty}{e\,x_\infty}\right)}.
+\end{equation}
+where $W_0$ is the principal branch of the Lambert function.
+
+Thus positivity requires
+\begin{equation}
+B_{D,t}\ge B_{D,\min}.
+\end{equation}
+
+
+Axiom 4 further requires the diffusion of the state coordinate to vanish at $B_{D,\min}$. This geometric result does not yet determine $B_D^e$.
+
+\subsection{Identified Dirichlet affine dynamics}
+
+The representation theorem leaves the equilibrium coefficient $B_D^e$ general. The affine KFE closure, Axiom 2, Axiom 3 and Axiom 4 now identify a particular admissible dynamics.
+
+Axiom 3 gives
+\begin{equation}
+f_D(x,t,T)
+=
+a_D\bigl(x-x_D^e(T-t)\bigr)
++
+\frac{1}{a_D}\frac{\partial x_D^e(T-t)}{\partial T}.
+\end{equation}
+Axiom 2 requires drift and diffusion to share the same state and maturity kernel. Axiom 4 requires that kernel to vanish at the lower admissible state. On the identified Dirichlet branch this gives
+\begin{equation}
+B_{D,\min}=2B_D^e
+\end{equation}
+and the state process
+\begin{equation}
+\dd B_{D,t}
+=
+a_D^2(B_D^e-B_{D,t})\dd t
++
+a_D(2B_D^e-B_{D,t})\dd W_t.
+\end{equation}
+The diffusion vanishes when $B_{D,t}=B_{D,\min}=2B_D^e$.
+
+\paragraph{The recurring factor of two.}
+The relation
+\begin{equation}
+B_{D,\min}=2B_D^e
+\end{equation}
+is the same affine stationarity mechanism that appears in the Neumann case. Consider a generic one-dimensional affine boundary state $Y_t$ with equilibrium mean $Y^e$ and dynamics
+\begin{equation}
+\dd Y_t
+=
+a^2(Y^e-Y_t)\dd t
++
+a(Y_{\mathrm{bdry}}-Y_t)\dd W_t.
+\end{equation}
+At equilibrium, the second-moment equation gives
+\begin{equation}
+\operatorname{Var}(Y_t)
+=
+\left(Y_{\mathrm{bdry}}-Y^e\right)^2,
+\end{equation}
+so that
+\begin{equation}
+\sqrt{\operatorname{Var}(Y_t)}
+=
+\left|Y_{\mathrm{bdry}}-Y^e\right|.
+\end{equation}
+For this generic affine state, the equilibrium signal and noise scales are proportional to
+\begin{equation}
+a^2Y^e
+\qquad\text{and}\qquad
+\sqrt{2}\,a\left|Y_{\mathrm{bdry}}-Y^e\right|,
+\end{equation}
+respectively. Hence
+\begin{equation}
+\left|\MSNR\right|
+=
+\frac{a\left|Y^e\right|}
+{\sqrt{2}\left|Y_{\mathrm{bdry}}-Y^e\right|}.
+\end{equation}
+Requiring the one-factor value
+\begin{equation}
+\left|\MSNR\right|=\frac{a}{\sqrt{2}}
+\end{equation}
+gives
+\begin{equation}
+\left|Y^e\right|
+=
+\left|Y_{\mathrm{bdry}}-Y^e\right|.
+\end{equation}
+On the Dirichlet branch, where $Y_{\mathrm{bdry}}<Y^e<0$, this becomes
+\begin{equation}
+-Y^e=Y^e-Y_{\mathrm{bdry}},
+\end{equation}
+and therefore
+\begin{equation}
+Y_{\mathrm{bdry}}=2Y^e.
+\end{equation}
+The Neumann and Dirichlet factors of two therefore arise from the same affine boundary-degenerate state closure, with the relevant sign determined by the orientation of the admissible state domain.
+
+Robin modifies this relation because its level and slope coefficients are linked by the mixed boundary condition, giving instead
+\begin{equation}
+A_{R,\mathrm{bdry}}
+=
+\frac{2+\kappa_R}{1+\kappa_R}A_R^e.
+\end{equation}
+The Neumann factor of two is recovered at $\kappa_R=0$.
+
+The stochastic displacement loading in the Dirichlet regime is already
+\[
+\tau e^{-a_D^2\tau},
+\]
+which vanishes at the fixed short boundary. To implement the common-kernel restriction in the abbreviated boundary derivation, the equilibrium expected-return loading must be proportional to this same maturity function. Its constant term must therefore vanish:
+\[
+B_D^e-a_D^2(x_D-x_\infty)=0.
+\]
+Hence
+\[
+B_D^e=a_D^2(x_D-x_\infty).
+\]
+Equivalently, the equilibrium ordinary short-boundary slope is zero, and the equilibrium expected final-period roll has no first-order term in the remaining maturity.
+
+
+\subsection{Dirichlet stationary variance and Axiom 3}
+
+Let
+\begin{equation}
+\Var(B_{D,t})=V_D.
+\end{equation}
+For the identified state process,
+\begin{equation}
+\begin{aligned}
+0
+={}&
+2\Cov\!\left(B_{D,t},a_D^2(B_D^e-B_{D,t})\right)
++
+\E\!\left[a_D^2(2B_D^e-B_{D,t})^2\right]
+\\
+={}&
+-2a_D^2V_D+a_D^2\bigl((B_D^e)^2+V_D\bigr).
+\end{aligned}
+\end{equation}
+Hence
+\begin{equation}
+\Var(B_{D,t})=(B_D^e)^2.
+\end{equation}
+Because the full boundary-slope expression $B_{D,t}-a_D^2(x_D-x_\infty)$ differs from $B_{D,t}$ only by a constant,
+\begin{equation}
+\Var(B_{D,t})=(B_D^e)^2.
+\end{equation}
+The cross-sectional equilibrium variance is therefore
+\begin{equation}
+\Var\!\left(x^D_t(\tau)\right)
+=
+(B_D^e)^2\tau^2e^{-2a_D^2\tau}.
+\end{equation}
+Since the equilibrium variance of the state is calendar-time invariant,
+\begin{equation}
+\frac{\partial}{\partial t}
+\Var\!\left(x^D_{t,T}\right)
+=
+-\frac{\partial}{\partial T}
+\Var\!\left(x^D_{t,T}\right).
+\end{equation}
+Explicitly,
+\begin{equation}
+-\frac{\partial}{\partial T}
+\Var\!\left(x^D_{t,T}\right)
+=
+-2(B_D^e)^2(T-t)\bigl[1-a_D^2(T-t)\bigr]
+e^{-2a_D^2(T-t)}.
+\end{equation}
+The same expression is obtained from the full fixed-$T$ It\^{o} differential once the deterministic maturity-roll term is retained. This is not the condition $\partial_t\Var=0$ at fixed $T$.
+
+\subsection{Dirichlet positivity calibration}
+
+Combining
+\begin{equation}
+B_{D,\min}=2a_D^2(x_D-x_\infty)
+\end{equation}
+with the zero-touch positivity boundary
+\begin{equation}
+B_{D,\min}
+=
+-\frac{a_D^2(x_D-x_\infty)}
+{W_0\!\left(\dfrac{x_D-x_\infty}{e\,x_\infty}\right)}
+\end{equation}
+gives
+\begin{equation}
+W_0\!\left(\frac{x_D-x_\infty}{e\,x_\infty}\right)=-\frac12.
+\end{equation}
+
+where $W_0$ is the principal branch of the Lambert function.
+Therefore
+\begin{equation}
+\boxed{\frac{x_D}{x_\infty}=1-\frac{\sqrt e}{2}}
+\end{equation}
+and
+\begin{equation}
+x_\infty=\frac{x_D}{1-\frac{\sqrt e}{2}}.
+\end{equation}
+The equilibrium coefficient may then be written directly in terms of the imposed Dirichlet level:
+\begin{equation}
+B_D^e
+=
+-\frac{\sqrt e}{2-\sqrt e}\,a_D^2x_D.
+\end{equation}
+
+\subsection{Dirichlet Market Signal-to-Noise Ratio invariance}
+
+At equilibrium, the instantaneous expected market-signal scale is
+\begin{equation}
+a_D^2B_D^e(T-t)e^{-a_D^2(T-t)}.
+\end{equation}
+The corresponding instantaneous noise scale is
+\begin{equation}
+\sqrt2\,a_D
+\left|B_D^e(T-t)e^{-a_D^2(T-t)}\right|.
+\end{equation}
+The signal and noise therefore share the same maturity loading. With a consistent sign convention,
+\begin{equation}
+\boxed{\MSNR_D=\frac{a_D}{\sqrt2}.}
+\end{equation}
+The Dirichlet Market Signal-to-Noise Ratio is independent of maturity and, under equilibrium stationarity, calendar time. At $T=t$, both the expected market signal and the instantaneous noise scale vanish; the same ratio is obtained by continuous extension from positive maturity.
+
+
+\section{Robin boundary construction}
+
+\subsection{Robin Ansatz from the mixed Neumann and Dirichlet modes}
+
+The Robin cross-section begins from the same repeated-root branch:
+\begin{equation}
+\boxed{x^R_t(\tau)
+=
+x_\infty+
+\left[A_{R,t}+B_{R,t}\tau\right]e^{-a_R^2\tau}.}
+\end{equation}
+The term
+\begin{equation}
+A_{R,t}e^{-a_R^2\tau}
+\end{equation}
+is the Neumann boundary-level mode. The term
+\begin{equation}
+B_{R,t}\tau e^{-a_R^2\tau}
+\end{equation}
+is the Dirichlet boundary-slope mode. Robin is therefore introduced as the mixed boundary case obtained by coupling the two admissible modes.
+
+At the continuous boundary,
+\begin{equation}
+x^R_t(0)=x_\infty+A_{R,t},
+\end{equation}
+and
+\begin{equation}
+\left.\frac{\partial x^R_t(\tau)}{\partial\tau}\right|_{\tau=0}
+=
+B_{R,t}-a_R^2A_{R,t}.
+\end{equation}
+Thus $A_{R,t}$ is the boundary-level coordinate and $B_{R,t}-a_R^2A_{R,t}$ is the ordinary boundary-slope coordinate.
+
+\subsection{Finite-$\Delta t$ Robin condition}
+
+The mixed boundary condition is first imposed at the final rolling interval:
+\begin{equation}
+\alpha_R x^R_t(\Delta t)
++
+\beta_R
+\left.\frac{\partial x^R_t(\tau)}{\partial\tau}\right|_{\tau=\Delta t}
+=
+\gamma_R.
+\end{equation}
+Now
+\begin{equation}
+x^R_t(\Delta t)
+=
+x_\infty+
+\left[A_{R,t}+B_{R,t}\Delta t\right]e^{-a_R^2\Delta t},
+\end{equation}
+and
+\begin{equation}
+\left.\frac{\partial x^R_t(\tau)}{\partial\tau}\right|_{\tau=\Delta t}
+=
+\left[
+B_{R,t}-a_R^2A_{R,t}-a_R^2B_{R,t}\Delta t
+\right]e^{-a_R^2\Delta t}.
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{aligned}
+&\alpha_Rx_\infty
+\\
+&+e^{-a_R^2\Delta t}
+\Big[
+\alpha_RA_{R,t}
++\alpha_RB_{R,t}\Delta t
++\beta_RB_{R,t}
+-\beta_Ra_R^2A_{R,t}
+-\beta_Ra_R^2B_{R,t}\Delta t
+\Big]
+=
+\gamma_R.
+\end{aligned}
+\end{equation}
+Taking $\Delta t\downarrow0$ gives
+\begin{equation}
+\alpha_R(x_\infty+A_{R,t})
++
+\beta_R(B_{R,t}-a_R^2A_{R,t})
+=
+\gamma_R.
+\end{equation}
+Equivalently,
+\begin{equation}
+\beta_RB_{R,t}
++
+(\alpha_R-\beta_Ra_R^2)A_{R,t}
+=
+\gamma_R-\alpha_Rx_\infty.
+\end{equation}
+This is one affine relation between the two boundary coordinates. It leaves one stochastic degree of freedom.
+
+If $\beta_R\ne0$, then
+\begin{equation}
+\boxed{B_{R,t}
+=
+\frac{\gamma_R-\alpha_Rx_\infty}{\beta_R}
+-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}A_{R,t}.}
+\end{equation}
+This is the general one-factor affine line in the coefficient plane $(A_{R,t},B_{R,t})$. It need not pass through the origin.
+
+\subsection{Robin curve with one stochastic coordinate}
+
+Substituting the affine boundary relation into the cross-section gives
+\begin{equation}
+\begin{aligned}
+x^R_t(\tau)
+=
+x_\infty
+&+
+\frac{\gamma_R-\alpha_Rx_\infty}{\beta_R}\tau e^{-a_R^2\tau}
+\\
+&+
+A_{R,t}
+\left[
+1-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}\tau
+\right]e^{-a_R^2\tau}.
+\end{aligned}
+\end{equation}
+Every maturity is an affine function of the single stochastic state $A_{R,t}$. The presence of both maturity basis functions does not imply two stochastic factors.
+
+\subsection{General Robin equilibrium}
+
+Define
+\begin{equation}
+\E[A_{R,t}]=A_R^e.
+\end{equation}
+The equilibrium value of $B_{R,t}$ is then
+\begin{equation}
+B_R^e
+=
+\frac{\gamma_R-\alpha_Rx_\infty}{\beta_R}
+-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}A_R^e.
+\end{equation}
+The general equilibrium curve is
+\begin{equation}
+x_R^e(\tau)
+=
+x_\infty+
+\left[A_R^e+B_R^e\tau\right]e^{-a_R^2\tau}.
+\end{equation}
+The realised deviation is
+\begin{equation}
+\begin{aligned}
+x^R_t(\tau)-x_R^e(\tau)
+=
+(A_{R,t}-A_R^e)
+\left[
+1-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}\tau
+\right]e^{-a_R^2\tau}.
+\end{aligned}
+\end{equation}
+Again, the equilibrium mean is kept general until the axioms and any additional closure conditions identify it.
+
+\subsection{Axiom 2: Robin rolling consistency}
+
+The stochastic maturity loading is
+\begin{equation}
+\left[
+1-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}\tau
+\right]e^{-a_R^2\tau}.
+\end{equation}
+An affine drift and diffusion may share this full loading and the same affine state kernel. Their ratio is then maturity invariant, satisfying Axiom 2. The Robin boundary condition has reduced the two coefficient coordinates to a one-dimensional affine manifold.
+
+\subsection{Axiom 3: Robin first moment}
+
+Differentiate the general equilibrium curve:
+\begin{equation}
+\frac{\partial x_R^e(\tau)}{\partial T}
+=
+\left[
+B_R^e-a_R^2A_R^e-a_R^2B_R^e\tau
+\right]e^{-a_R^2\tau}.
+\end{equation}
+The affine equilibrium coefficient relation for the drift term, $f$, is
+\begin{equation}
+f_R(x,t,T)
+=
+a_R\bigl(x-x_R^e(T-t)\bigr)
++
+\frac{1}{a_R}\frac{\partial x_R^e(T-t)}{\partial T}.
+\end{equation}
+Axiom 3 requires
+\begin{equation}
+\frac{\dd}{\dd t}\E[A_{R,t}]=0,
+\qquad
+\frac{\dd}{\dd t}\E[B_{R,t}]=0.
+\end{equation}
+Because $B_{R,t}$ is an affine function of $A_{R,t}$, these are the same one-dimensional stationarity restriction.
+
+\subsection{Axiom 3: Robin variance and covariance rank}
+
+From the realised deviation,
+\begin{equation}
+\begin{aligned}
+\Var\!\left(x^R_t(\tau)\right)
+=
+\Var(A_{R,t})
+\left[
+1-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}\tau
+\right]^2e^{-2a_R^2\tau}.
+\end{aligned}
+\end{equation}
+For two maturities,
+\begin{equation}
+\begin{aligned}
+&\Cov\!\left(x^R_t(\tau_1),x^R_t(\tau_2)\right)
+\\
+&=\Var(A_{R,t})
+\left[
+1-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}\tau_1
+\right]
+\left[
+1-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}\tau_2
+\right]
+ e^{-a_R^2(\tau_1+\tau_2)}.
+\end{aligned}
+\end{equation}
+The covariance kernel remains rank one.
+
+Axiom 3 for the second moment requires
+\begin{equation}
+\frac{\dd}{\dd t}\Var(A_{R,t})=0.
+\end{equation}
+Because $B_{R,t}$ is affine in $A_{R,t}$, its variance and covariance with $A_{R,t}$ are then also stationary.
+
+\subsection{Axiom 4: Robin positivity and boundary degeneracy}
+
+The Robin curve is
+\begin{equation}
+x^R_t(\tau)
+=
+x_\infty+
+\left[A_{R,t}+B_{R,t}\tau\right]e^{-a_R^2\tau},
+\end{equation}
+with $B_{R,t}$ constrained by
+\begin{equation}
+B_{R,t}
+=
+\frac{\gamma_R-\alpha_Rx_\infty}{\beta_R}
+-
+\frac{\alpha_R-\beta_Ra_R^2}{\beta_R}A_{R,t}.
+\end{equation}
+For a given state $A_{R,t}$, the maturity derivative is
+\begin{equation}
+\frac{\partial x^R_t(\tau)}{\partial\tau}
+=
+\left[
+B_{R,t}-a_R^2A_{R,t}-a_R^2B_{R,t}\tau
+\right]e^{-a_R^2\tau}.
+\end{equation}
+An interior stationary maturity satisfies
+\begin{equation}
+\tau_{R,*}
+=
+\frac{B_{R,t}-a_R^2A_{R,t}}{a_R^2B_{R,t}},
+\end{equation}
+provided $B_{R,t}\ne0$. Axiom 4 defines the admissible state boundary by requiring that the minimum value of the curve is non-negative and that the state diffusion vanish when the minimum touches zero. Because $B_{R,t}$ is already an affine function of $A_{R,t}$, this condition identifies one boundary value of the single state rather than introducing a second factor.
+
+\subsection{Identified Robin affine coefficient manifold}
+
+The mixed boundary relation leaves one stochastic degree of freedom. Write the resulting affine line as
+\begin{equation}
+B_{R,t}=\eta_R+\kappa_Ra_R^2A_{R,t},
+\end{equation}
+where $\kappa_R$ is the Robin boundary-coupling parameter and $\eta_R$ is a deterministic intercept. This is not an additional factor: $B_{R,t}$ remains an affine function of the single state $A_{R,t}$.
+
+Maturity-invariant MSNR requires the equilibrium expected-return loading to be proportional to the stochastic loading
+\begin{equation}
+\left(1+\kappa_Ra_R^2\tau\right)e^{-a_R^2\tau}.
+\end{equation}
+Matching the constant and linear terms in $\tau$ gives
+\begin{equation}
+\eta_R
+=
+-\frac{\kappa_R^2}{1+\kappa_R}a_R^2A_R^e,
+\qquad \kappa_R\ne-1.
+\end{equation}
+Consequently,
+\begin{equation}
+B_{R,t}
+=
+-\frac{\kappa_R^2}{1+\kappa_R}a_R^2A_R^e
++
+\kappa_Ra_R^2A_{R,t}.
+\end{equation}
+The completed one-factor Robin curve is
+\begin{equation}
+\begin{aligned}
+x^R_t(\tau)
+={}&x_\infty
+-\frac{\kappa_R^2}{1+\kappa_R}a_R^2A_R^e\tau e^{-a_R^2\tau}
+\\
+&+A_{R,t}\left(1+\kappa_Ra_R^2\tau\right)e^{-a_R^2\tau}.
+\end{aligned}
+\end{equation}
+The Robin boundary coefficients and the mixing parameter must also satisfy the continuous-boundary cancellation
+\begin{equation}
+\alpha_R+\beta_Ra_R^2(\kappa_R-1)=0.
+\end{equation}
+This keeps $x_\infty$ fixed and makes the expected-return and volatility loadings proportional at every maturity.
+
+\subsection{Identified Robin state dynamics and stationary variance}
+
+Let $A_{R,\mathrm{bdry}}$ denote the Axiom 4 state boundary. The affine state dynamics are
+\begin{equation}
+\dd A_{R,t}
+=
+a_R^2(A_R^e-A_{R,t})\dd t
++
+a_R(A_{R,\mathrm{bdry}}-A_{R,t})\dd W_t.
+\end{equation}
+The stationary second-moment equation is
+\begin{equation}
+\begin{aligned}
+0
+={}&2\Cov\!\left(A_{R,t},a_R^2(A_R^e-A_{R,t})\right)
++
+\E\!\left[a_R^2(A_{R,\mathrm{bdry}}-A_{R,t})^2\right].
+\end{aligned}
+\end{equation}
+It gives
+\begin{equation}
+\Var(A_{R,t})=(A_{R,\mathrm{bdry}}-A_R^e)^2.
+\end{equation}
+Therefore
+\begin{equation}
+\begin{aligned}
+\Var\!\left(x^R_t(\tau)\right)
+={}&(A_{R,\mathrm{bdry}}-A_R^e)^2
+\left(1+\kappa_Ra_R^2\tau\right)^2
+ e^{-2a_R^2\tau}.
+\end{aligned}
+\end{equation}
+Since the state variance is calendar-time invariant at equilibrium,
+\begin{equation}
+\frac{\partial}{\partial t}\Var\!\left(x^R_{t,T}\right)
+=
+-\frac{\partial}{\partial T}\Var\!\left(x^R_{t,T}\right).
+\end{equation}
+The equality again refers to the full rolling derivative, including the deterministic maturity roll.
+
+\subsection{Robin factor relation and Market Signal-to-Noise Ratio invariance}
+
+The equilibrium instantaneous expected market-signal scale is
+\begin{equation}
+\frac{a_R^2A_R^e}{1+\kappa_R}
+\left(1+\kappa_Ra_R^2(T-t)\right)
+e^{-a_R^2(T-t)}.
+\end{equation}
+The corresponding instantaneous noise scale is
+\begin{equation}
+\begin{aligned}
+&\sqrt2\,a_R|A_{R,\mathrm{bdry}}-A_R^e|
+\\
+&\qquad\times
+\left|1+\kappa_Ra_R^2(T-t)\right|
+e^{-a_R^2(T-t)}.
+\end{aligned}
+\end{equation}
+The common maturity loading cancels. The Robin Market Signal-to-Noise Ratio is therefore
+\begin{equation}
+\boxed{\MSNR_R
+=
+\frac{a_RA_R^e}
+{\sqrt2(1+\kappa_R)|A_{R,\mathrm{bdry}}-A_R^e|},}
+\end{equation}
+up to the common sign convention. On the branch continuous with the Neumann result, take $1+\kappa_R>0$, equivalently $\kappa_R>-1$. Requiring the universal one-factor value
+\begin{equation}
+\MSNR_R=\frac{a_R}{\sqrt2}
+\end{equation}
+then gives
+\begin{equation}
+A_{R,\mathrm{bdry}}
+=
+\frac{2+\kappa_R}{1+\kappa_R}A_R^e.
+\end{equation}
+Thus the Neumann factor of two is replaced by the Robin factor
+\begin{equation}
+\frac{A_{R,\mathrm{bdry}}}{A_R^e}
+=
+\frac{2+\kappa_R}{1+\kappa_R}.
+\end{equation}
+For $\kappa_R=0$, this reduces to $A_{R,\mathrm{bdry}}=2A_R^e$.
+
+If the relevant positivity boundary is the zero short-boundary level, then
+\begin{equation}
+A_{R,\mathrm{bdry}}=-x_\infty.
+\end{equation}
+Since the equilibrium short-boundary value is
+\begin{equation}
+x_R^e=x_\infty+A_R^e,
+\end{equation}
+the Robin factor relation gives
+\begin{equation}
+A_R^e=-\frac{1+\kappa_R}{2+\kappa_R}x_\infty
+\end{equation}
+and hence
+\begin{equation}
+\frac{x_R^e}{x_\infty}=\frac{1}{2+\kappa_R}.
+\end{equation}
+This last ratio is conditional on the Axiom~4 boundary being attained at the short-boundary level. If positivity is first lost at an interior maturity, the corresponding interior zero-touch condition must be used instead.
+
+The Market Signal-to-Noise Ratio is globally constant across all maturities for which the Robin loading is non-zero. At a maturity where the loading itself vanishes, both signal and noise vanish and the same MSNR is defined by continuous extension.
+
+\subsection{Completed Robin moments and monetary-policy interpretation}
+
+The identified Robin construction may now be summarised through its realised cross-sectional curve, its equilibrium expectation and its stationary variance.
+
+First, the realised one-factor Robin curve is
+\begin{equation}
+\boxed{
+\begin{aligned}
+x^R_t(\tau)
+={}&x_\infty
+-\frac{\kappa_R^2}{1+\kappa_R}
+a_R^2A_R^e\,\tau e^{-a_R^2\tau}
+\\
+&+
+A_{R,t}
+\left(1+\kappa_Ra_R^2\tau\right)
+e^{-a_R^2\tau}.
+\end{aligned}}
+\end{equation}
+The realised cross-section is therefore generated by the single stochastic boundary state $A_{R,t}$. The repeated-root coefficient is an affine function of that state and does not constitute a second stochastic factor.
+
+Second, since
+\begin{equation}
+\E[A_{R,t}]=A_R^e,
+\end{equation}
+the equilibrium expected curve is
+\begin{equation}
+\boxed{
+\begin{aligned}
+\E\!\left[x^R_t(\tau)\right]
+={}&x_\infty
+-\frac{\kappa_R^2}{1+\kappa_R}
+a_R^2A_R^e\,\tau e^{-a_R^2\tau}
+\\
+&+
+A_R^e
+\left(1+\kappa_Ra_R^2\tau\right)
+e^{-a_R^2\tau}.
+\end{aligned}}
+\end{equation}
+At the short boundary this gives
+\begin{equation}
+x_R^e=x_\infty+A_R^e,
+\end{equation}
+and, when the Axiom~4 boundary is attained at the short-boundary level,
+\begin{equation}
+\frac{x_R^e}{x_\infty}
+=
+\frac{1}{2+\kappa_R}.
+\end{equation}
+
+Third, the stationary cross-sectional variance is
+\begin{equation}
+\boxed{
+\Var\!\left(x^R_t(\tau)\right)
+=
+\left(\frac{A_R^e}{1+\kappa_R}\right)^2
+\left(1+\kappa_Ra_R^2\tau\right)^2
+e^{-2a_R^2\tau}.}
+\end{equation}
+Thus the expected curve and its stochastic variation are transmitted through related linear-exponential maturity loadings. Following substitution of the identified boundary relation, the stationary variance is determined entirely by $A_R^e$, $\kappa_R$ and $a_R$. The Robin boundary retains a rank-one covariance structure because all maturities are affine projections of one stochastic state.
+
+Among the three short-boundary regimes considered in this paper, the Robin construction provides the most flexible and potentially most realistic representation of how monetary-policy intervention may affect the short end of the interest-rate curve. The Neumann model permits the short-boundary level to move freely, while the Dirichlet model imposes a fully pinned boundary level. The Robin condition lies between these limiting cases: it allows central-bank, monetary policy, intervention to be represented by an affine relation between the short-boundary level and its local maturity slope.
+
+The parameter $\kappa_R$ governs how the single stochastic short-boundary state is transmitted between the boundary-level and boundary-slope maturity modes. When $\kappa_R=0$, stochastic exposure is carried by the ordinary exponential boundary-level loading
+\begin{equation}
+e^{-a_R^2\tau}.
+\end{equation}
+As $\kappa_R$ departs from zero, the repeated-root contribution
+\begin{equation}
+\kappa_Ra_R^2\tau e^{-a_R^2\tau}
+\end{equation}
+changes the maturity geometry through which the short-boundary state is propagated into the interior of the curve. The parameter should therefore be interpreted as a boundary-response parameter rather than as a second factor or a literal percentage weight.
+
+The Robin construction should not, however, be interpreted as a complete description of central-bank policy in every circumstance. Monetary-policy implementation may change across time, instruments and institutional regimes, and may involve balance-sheet policies, market expectations, liquidity conditions and other channels that are not represented by a single mixed short-boundary condition. The model instead provides a local boundary-coordinate description of periods during which the relation between the short-rate level and the local curve slope is sufficiently stable to be approximated by a Robin regime.
+
+This interpretation gives the model a direct empirical counterpart. Observed yield-curve data may be divided into candidate local regimes within which the Robin boundary relation and its parameters are approximately stable. For each such regime, the fitted cross-sectional mean, maturity-variance loading, covariance rank and Market Signal-to-Noise Ratio invariance can be compared with the theoretical restrictions derived above. Robustness may then be assessed both within the identified regimes and in blind or out-of-sample periods that were not used to determine the regime classification.
+
+\subsection{Connection with the coefficient-selection form}
+
+The empirical coefficient-selection form is often written as
+\begin{equation}
+(c_1+c_2\tau)e^{-\lambda\tau}.
+\end{equation}
+The Robin derivation shows why a curve of this form can remain one-factor. The two coefficients are not independent stochastic states. The mixed boundary condition imposes
+\begin{equation}
+\beta_RB_{R,t}
++
+(\alpha_R-\beta_Ra_R^2)A_{R,t}
+=
+\gamma_R-\alpha_Rx_\infty,
+\end{equation}
+so the admissible stochastic coefficients lie on a one-dimensional affine line. The empirical basis is retained, but the coefficient freedom is restricted by the boundary geometry.
+
+\section{Dirichlet--Robin comparison}
+
+\subsection{Comparison of the identified boundary regimes}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.27\textwidth} >{\raggedright\arraybackslash}p{0.31\textwidth} >{\raggedright\arraybackslash}p{0.31\textwidth}}
+\toprule
+Property & Dirichlet & Robin \\
+\midrule
+Final rolling condition & Fixed level at $\tau=\Delta t$ & Mixed level-slope condition at $\tau=\Delta t$ \\
+Continuous boundary & $x^D_t(0)=x_D$ & $\alpha_Rx^R_t(0)+\beta_R\partial_\tau x^R_t(0)=\gamma_R$ \\
+Stochastic coordinate & Boundary slope or repeated-root coefficient & One affine combination of boundary level and slope \\
+Maturity basis & $\tau e^{-a_D^2\tau}$ for stochastic displacement & Combination of $e^{-a_R^2\tau}$ and $\tau e^{-a_R^2\tau}$ \\
+Boundary variance & Zero at the fixed boundary & Determined by the mixed boundary loading \\
+Covariance rank & One & One \\
+Equilibrium mean & Kept general until identified & Kept general until identified \\
+Positivity & Lower boundary for $B_{D,t}$ & Lower boundary for the one affine Robin state \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Principal results}
+
+\subsection{Summary of the principal identified results}
+
+The fixed-boundary representation theorem is
+\begin{equation}
+\begin{aligned}
+x^D_t(\tau)
+=
+x_\infty+
+\Big[&x_D-x_\infty
+\\
+&+B_{D,t}\tau
+\Big]e^{-a_D^2\tau}.
+\end{aligned}
+\end{equation}
+Relative to a general equilibrium slope,
+\begin{equation}
+x^D_t(\tau)
+=
+x_D^e(\tau)+(B_{D,t}-B_D^e)\tau e^{-a_D^2\tau}.
+\end{equation}
+Therefore the boundary variance is zero, the interior covariance kernel has rank one, and the standard-deviation loading reaches its maximum at
+\begin{equation}
+\tau=1/a_D^2.
+\end{equation}
+
+The mixed-boundary Robin representation is
+\begin{equation}
+x^R_t(\tau)
+=
+x_\infty+
+\left[A_{R,t}+B_{R,t}\tau\right]e^{-a_R^2\tau},
+\end{equation}
+subject to
+\begin{equation}
+\beta_RB_{R,t}
++
+(\alpha_R-\beta_Ra_R^2)A_{R,t}
+=
+\gamma_R-\alpha_Rx_\infty.
+\end{equation}
+The Robin boundary condition therefore converts the two maturity coefficients into one stochastic affine state. Neumann and Dirichlet modes are both present, but the covariance remains rank one.
+
+The paper's central classification is
+\begin{equation}
+\begin{aligned}
+\text{Neumann: }&\text{stochastic boundary level},\\
+\text{Dirichlet: }&\text{fixed boundary level and stochastic boundary slope},\\
+\text{Robin: }&\text{one affine coupling of boundary level and slope}.
+\end{aligned}
+\end{equation}
+
+
+\section{Bridge to the stochastic long-boundary model}
+
+\subsection{Relaxing the fixed long-boundary condition}
+
+The fixed-long-boundary Robin construction derived in this paper may be written in the policy-anchor form
+\begin{equation}
+\begin{aligned}
+x^R_t(\tau)
+={}&
+(1+w_R\tau)e^{-a_R^2\tau}x^R_{t,t}
+-w_R\tau e^{-a_R^2\tau}x_D
+\\
+&+
+\left(1-e^{-a_R^2\tau}\right)x_\infty,
+\end{aligned}
+\end{equation}
+where the repeated-root coefficient is determined by the mixed short-boundary condition rather than introduced as a second stochastic state. The three maturity weights add to one:
+\begin{equation}
+(1+w_R\tau)e^{-a_R^2\tau}
+-w_R\tau e^{-a_R^2\tau}
++
+\left(1-e^{-a_R^2\tau}\right)=1.
+\end{equation}
+
+A natural extension of the present analysis is to investigate how the boundary construction changes when the realised long endpoint is allowed to vary stochastically. In the current paper, the fixed long level $(x_\infty)$, the equilibrium conditions and the maturity weightings are derived jointly. Promoting the long endpoint to a stochastic boundary state therefore cannot, without further analysis, be treated as a simple substitution of $(X_t)$ for $(x_\infty)$ while leaving the existing maturity weights unchanged.
+
+A sequel can examine whether a stochastic long boundary can be incorporated while retaining an appropriate form of the short-boundary geometry derived here. This requires reconsidering the equilibrium interpretation, the maturity loadings and the restrictions determining the repeated-root coefficient. The intended extension is therefore best understood as an enlargement of the boundary-state framework, rather than as the mechanical addition of a second factor to the present solution.
+
+The deterministic policy anchor $(x_D)$ will remain conceptually distinct from any realised stochastic long-boundary state. Whether the resulting system has one or more independent stochastic directions, and how those directions enter the maturity field, will depend on the boundary and consistency conditions derived in the extended model.
+
+
+\section{Representation and identification layers}
+
+\subsection{Separation of geometry from affine identification}
+
+The paper now distinguishes, but includes, both levels of result. The representation layer establishes the repeated-root Dirichlet and mixed Robin geometries without prematurely selecting an equilibrium coefficient. The identification layer then applies the affine KFE closure, Axiom 2, Axiom 3, Axiom 4 and maturity-invariant Market Signal-to-Noise Ratio to obtain the state SDEs, stationary variances, positivity calibrations and factor relations.
+
+\paragraph{Scope of identification.}
+The boundary representation results do not uniquely determine the state dynamics. The identified Dirichlet and Robin processes are obtained within the affine boundary-degenerate subclass by additionally imposing rolling moment stationarity, proportional drift and diffusion maturity loadings, positivity and the within-regime MSNR condition. Other stochastic closures may be compatible with the same cross-sectional boundary representation. The results below are therefore identification results within the stated affine subclass, not uniqueness theorems over all admissible processes.
+
+MSNR invariance is not introduced as an independent behavioural axiom concerning investor preferences since, in the full construction of Paper~I \cite{Oza2026}, the axioms imply a dynamically consistent one-factor SDE in which the affine drift, $f$, and diffusion, $g$, share the same maturity and state kernel. The common-kernel construction therefore yields an MSNR that is constant across maturity and, under equilibrium stationarity, calendar time.
+
+For the Robin and Dirichlet boundary cases, the paper does not repeat the full $\frac{f}{g}$ construction. Instead, maturity invariance of the MSNR is used as a reduced-form expression of the same common-kernel restriction and thereby selects the remaining boundary coefficient. Once this coefficient has been fixed, the identified equilibrium signal and noise scales retain the same maturity loading, with calendar-time invariance following from equilibrium stationarity.
+
+
+For Dirichlet, the identified results are
+\begin{equation}
+B_D^e=a_D^2(x_D-x_\infty),
+\qquad
+B_{D,\min}=2B_D^e,
+\qquad
+\Var(B_{D,t})=(B_D^e)^2,
+\end{equation}
+\begin{equation}
+\frac{x_D}{x_\infty}=1-\frac{\sqrt e}{2},
+\qquad
+\MSNR_D=\frac{a_D}{\sqrt2}.
+\end{equation}
+
+For Robin, the identified one-factor affine manifold is
+\begin{equation}
+B_{R,t}
+=
+-\frac{\kappa_R^2}{1+\kappa_R}a_R^2A_R^e
++
+\kappa_Ra_R^2A_{R,t},
+\end{equation}
+with
+\begin{equation}
+\Var(A_{R,t})=(A_{R,\mathrm{bdry}}-A_R^e)^2,
+\qquad
+A_{R,\mathrm{bdry}}
+=
+\frac{2+\kappa_R}{1+\kappa_R}A_R^e,
+\qquad
+\MSNR_R=\frac{a_R}{\sqrt2}.
+\end{equation}
+These are not assumptions added to the cross-sectional Ansatz. They are the additional identification consequences of the axioms and the chosen affine closure.
+
+
+
+\section{Conclusion}
+\subsection{Summary and implications}
+
+This paper extends the Unified Boundary Field Theory of instantaneous rolling forward rates from a free short-boundary to fixed and mixed short-boundary conditions. The principal result is a classification of the stochastic coordinate selected by the short-boundary condition. Under a Neumann, or free, boundary, stochastic variation may enter through the boundary level. Under a Dirichlet, or fixed, boundary, the boundary level is pinned and the remaining stochastic variation is carried by the repeated-root coefficient, equivalently represented by the boundary slope. Under a Robin, or mixed, boundary, the boundary level and boundary slope are linked by one affine restriction and therefore continue to describe a one-factor stochastic manifold.
+
+The repeated-root branch provides the maturity functions
+\begin{equation}
+e^{-a^2\tau}
+\qquad\text{and}\qquad
+\tau e^{-a^2\tau}.
+\end{equation}
+Their boundary interpretation is central. The first permits stochastic exposure at the short-boundary, while the second vanishes at the pinned boundary but remains non-zero at interior maturities. Consequently, the Dirichlet construction has zero short-boundary volatility, positive interior stochastic exposure, a rank-one covariance kernel and an endogenous volatility hump. The Robin construction combines the two modes without introducing a second stochastic factor because the mixed boundary condition restricts their coefficients to a one-dimensional affine relation.
+
+The paper also separates representation from identification. The representation results follow from the admissible repeated-root cross-sectional branch and the relevant boundary condition. The identification results additionally use the affine Kolmogorov forward closure, rolling equilibrium moment transport, positivity and boundary degeneracy. Under these restrictions, the Dirichlet and Robin state dynamics, stationary variances, factor relations and positivity calibrations are determined rather than selected independently.
+
+A further implication of the common-kernel SDE structure is Market Signal-to-Noise Ratio invariance. Within each identified boundary regime, the equilibrium instantaneous expected market signal and instantaneous standard deviation possess the same maturity loading. Their ratio is consequently invariant in maturity and, under equilibrium stationarity, calendar time, and is given by
+\begin{equation}
+\MSNR_D=\frac{a_D}{\sqrt{2}}
+\qquad\text{and}\qquad
+\MSNR_R=\frac{a_R}{\sqrt{2}},
+\end{equation}
+for the Dirichlet and Robin regimes respectively. In the abbreviated boundary derivations, maturity-invariant MSNR is used as the reduced-form condition that selects the remaining boundary coefficient consistent with this common-kernel structure. The results are therefore within-regime invariance statements; equality across regimes would additionally require $(a_D=a_R)$.
+
+
+The economic interpretation is that a short-boundary condition alters the curve locally and it determines which boundary observable may remain stochastic and how that stochasticity is transmitted through maturity. The Dirichlet and Robin constructions therefore provide a structural explanation for linear-exponential and humped volatility forms that are often introduced through empirical coefficient selection. Here, the maturity basis is retained, but the coefficients are constrained by the boundary geometry and the axioms.
+
+The resulting short-boundary classification provides a natural foundation for later extensions in which the fixed-long-boundary assumption is relaxed. Such an extension would need to determine whether, and in what modified form, the short-boundary geometry derived here remains compatible with a stochastic realised long endpoint. Because the fixed long level, equilibrium restrictions and maturity weightings are jointly determined in the present construction, the resulting state dimension, covariance rank and maturity map must be derived within the extended boundary problem rather than assumed in advance.
+
+
+\section*{Relationship to prior and subsequent work}
+The present paper uses the rolling-maturity KFE machinery developed in Paper~I \cite{Oza2026}: affine drift and diffusion closure, equilibrium moment transport, rank-one covariance aggregation and the within-regime Market Signal-to-Noise Ratio invariance. Its new contribution is the classification of fixed and mixed short-boundary conditions and the identification of the repeated-root boundary-slope mode as a stochastic coordinate. A subsequent extension may investigate the relaxation of the fixed realised long-endpoint condition. Such an analysis would need to reconsider the equilibrium condition, the maturity loadings and the restrictions determining the repeated-root coefficient before establishing whether the Robin maturity map derived here is retained, modified or replaced.
+
+\begin{thebibliography}{9}
+\bibitem{Oza2026}
+Oza, S. (2026).
+\newblock \emph{An Axiomatically Consistent Single-Factor Term Structure Model with Admissible Humped Volatility}.
+SSRN Working Paper, posted May 2026.
+Available at SSRN: \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6454299}
+
+\bibitem{RitchkenChuang1999}
+Ritchken, P. and Chuang, I. (1999).
+\newblock Interest rate option pricing with volatility humps.
+\newblock \emph{Review of Derivatives Research}, 3, 237--262.
+
+\end{thebibliography}
+
+\end{document}
